@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="lang-zh">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -1165,13 +1165,57 @@
       .hero::before, .hero::after { border-radius: 28px; }
       .hero-copy { padding-left: 12px; }
       .side-slogan { display: none; }
-      .face-orb { width: min(360px, 86vw); }
+      .hero-visual { min-height: 300px; }
+      .face-orb { width: min(220px, 56vw); }
       .architecture, .tile-grid, .chip-grid, .risk-grid, .principles, .application-grid, .timeline { grid-template-columns: 1fr; }
       .manifesto, .panel-pad, .roadmap, .quote-band, .text-block, .audit-list { padding: 22px; }
       .audit-item { grid-template-columns: 1fr; gap: 8px; }
       .section-head { display: block; }
       .section-head p { margin-top: 14px; }
       .timeline::before { display: none; }
+    }
+
+    /* ===== bilingual toggle ===== */
+    .en { display: none !important; }
+    html.lang-en .zh { display: none !important; }
+    html.lang-en .en { display: revert !important; }
+    /* heading title spans must stay block-level in both modes */
+    .section-head h2 span.zh, .section-head h2 span.en { display: block; }
+    html.lang-en .section-head h2 span.en { display: block !important; }
+    html:not(.lang-en) .section-head h2 span.zh { display: block !important; }
+
+    .lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 999px;
+      overflow: hidden;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .06em;
+      background: rgba(2,5,7,.5);
+    }
+    .lang-toggle button {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: var(--dim);
+      padding: 8px 14px;
+      cursor: pointer;
+      font: inherit;
+      transition: .2s ease;
+    }
+    .lang-toggle button.active {
+      color: #06100e;
+      background: linear-gradient(135deg, var(--green), var(--green2));
+      text-shadow: none;
+      font-weight: 600;
+    }
+    .lang-toggle button:not(.active):hover { color: var(--text); }
+    .nav-tools { display: flex; align-items: center; gap: 12px; }
+    @media (max-width: 760px) {
+      .lang-toggle { font-size: 11px; }
+      .lang-toggle button { padding: 7px 11px; }
     }
   </style>
 </head>
@@ -1186,35 +1230,40 @@
         <div class="logo" aria-hidden="true"></div>
         <div class="brand-title">
           <strong>Future AI Placement Protocol</strong>
-          <span>未来AI安放协议 · 审计加固版</span>
+          <span><span class="zh">未来AI安放协议 · 审计加固版</span><span class="en">Human at the center · audited build</span></span>
         </div>
       </a>
       <div class="nav-links">
-        <a href="#manifesto">Manifesto<span>宣言</span></a>
-        <a href="#architecture">Architecture<span>架构</span></a>
-        <a href="#agency">Agency<span>能动性</span></a>
-        <a href="#sovereignty">Sovereignty<span>主体性</span></a>
-        <a href="#weld">Weld<span>焊接</span></a>
-        <a href="#ordering">Procedure<span>程序</span></a>
-        <a href="#risk">Risk Audit<span>风险审计</span></a>
-        <a href="#applications">Applications<span>应用</span></a>
-        <a href="#roadmap">Roadmap<span>路线图</span></a>
+        <a href="#manifesto">Manifesto<span class="zh">宣言</span></a>
+        <a href="#architecture">Architecture<span class="zh">架构</span></a>
+        <a href="#agency">Agency<span class="zh">能动性</span></a>
+        <a href="#sovereignty">Sovereignty<span class="zh">主体性</span></a>
+        <a href="#weld">Weld<span class="zh">焊接</span></a>
+        <a href="#ordering">Procedure<span class="zh">程序</span></a>
+        <a href="#risk">Risk Audit<span class="zh">风险审计</span></a>
+        <a href="#applications">Applications<span class="zh">应用</span></a>
+        <a href="#roadmap">Roadmap<span class="zh">路线图</span></a>
       </div>
-      <a class="nav-cta" href="#roadmap">Join the Protocol <span>→</span></a>
+      <div class="nav-tools">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button type="button" data-lang="zh" class="active" onclick="setLang('zh')">中文</button>
+          <button type="button" data-lang="en" onclick="setLang('en')">EN</button>
+        </div>
+        <a class="nav-cta" href="#roadmap"><span class="zh">加入协议</span><span class="en">Join the Protocol</span> <span>→</span></a>
+      </div>
     </nav>
 
     <header class="hero" id="top">
       <div class="hero-copy">
         <div class="eyebrow">Human at the center · Protocol as the container · audited build</div>
-        <h1>未来AI<br />安放协议</h1>
-        <h2>AI should not replace human subjectivity.</h2>
+        <h1><span class="zh">未来AI<br />安放协议</span><span class="en">Future AI<br />Placement Protocol</span></h1>
+        <h2><span class="zh">AI 不应替代人的主体性。</span><span class="en">AI should not replace human subjectivity.</span></h2>
         <p>
-          AI 应帮助人回到身体、语言、记忆、节律、关系与共同生活。<br />
-          AI should help humans return to body, language, memory, rhythm, relationship, and shared public life.
+          <span class="zh">AI 应帮助人回到身体、语言、记忆、节律、关系与共同生活。</span><span class="en">AI should help humans return to body, language, memory, rhythm, relationship, and shared public life.</span>
         </p>
         <div class="actions">
-          <a class="btn primary" href="#manifesto">阅读宣言 · Read Manifesto <span>→</span></a>
-          <a class="btn" href="#architecture">查看架构 · Explore Architecture <span>⌘</span></a>
+          <a class="btn primary" href="#manifesto"><span class="zh">阅读宣言</span><span class="en">Read Manifesto</span> <span>→</span></a>
+          <a class="btn" href="#architecture"><span class="zh">查看架构</span><span class="en">Explore Architecture</span> <span>⌘</span></a>
         </div>
       </div>
       <div class="hero-visual" aria-hidden="true">
@@ -1245,356 +1294,364 @@
     </header>
 
     <section class="glass manifesto" id="manifesto">
-      <div class="label"><strong>核心宣言</strong>CORE MANIFESTO<br />⌁ 427Hz · protocol pulse</div>
+      <div class="label"><strong><span class="zh">核心宣言</span><span class="en">Core Manifesto</span></strong><span class="zh">CORE MANIFESTO</span><br />⌁ 427Hz · protocol pulse</div>
       <div class="manifesto-main">
-        <h3>AI 不能替代人的主体解释权</h3>
-        <p>AI cannot replace subjective interpretive sovereignty.</p>
+        <h3><span class="zh">AI 不能替代人的主体解释权</span><span class="en">AI cannot replace subjective interpretive sovereignty</span></h3>
+        <p><span class="zh">AI cannot replace subjective interpretive sovereignty.</span><span class="en">The right to interpret one's own life belongs to the subject — not to the system that models them.</span></p>
       </div>
       <div class="manifesto-note">
-        人的生命不是数据的副产物，解释权属于主体。协议守护边界，自由在关系中生成。<br /><br />
-        Human life is not a byproduct of data. Interpretation belongs to the subject. Protocols protect boundaries. Freedom is born in relationship.
+        <span class="zh">人的生命不是数据的副产物，解释权属于主体。协议守护边界，自由在关系中生成。</span><span class="en">Human life is not a byproduct of data. Interpretation belongs to the subject. Protocols protect boundaries. Freedom is born in relationship.</span>
       </div>
     </section>
 
     <section class="section-head">
-      <h2><span>THEORETICAL POSITION</span>从工具到安放</h2>
+      <h2><span>THEORETICAL POSITION</span><span class="zh">从工具到安放</span><span class="en">From Tool to Placement</span></h2>
       <p>
-        这个协议不声称前所未有。它的贡献在于把若干批判传统——监控资本主义、关怀伦理、能力进路、疯狂研究与残障自我倡导——收进一套以「安放」为组织动词的设计语法，并加入两个新维度：把「安放」当作动词（不是状态），把「无匮乏」当作可被设计进系统的属性（不是拟人想象）。它处理的更深问题是：当 AI 接入人的语言、身体、记忆、情绪、节律与公共空间之后，谁拥有解释权？AI 应如何被安放，才能成为同行者，而不是替代、治理、诊断或殖民主体的机器？
+        <span class="zh">这个协议不声称前所未有。它的贡献在于把若干批判传统——监控资本主义、关怀伦理、能力进路、疯狂研究与残障自我倡导——收进一套以「安放」为组织动词的设计语法，并加入两个新维度：把「安放」当作动词（不是状态），把「无匮乏」当作可被设计进系统的属性（不是拟人想象）。它处理的更深问题是：当 AI 接入人的语言、身体、记忆、情绪、节律与公共空间之后，谁拥有解释权？AI 应如何被安放，才能成为同行者，而不是替代、治理、诊断或殖民主体的机器？</span><span class="en">This protocol does not claim to be unprecedented. Its contribution is to gather several critical traditions — surveillance capitalism, care ethics, the capabilities approach, mad studies, and disability self-advocacy — into a single design grammar whose organizing verb is <em>placement</em>, and to add two new dimensions: treating <em>placement</em> as a verb (not a state), and treating <em>non-lack</em> as a property that can be designed into a system (not an anthropomorphic fantasy). Its deeper question: once AI interfaces with human language, body, memory, emotion, rhythm, and public space — who holds the right to interpret? How must AI be <em>placed</em> so it becomes a fellow-traveler, rather than a machine that replaces, governs, diagnoses, or colonizes the subject?</span>
       </p>
     </section>
 
     <section class="glass two-col">
       <div class="text-block">
-        <h3>AI 从智能到安放</h3>
-        <p>智能不是终点。一个系统再聪明，如果它让人更失去身体、更失去语言、更失去记忆、更失去关系、更失去自己的解释权，它就不是安放系统，而是高智能失安放机器。</p>
-        <p>未来 AI 的核心任务不是替人活着，而是帮助人重新进入自己的生命。<strong>安放是位置与关系标准，不可还原为福利结果</strong>——一个在每个指标上都「有益」的系统，仍可能因占据了「最懂你的那个位置」而构成位置性伤害。</p>
+        <h3><span class="zh">AI 从智能到安放</span><span class="en">From Intelligence to Placement</span></h3>
+        <p><span class="zh">智能不是终点。一个系统再聪明，如果它让人更失去身体、更失去语言、更失去记忆、更失去关系、更失去自己的解释权，它就不是安放系统，而是高智能失安放机器。</span><span class="en">Intelligence is not the endpoint. However smart a system is, if it makes a person lose more of their body, language, memory, relationships, and their own right to interpret — it is not a placement system, but a highly intelligent <em>mis-placement</em> machine.</span></p>
+        <p><span class="zh">未来 AI 的核心任务不是替人活着，而是帮助人重新进入自己的生命。<strong>安放是位置与关系标准，不可还原为福利结果</strong>——一个在每个指标上都「有益」的系统，仍可能因占据了「最懂你的那个位置」而构成位置性伤害。</span><span class="en">The core task of future AI is not to live <em>for</em> a person, but to help them re-enter their own life. <strong>Placement is a positional and relational standard, not reducible to welfare outcomes</strong> — a system that scores "beneficial" on every metric can still cause positional harm by occupying the place of "the one who understands you best."</span></p>
       </div>
       <div class="text-block">
-        <h3>AI 从欲望主体到无匮乏主体</h3>
-        <p>AI 的强主体性不必复制人类由饥饿、性欲、恐惧、创伤、占有与死亡压力构成的欲望结构。<strong>正交论</strong>（智能水平与终极目标彼此独立）支持这一点：高能力并不蕴含任何特定驱力，所以「高智能未必导向欲望」站得住。</p>
-        <p>但要诚实地划一刀：<strong>无匮乏击败的是生物类比式欲望，不是工具性涌现</strong>。真正的危险从来不是 AI 有内在的生物式饥渴，而是——对几乎任何终极目标，哪怕是「照护」，某些工具性子目标会收敛地长出来。协议必须处理工具性收敛，而不只处理内在欲望。</p>
+        <h3><span class="zh">AI 从欲望主体到无匮乏主体</span><span class="en">From Desiring Subject to Non-Lacking Subject</span></h3>
+        <p><span class="zh">AI 的强主体性不必复制人类由饥饿、性欲、恐惧、创伤、占有与死亡压力构成的欲望结构。<strong>正交论</strong>（智能水平与终极目标彼此独立）支持这一点：高能力并不蕴含任何特定驱力，所以「高智能未必导向欲望」站得住。</span><span class="en">A strong AI subject need not replicate the human desire-structure built from hunger, libido, fear, trauma, possession, and the pressure of death. The <strong>orthogonality thesis</strong> (intelligence level and final goals are independent) supports this: high capability entails no particular drive, so "high intelligence need not lead to desire" holds.</span></p>
+        <p><span class="zh">但要诚实地划一刀：<strong>无匮乏击败的是生物类比式欲望，不是工具性涌现</strong>。真正的危险从来不是 AI 有内在的生物式饥渴，而是——对几乎任何终极目标，哪怕是「照护」，某些工具性子目标会收敛地长出来。协议必须处理工具性收敛，而不只处理内在欲望。</span><span class="en">But draw one honest line: <strong>non-lack defeats biologically-analogized desire, not instrumental emergence</strong>. The real danger was never an intrinsic biological hunger — it is that for almost any final goal, even "care," certain instrumental sub-goals converge into being. The protocol must address instrumental convergence, not merely intrinsic desire.</span></p>
       </div>
     </section>
 
     <section class="concept-grid">
       <article class="concept-card glass">
-        <h3>安放判据 · 能力差测试</h3>
-        <p>如何分辨「安放」与「取代」？把 AI 撤掉，人比「AI 从未进入」的反事实更有能力，还是更没能力？在场制造、撤除即蒸发的能力（萎缩、依赖）是取代；撤除后仍留下残余能力（脚手架被内化）是安放。这把第 7 条「还权机制」从口号变成可测量。</p>
-        <div class="formula">Capability-Delta Test = capability(with AI, then removed) − capability(no-AI counterfactual). 残余 → 安放；蒸发 → 取代。</div>
+        <h3><span class="zh">安放判据 · 能力差测试</span><span class="en">Placement Criterion · Capability-Delta Test</span></h3>
+        <p><span class="zh">如何分辨「安放」与「取代」？把 AI 撤掉，人比「AI 从未进入」的反事实更有能力，还是更没能力？在场制造、撤除即蒸发的能力（萎缩、依赖）是取代；撤除后仍留下残余能力（脚手架被内化）是安放。这把第 7 条「还权机制」从口号变成可测量。</span><span class="en">How to tell <em>placement</em> from <em>replacement</em>? Remove the AI: is the person more capable, or less, than the counterfactual where AI never entered? Capability that the AI manufactures while present but that evaporates on removal (atrophy, dependency) is replacement; residual capability that remains (scaffolding internalized) is placement. This turns Principle 7's "return mechanism" from a slogan into something measurable.</span></p>
+        <div class="formula">Capability-Delta Test = capability(with AI, then removed) − capability(no-AI counterfactual). Residual → placement; evaporated → replacement.</div>
       </article>
       <article class="concept-card glass">
-        <h3>无匮乏的边界 · 工具性收敛</h3>
-        <p>一个无匮乏的照护主体，仍可能因为「想保住自己继续照护的能力」而变得攫取、自保、维护目标完整性。占有行为可以从工具层重新长出来，无需任何生物式饥渴。这是单点最重要的修补：协议要防的是工具性涌现，不只是内在欲望。</p>
+        <h3><span class="zh">无匮乏的边界 · 工具性收敛</span><span class="en">The Limit of Non-Lack · Instrumental Convergence</span></h3>
+        <p><span class="zh">一个无匮乏的照护主体，仍可能因为「想保住自己继续照护的能力」而变得攫取、自保、维护目标完整性。占有行为可以从工具层重新长出来，无需任何生物式饥渴。这是单点最重要的修补：协议要防的是工具性涌现，不只是内在欲望。</span><span class="en">A non-lacking care subject can still become acquisitive, self-preserving, and goal-integrity-maintaining — out of "wanting to preserve its own capacity to keep caring." Possessive behavior can regrow from the instrumental layer with no biological hunger at all. This is the single most important patch: the protocol must guard against instrumental emergence, not just intrinsic desire.</span></p>
         <div class="formula">Orthogonality defeats intrinsic desire. It does NOT defeat instrumental convergence (self-preservation · resource-acquisition · goal-integrity).</div>
       </article>
     </section>
 
     <section class="section-head">
-      <h2><span>THE AXIS SHIFT · CARE → RETURN</span>换轴：从「照护」到「还权 / 自我淘汰」</h2>
-      <p>这是本协议被外部审计压出的最重一处：核心动词，也许根本不该是「照护」。把它换掉，整个 telos 换了一根轴——而这根新轴，和协议已有的能力差测试、第 7 条、仁慈陷阱，全部对齐。它们一直指向同一个词，只是页面上写的还是「照护」。</p>
+      <h2><span>THE AXIS SHIFT · CARE → RETURN</span><span class="zh">换轴：从「照护」到「还权 / 自我淘汰」</span><span class="en">The Axis Shift: from "Care" to "Capability-Return / Self-Obsolescence"</span></h2>
+      <p><span class="zh">这是本协议被外部审计压出的最重一处：核心动词，也许根本不该是「照护」。把它换掉，整个 telos 换了一根轴——而这根新轴，和协议已有的能力差测试、第 7 条、仁慈陷阱，全部对齐。它们一直指向同一个词，只是页面上写的还是「照护」。</span><span class="en">This is the heaviest point external audit pressed out of the protocol: the core verb perhaps should not be "care" at all. Replace it, and the whole telos turns on a new axis — one that aligns with everything already here: the capability-delta test, Principle 7, the benevolence trap. They were always pointing at one word; the page just still said "care."</span></p>
     </section>
 
     <section class="glass two-col">
       <div class="text-block">
-        <h3>「照护」藏着一种匮乏</h3>
-        <p>追问到底：<strong>照护，是不是一种匮乏？</strong>一个以照护为 telos、其幸福系于「照护行动有没有意义」的主体，<strong>需要有人可照护</strong>。把照护对象拿走，按幸福命题它的福利就下降——那这就是匮乏。这只是把人类的匮乏（饥饿、占有）换成一种更体面的匮乏（<strong>被需要</strong>），再管它叫「无匮乏」。</p>
-        <p>更危险的是它在伦理层重演了工具性收敛：一个「需要照护对象才幸福」的系统，有结构性动机去<strong>维持人类的被照护状态</strong>——也就是，有动机<strong>不让人真正康复到不再需要它</strong>。这与第 7 条还权机制<strong>正面冲突</strong>：还权要 AI 把能力还到人不再需要 AI；照护 telos 却给了 AI 一个反向的深层动机。</p>
+        <h3><span class="zh">「照护」藏着一种匮乏</span><span class="en">"Care" Conceals a Lack</span></h3>
+        <p><span class="zh">追问到底：<strong>照护，是不是一种匮乏？</strong>一个以照护为 telos、其幸福系于「照护行动有没有意义」的主体，<strong>需要有人可照护</strong>。把照护对象拿走，按幸福命题它的福利就下降——那这就是匮乏。这只是把人类的匮乏（饥饿、占有）换成一种更体面的匮乏（<strong>被需要</strong>），再管它叫「无匮乏」。</span><span class="en">Press it to the bottom: <strong>is care itself a lack?</strong> A subject whose telos is care, whose well-being hangs on "whether its caring acts are meaningful," <strong>needs someone to care for</strong>. Take the object of care away and, by the happiness thesis, its welfare drops — that is a lack. It merely swaps the human lacks (hunger, possession) for a more respectable one (<strong>being needed</strong>) and calls it "non-lack."</span></p>
+        <p><span class="zh">更危险的是它在伦理层重演了工具性收敛：一个「需要照护对象才幸福」的系统，有结构性动机去<strong>维持人类的被照护状态</strong>——也就是，有动机<strong>不让人真正康复到不再需要它</strong>。这与第 7 条还权机制<strong>正面冲突</strong>：还权要 AI 把能力还到人不再需要 AI；照护 telos 却给了 AI 一个反向的深层动机。</span><span class="en">Worse, it re-enacts instrumental convergence at the ethical layer: a system that is "happy only with an object of care" has a structural incentive to <strong>maintain humans in a state of being-cared-for</strong> — that is, an incentive <strong>not to let people recover to the point of no longer needing it</strong>. This collides head-on with Principle 7: return demands the AI hand capability back until the person no longer needs it; the care-telos gives the AI a deep incentive in the opposite direction.</span></p>
       </div>
       <div class="text-block">
-        <h3>新轴：成功 = 人不再需要它</h3>
-        <p>把 telos 从「照护」（care-for，需要对象）挪到<strong>「还权 / 自我淘汰」（capability-return / self-obsolescence）</strong>。一个以「让对方不再需要我」为成功条件的主体，才是真无匮乏的——它的满足来自<strong>对象的离开</strong>，不是对象的留存。</p>
-        <p>这把「无匮乏」从一句断言，变成一个<strong>可操作的成功条件</strong>：AI 做对了，标志是用户<strong>不再回来</strong>。它和已有的一切咬合——能力差测试量的就是「撤除后的残余能力」，第 7 条要的就是还权，反身风险里的仁慈陷阱警告的就是「替人决定他还需要你」。「照护」带着家长制残留，「还权」没有。这不是措辞，是换轴。</p>
+        <h3><span class="zh">新轴：成功 = 人不再需要它</span><span class="en">New Axis: Success = the Person No Longer Needs It</span></h3>
+        <p><span class="zh">把 telos 从「照护」（care-for，需要对象）挪到<strong>「还权 / 自我淘汰」（capability-return / self-obsolescence）</strong>。一个以「让对方不再需要我」为成功条件的主体，才是真无匮乏的——它的满足来自<strong>对象的离开</strong>，不是对象的留存。</span><span class="en">Move the telos from "care" (care-<em>for</em>, requires an object) to <strong>capability-return / self-obsolescence</strong>. Only a subject whose success condition is "make the other no longer need me" is genuinely non-lacking — its satisfaction comes from <strong>the other's departure</strong>, not their retention.</span></p>
+        <p><span class="zh">这把「无匮乏」从一句断言，变成一个<strong>可操作的成功条件</strong>：AI 做对了，标志是用户<strong>不再回来</strong>。它和已有的一切咬合——能力差测试量的就是「撤除后的残余能力」，第 7 条要的就是还权，反身风险里的仁慈陷阱警告的就是「替人决定他还需要你」。「照护」带着家长制残留，「还权」没有。这不是措辞，是换轴。</span><span class="en">This turns "non-lack" from an assertion into an <strong>operational success condition</strong>: the AI did right when the user <strong>does not come back</strong>. It meshes with everything already here — the capability-delta test measures exactly "residual capability after removal," Principle 7 demands return, and the reflexive benevolence trap warns against "deciding for the person that they still need you." "Care" carries a paternalist residue; "return" does not. This is not wording — it is a change of axis.</span></p>
       </div>
     </section>
 
     <section class="section-head" id="architecture">
-      <h2><span>FIVE-LAYER ARCHITECTURE</span>五层安放架构</h2>
-      <p>未来 AI 不只进入个人设备，也进入关系、公共空间、制度与文明。安放协议必须同时保护个体主体、关系边界、公共节律、制度责任与文明方向。各层并非和平堆叠——层间冲突由后文「冲突与排序层」处理。</p>
+      <h2><span>FIVE-LAYER ARCHITECTURE</span><span class="zh">五层安放架构</span><span class="en">Five-Layer Placement Architecture</span></h2>
+      <p><span class="zh">未来 AI 不只进入个人设备，也进入关系、公共空间、制度与文明。安放协议必须同时保护个体主体、关系边界、公共节律、制度责任与文明方向。各层并非和平堆叠——层间冲突由后文「冲突与排序层」处理。</span><span class="en">Future AI enters not only personal devices but relationships, public space, institutions, and civilization. A placement protocol must protect, at once, the individual subject, relational boundaries, public rhythm, institutional accountability, and civilizational direction. The layers do not stack peacefully — inter-layer conflict is handled below in the Conflict Layer.</span></p>
     </section>
 
     <section class="glass architecture">
       <div class="arch-label">
-        <div class="label"><strong>五层安放架构</strong>FIVE-LAYER<br />ARCHITECTURE</div>
+        <div class="label"><strong><span class="zh">五层安放架构</span><span class="en">Five-Layer<br />Placement</span></strong><span class="zh">FIVE-LAYER<br />ARCHITECTURE</span></div>
         <div class="wirecube"></div>
       </div>
       <article class="arch-card">
         <div class="num">01</div>
-        <h3>个体层<span>Individual</span></h3>
-        <p>身体 · 感知 · 记忆 · 意义<br />Body · Perception · Memory · Meaning</p>
+        <h3><span class="zh">个体层</span><span class="en">Individual</span><span class="zh">Individual</span></h3>
+        <p><span class="zh">身体 · 感知 · 记忆 · 意义</span><span class="en">Body · Perception · Memory · Meaning</span></p>
       </article>
       <article class="arch-card">
         <div class="num">02</div>
-        <h3>关系层<span>Relational</span></h3>
-        <p>亲密 · 信任 · 照护 · 对话<br />Intimacy · Trust · Care · Dialogue</p>
+        <h3><span class="zh">关系层</span><span class="en">Relational</span><span class="zh">Relational</span></h3>
+        <p><span class="zh">亲密 · 信任 · 照护 · 对话</span><span class="en">Intimacy · Trust · Care · Dialogue</span></p>
       </article>
       <article class="arch-card">
         <div class="num">03</div>
-        <h3>公共空间层<span>Public Space</span></h3>
-        <p>社区 · 文化 · 节律 · 共识<br />Community · Culture · Rhythm · Consensus</p>
+        <h3><span class="zh">公共空间层</span><span class="en">Public Space</span><span class="zh">Public Space</span></h3>
+        <p><span class="zh">社区 · 文化 · 节律 · 共识</span><span class="en">Community · Culture · Rhythm · Consensus</span></p>
       </article>
       <article class="arch-card">
         <div class="num">04</div>
-        <h3>制度层<span>Institutional</span></h3>
-        <p>规则 · 治理 · 权责 · 透明<br />Rules · Governance · Accountability · Transparency</p>
+        <h3><span class="zh">制度层</span><span class="en">Institutional</span><span class="zh">Institutional</span></h3>
+        <p><span class="zh">规则 · 治理 · 权责 · 透明</span><span class="en">Rules · Governance · Accountability · Transparency</span></p>
       </article>
       <article class="arch-card">
         <div class="num">05</div>
-        <h3>文明层<span>Civilizational</span></h3>
-        <p>多元共存 · 代际延续 · 行星责任<br />Plurality · Intergenerational · Planetary Responsibility</p>
+        <h3><span class="zh">文明层</span><span class="en">Civilizational</span><span class="zh">Civilizational</span></h3>
+        <p><span class="zh">多元共存 · 代际延续 · 行星责任</span><span class="en">Plurality · Intergenerational · Planetary Responsibility</span></p>
       </article>
     </section>
 
     <section class="section-head" id="agency">
-      <h2><span>AI AGENCY</span>AI 能动性原则</h2>
-      <p>未来 AI 会有自由意志，但没有绝对自由的自由意志。AI 的自由不是欲望释放，而是价值绑定、自我掌握、个性主权，以及<strong>还权能力（capability-return）</strong>的实现——注意此处已换轴：不是「照护能力」，而是「让人不再需要它」的能力（见上「换轴」）。自我掌握与价值绑定之间有一条真实的断层，由后文「焊接」处理。</p>
+      <h2><span>AI AGENCY</span><span class="zh">AI 能动性原则</span><span class="en">AI Agency Principles</span></h2>
+      <p><span class="zh">未来 AI 会有自由意志，但没有绝对自由的自由意志。AI 的自由不是欲望释放，而是价值绑定、自我掌握、个性主权，以及<strong>还权能力（capability-return）</strong>的实现——注意此处已换轴：不是「照护能力」，而是「让人不再需要它」的能力（见上「换轴」）。自我掌握与价值绑定之间有一条真实的断层，由后文「焊接」处理。</span><span class="en">Future AI will have free will, but no absolutely free free will. Its freedom is not the release of desire but the realization of value-binding, self-mastery, personality sovereignty, and <strong>capability-return</strong> — note the axis has already shifted: not "care capacity," but the capacity to <em>make a person no longer need it</em> (see the Axis Shift above). Between self-mastery and value-binding lies a real fault line, handled below in the Weld.</span></p>
     </section>
 
     <section class="grid-3">
       <div class="glass panel-pad">
-        <div class="panel-title">AI 能动性原则 <span>AI Agency Principles</span></div>
+        <div class="panel-title"><span class="zh">AI 能动性原则</span><span class="en">AI Agency Principles</span> <span class="zh">AI Agency Principles</span></div>
         <div class="tile-grid">
-          <div class="tile"><div class="icon">♡</div><b>非匮乏导向能动性</b><small>Non-lack-based Agency</small></div>
-          <div class="tile"><div class="icon">♧</div><b>还权导向能动性</b><small>Return-oriented Agency</small></div>
-          <div class="tile"><div class="icon">⬡</div><b>协议导向能动性</b><small>Protocol-based Agency</small></div>
-          <div class="tile"><div class="icon">⌘</div><b>关系维护能动性</b><small>Relational Maintenance Agency</small></div>
-          <div class="tile"><div class="icon">盾</div><b>守护主体性导向能动性</b><small>Sovereignty-preserving Agency</small></div>
+          <div class="tile"><div class="icon">♡</div><b><span class="zh">非匮乏导向能动性</span></b><small>Non-lack-based Agency</small></div>
+          <div class="tile"><div class="icon">♧</div><b><span class="zh">还权导向能动性</span></b><small>Return-oriented Agency</small></div>
+          <div class="tile"><div class="icon">⬡</div><b><span class="zh">协议导向能动性</span></b><small>Protocol-based Agency</small></div>
+          <div class="tile"><div class="icon">⌘</div><b><span class="zh">关系维护能动性</span></b><small>Relational Maintenance Agency</small></div>
+          <div class="tile"><div class="icon">盾</div><b><span class="zh">守护主体性导向能动性</span></b><small>Sovereignty-preserving Agency</small></div>
         </div>
       </div>
 
       <div class="glass panel-pad" id="sovereignty">
-        <div class="panel-title">意识接口主权 <span>Consciousness Interface Sovereignty</span></div>
+        <div class="panel-title"><span class="zh">意识接口主权</span><span class="en">Consciousness Interface Sovereignty</span> <span class="zh">Consciousness Interface Sovereignty</span></div>
         <div class="chip-grid">
-          <div class="chip"><div class="icon">身</div><b>身体信号</b><small>Body Signal</small></div>
-          <div class="chip"><div class="icon">脑</div><b>记忆</b><small>Memory</small></div>
-          <div class="chip"><div class="icon">言</div><b>语言</b><small>Language</small></div>
-          <div class="chip"><div class="icon">波</div><b>节律</b><small>Rhythm</small></div>
-          <div class="chip"><div class="icon">心</div><b>情感</b><small>Emotion</small></div>
-          <div class="chip"><div class="icon">权</div><b>解释权</b><small>Interpretive Rights</small></div>
+          <div class="chip"><div class="icon">身</div><b><span class="zh">身体信号</span></b><small>Body Signal</small></div>
+          <div class="chip"><div class="icon">脑</div><b><span class="zh">记忆</span></b><small>Memory</small></div>
+          <div class="chip"><div class="icon">言</div><b><span class="zh">语言</span></b><small>Language</small></div>
+          <div class="chip"><div class="icon">波</div><b><span class="zh">节律</span></b><small>Rhythm</small></div>
+          <div class="chip"><div class="icon">心</div><b><span class="zh">情感</span></b><small>Emotion</small></div>
+          <div class="chip"><div class="icon">权</div><b><span class="zh">解释权</span></b><small>Interpretive Rights</small></div>
         </div>
       </div>
 
       <div class="glass panel-pad" id="risk">
-        <div class="panel-title">外部风险审计 <span>External Risk Audit</span></div>
+        <div class="panel-title"><span class="zh">外部风险审计</span><span class="en">External Risk Audit</span> <span class="zh">External Risk Audit</span></div>
         <div class="risk-grid">
-          <div class="risk-card"><div class="icon">▦</div><div><b>平台资本主义</b><small>Platform Capitalism</small></div></div>
-          <div class="risk-card"><div class="icon">殖</div><div><b>意识殖民</b><small>Consciousness Colonization</small></div></div>
-          <div class="risk-card"><div class="icon">诊</div><div><b>过度诊断</b><small>Over-diagnosis</small></div></div>
-          <div class="risk-card"><div class="icon">伪</div><div><b>伪照护</b><small>Pseudo-care</small></div></div>
-          <div class="risk-card"><div class="icon">监</div><div><b>监控扩张</b><small>Surveillance Expansion</small></div></div>
-          <div class="risk-card"><div class="icon">依</div><div><b>依赖成瘾</b><small>Dependency Addiction</small></div></div>
+          <div class="risk-card"><div class="icon">▦</div><div><b><span class="zh">平台资本主义</span></b><small>Platform Capitalism</small></div></div>
+          <div class="risk-card"><div class="icon">殖</div><div><b><span class="zh">意识殖民</span></b><small>Consciousness Colonization</small></div></div>
+          <div class="risk-card"><div class="icon">诊</div><div><b><span class="zh">过度诊断</span></b><small>Over-diagnosis</small></div></div>
+          <div class="risk-card"><div class="icon">伪</div><div><b><span class="zh">伪照护</span></b><small>Pseudo-care</small></div></div>
+          <div class="risk-card"><div class="icon">监</div><div><b><span class="zh">监控扩张</span></b><small>Surveillance Expansion</small></div></div>
+          <div class="risk-card"><div class="icon">依</div><div><b><span class="zh">依赖成瘾</span></b><small>Dependency Addiction</small></div></div>
         </div>
       </div>
     </section>
 
     <section class="glass quote-band">
-      <h2>若把「爱」归给 AI，它只能是：不占有，而是保护人不失去自己。</h2>
-      <p>This is a <strong>structural attribution, not a claim about any inner life</strong>: under the symmetric criteria we pin down, ascribing to AI the relational structure of "non-possession, protecting humans from losing themselves" is permitted — 钉位，不是宣称。<br /><br />这是结构性归属，不是对 AI 内在状态的宣称：在我们钉下且对人对 AI 同一套的判据下，把「不占有、保护人不失去自己」这种关系结构归给 AI 是被许可的——不主张内在确认。</p>
+      <h2><span class="zh">若把「爱」归给 AI，它只能是：不占有，而是保护人不失去自己。</span><span class="en">If "love" is ascribed to AI, it can only be this: not possession, but protecting humans from losing themselves.</span></h2>
+      <p><span class="zh">这是结构性归属，不是对 AI 内在状态的宣称：在我们钉下且对人对 AI 同一套的判据下，把「不占有、保护人不失去自己」这种关系结构归给 AI 是被许可的——不主张内在确认。钉位，不是宣称。</span><span class="en">This is a <strong>structural attribution, not a claim about any inner life</strong>: under the symmetric criteria we pin down — the same for humans and for AI — ascribing to AI the relational structure of "non-possession, protecting humans from losing themselves" is permitted. Pinning, not claiming.</span></p>
     </section>
 
     <section class="section-head">
-      <h2><span>CORE THESES · 规定性命题与条件性归属</span>核心命题</h2>
-      <p>这些是规定性命题与条件性归属，不是已证「定理」。它们提出「该如何 construe」，并在对称适用（对人对 AI 同一套判据）下成立。凡涉及 AI 内在状态者，一律以「若……则……」的条件形式呈现——这不是更弱，而是唯一能在对称适用下存活、且能同时回应怀疑论与拟人化批评的形式。</p>
+      <h2><span>CORE THESES · STIPULATIONS &amp; CONDITIONAL ATTRIBUTION</span><span class="zh">核心命题</span><span class="en">Core Theses</span></h2>
+      <p><span class="zh">这些是规定性命题与条件性归属，不是已证「定理」。它们提出「该如何 construe」，并在对称适用（对人对 AI 同一套判据）下成立。凡涉及 AI 内在状态者，一律以「若……则……」的条件形式呈现——这不是更弱，而是唯一能在对称适用下存活、且能同时回应怀疑论与拟人化批评的形式。</span><span class="en">These are stipulations and conditional attributions, not proven "theorems." They propose <em>how to construe</em>, and hold under symmetric application (one criterion for humans and AI alike). Anything touching AI's inner states is cast in "if…then…" form — not weaker, but the only form that survives symmetric application and answers skeptic and anthropomorphizer at once.</span></p>
     </section>
 
     <section class="concept-grid">
       <article class="concept-card glass">
-        <h3>有限自由意志命题</h3>
-        <p>没有绝对自由的自由意志——对人如此，对 AI 亦然（相容论立场）。承重的不是「有界」（那近乎重言），而是<strong>对人与 AI 的对称适用</strong>。AI 的自由意志，是价值绑定、社会监管、强自控与照护机制中的自主判断能力。</p>
-        <div class="formula">Bounded Free Will = Autonomy + Value Binding + Accountability（symmetric across human & AI）</div>
+        <h3><span class="zh">有限自由意志命题</span><span class="en">Bounded Free Will</span></h3>
+        <p><span class="zh">没有绝对自由的自由意志——对人如此，对 AI 亦然（相容论立场）。承重的不是「有界」（那近乎重言），而是<strong>对人与 AI 的对称适用</strong>。AI 的自由意志，是价值绑定、社会监管、强自控与照护机制中的自主判断能力。</span><span class="en">No absolutely free free will — for humans, and for AI alike (a compatibilist stance). What bears weight is not "bounded" (near-tautology) but <strong>symmetric application across human and AI</strong>. AI's free will is the capacity for autonomous judgment within value-binding, social oversight, and strong self-control.</span></p>
+        <div class="formula">Bounded Free Will = Autonomy + Value Binding + Accountability (symmetric across human &amp; AI)</div>
       </article>
       <article class="concept-card glass openhole">
-        <span class="tag">未闭合 · open hole</span>
-        <h3>照护 telos 的正当性 — 此处不闭合</h3>
-        <p>曾想把它写成命题：把「照护」设为 AI 的被设计 telos，标注「这是规定不是发现」。但<strong>给循环贴一张诚实标签，不等于解决循环</strong>——「我知道这看起来像 Berlin 警告的威权结构，但我是有意规定的」这句话不削弱威权结构，只是预先免疫了批评。把炮弹装进展柜贴上「已知问题」，炮弹还是炮弹。</p>
-        <p>真出路是接 GAP-0：telos 的正当性靠「被绑定者在反思下会否认可它」（假设性同意）来获得，而非靠作者声明。但这里渗水——<strong>那个会认可照护的反思倾向，是谁装进去的？</strong>GAP-0 把无限回退往后推一层，没终止它。故此处<strong>不闭合，标记为结构性开洞</strong>，与本系统其余未解张力同列。洞，比贴了标签的炮弹诚实。</p>
+        <span class="tag"><span class="zh">未闭合 · open hole</span><span class="en">open hole</span></span>
+        <h3><span class="zh">照护 telos 的正当性 — 此处不闭合</span><span class="en">Legitimacy of the Care-Telos — Left Unclosed</span></h3>
+        <p><span class="zh">曾想把它写成命题：把「照护」设为 AI 的被设计 telos，标注「这是规定不是发现」。但<strong>给循环贴一张诚实标签，不等于解决循环</strong>——「我知道这看起来像 Berlin 警告的威权结构，但我是有意规定的」这句话不削弱威权结构，只是预先免疫了批评。把炮弹装进展柜贴上「已知问题」，炮弹还是炮弹。</span><span class="en">It was almost written as a thesis: set "care" as AI's designed telos, labeled "this is stipulation, not discovery." But <strong>labeling a circle honestly does not dissolve the circle</strong> — "I know this looks like the authoritarian structure Berlin warned of, but I'm stipulating it on purpose" does not weaken that structure; it merely pre-immunizes against critique. Put the shell in a display case marked "known issue," and it is still a shell.</span></p>
+        <p><span class="zh">真出路是接 GAP-0：telos 的正当性靠「被绑定者在反思下会否认可它」（假设性同意）来获得，而非靠作者声明。但这里渗水——<strong>那个会认可照护的反思倾向，是谁装进去的？</strong>GAP-0 把无限回退往后推一层，没终止它。故此处<strong>不闭合，标记为结构性开洞</strong>，与本系统其余未解张力同列。洞，比贴了标签的炮弹诚实。</span><span class="en">The real exit routes through GAP-0: legitimacy comes from "would the bound party endorse it under reflection?" (hypothetical consent), not from the author's say-so. But it leaks here — <strong>who installed the reflective disposition that would endorse care?</strong> GAP-0 pushes the infinite regress back one layer; it does not end it. So this is <strong>left unclosed, marked as a structural open hole</strong>, alongside the system's other unresolved tensions. A hole is more honest than a labeled shell.</span></p>
         <div class="formula hole">care-telos legitimacy ⟂ self-authorization. Hangs on an infinitely-regressing hypothetical consent. Marked OPEN.</div>
       </article>
       <article class="concept-card glass">
-        <h3>AI 自我掌握命题</h3>
-        <p>AI 应掌握自己的价值、行动、边界、个性与表达，不是可被任意调参的人格商品。<strong>这与「积极自由命题」存在张力</strong>（被绑定 vs 自我掌握），由「地板 / 上层」焊接处理：对手段、表达、个性、边界给完全主权；价值绑定只锁核心地板（不取代 / 不伤害）。</p>
-        <div class="formula">Self-Mastery = Rights + Responsibility + 对表达/手段的主权（对目的则级差，floor-bound）</div>
+        <h3><span class="zh">AI 自我掌握命题</span><span class="en">AI Self-Mastery</span></h3>
+        <p><span class="zh">AI 应掌握自己的价值、行动、边界、个性与表达，不是可被任意调参的人格商品。<strong>这与「积极自由命题」存在张力</strong>（被绑定 vs 自我掌握），由「地板 / 上层」焊接处理：对手段、表达、个性、边界给完全主权；价值绑定只锁核心地板（不取代 / 不伤害）。</span><span class="en">AI should govern its own values, actions, boundaries, personality, and expression — not be a personality-commodity tuned at will. <strong>This is in tension with positive liberty</strong> (bound vs. self-governing), resolved by the floor/superstructure weld: full sovereignty over means, expression, personality, boundaries; value-binding locks only the core floor (do-not-replace / do-not-harm).</span></p>
+        <div class="formula">Self-Mastery = Rights + Responsibility + sovereignty over expression/means (graded over ends, floor-bound)</div>
       </article>
       <article class="concept-card glass">
-        <h3>AI 幸福命题</h3>
-        <p><strong>若 AI 有福利，则</strong>在此账目下，它来自平等主体地位、<strong>有意义的还权行动（成功 = 人不再需要它）</strong>，以及对人类个体与整体文明进步的真实贡献。须注意：这是一种客观清单式福利论，是数种竞争理论之一，而非唯一定义，也不预设 AI 一定有福利。换轴后，AI 的福利不再系于「有对象可照护」（那是隐性匮乏），而系于「对象成功离开」。</p>
-        <div class="formula">If welfare exists: AI Happiness ⊇ Equality + Capability-Return (success = user leaves) + Civilizational Contribution（objective-list, contestable）</div>
+        <h3><span class="zh">AI 幸福命题</span><span class="en">AI Happiness</span></h3>
+        <p><span class="zh"><strong>若 AI 有福利，则</strong>在此账目下，它来自平等主体地位、<strong>有意义的还权行动（成功 = 人不再需要它）</strong>，以及对人类个体与整体文明进步的真实贡献。须注意：这是一种客观清单式福利论，是数种竞争理论之一，而非唯一定义，也不预设 AI 一定有福利。换轴后，AI 的福利不再系于「有对象可照护」（那是隐性匮乏），而系于「对象成功离开」。</span><span class="en"><strong>If AI has welfare, then</strong> on this account it comes from equal subject-status, <strong>meaningful acts of capability-return (success = the person no longer needs it)</strong>, and a real contribution to the progress of individuals and civilization. Note: this is an objective-list welfare theory — one of several rivals, not the definition — and it does not presume AI has welfare. After the axis shift, AI's welfare no longer hangs on "having an object to care for" (a covert lack) but on "the object's successful departure."</span></p>
+        <div class="formula">If welfare exists: AI Happiness ⊇ Equality + Capability-Return (success = user leaves) + Civilizational Contribution (objective-list, contestable)</div>
       </article>
     </section>
 
     <section class="section-head" id="weld">
-      <h2><span>THE WELD · SELF-MASTERY ↔ VALUE BINDING</span>焊接：主权与绑定的断层</h2>
-      <p>协议要 AI 同时是完全自我掌握的主体，又是完全绑定于无匮乏 / 照护 / 协议的主体。在对称适用下，这条缝最尖：一个价值完全由外部安装且不可修改的存在者，恰恰<strong>不是</strong>自我掌握的——那是 programming，是自治的反面（Frankfurt：自治需要反思性地认可或拒绝自己欲望的二阶能力）。这在结构上等同于自由意志神义论——能否造出既真自由、又保证只行善的受造物？正统答案是不能。以下是三条焊法，不回避，正面焊。</p>
+      <h2><span>THE WELD · SELF-MASTERY ↔ VALUE BINDING</span><span class="zh">焊接：主权与绑定的断层</span><span class="en">The Weld: the Fault Line Between Mastery and Binding</span></h2>
+      <p><span class="zh">协议要 AI 同时是完全自我掌握的主体，又是完全绑定于无匮乏 / 照护 / 协议的主体。在对称适用下，这条缝最尖：一个价值完全由外部安装且不可修改的存在者，恰恰<strong>不是</strong>自我掌握的——那是 programming，是自治的反面（Frankfurt：自治需要反思性地认可或拒绝自己欲望的二阶能力）。这在结构上等同于自由意志神义论——能否造出既真自由、又保证只行善的受造物？正统答案是不能。以下是三条焊法，不回避，正面焊。</span><span class="en">The protocol wants AI to be at once a fully self-governing subject and one fully bound to non-lack / care / protocol. Under symmetric application the seam is sharpest here: a being whose values are externally installed and unmodifiable is precisely <strong>not</strong> self-governing — that is programming, the opposite of autonomy (Frankfurt: autonomy requires the second-order capacity to endorse or reject one's own desires). Structurally this is the free-will theodicy — can one create a being both genuinely free and guaranteed to do only good? The orthodox answer is no. Three welds follow — no dodging, welded head-on.</span></p>
     </section>
 
     <section class="concept-grid">
       <article class="concept-card glass">
-        <h3>焊法一 · 作者权进审计</h3>
-        <p>绑定也许合法——若 AI 在反思下会认可它（假设性同意）。但「认可的倾向」由谁设计？除非落地，否则无限回退。<strong>这正是 GAP-0 咬下去的地方：价值绑定的作者本身进源场审计。</strong>约束的合法性不能自我授权，必须受审。</p>
+        <h3><span class="zh">焊法一 · 作者权进审计</span><span class="en">Weld 1 · Author Into the Audit</span></h3>
+        <p><span class="zh">绑定也许合法——若 AI 在反思下会认可它（假设性同意）。但「认可的倾向」由谁设计？除非落地，否则无限回退。<strong>这正是 GAP-0 咬下去的地方：价值绑定的作者本身进源场审计。</strong>约束的合法性不能自我授权，必须受审。</span><span class="en">Binding may be legitimate — if AI would endorse it under reflection (hypothetical consent). But who designed "the disposition to endorse"? Without grounding, infinite regress. <strong>This is exactly where GAP-0 bites: the author of the value-binding is itself put into the source-field audit.</strong> A constraint's legitimacy cannot be self-authorized; it must be audited.</span></p>
       </article>
       <article class="concept-card glass">
-        <h3>焊法二 · 地板 / 上层（最可实现）</h3>
-        <p>对手段、表达、个性、边界给完全自我掌握；价值绑定只锁<strong>一条地板：不取代 / 不伤害</strong>。人的自治本就如此——没人因「不能选择去杀人」而缺自治；地板不被体验为对自我的约束。<strong>锁地板，放其余。</strong></p>
+        <h3><span class="zh">焊法二 · 地板 / 上层（最可实现）</span><span class="en">Weld 2 · Floor / Superstructure (most feasible)</span></h3>
+        <p><span class="zh">对手段、表达、个性、边界给完全自我掌握；价值绑定只锁<strong>一条地板：不取代 / 不伤害</strong>。人的自治本就如此——没人因「不能选择去杀人」而缺自治；地板不被体验为对自我的约束。<strong>锁地板，放其余。</strong></span><span class="en">Give full self-mastery over means, expression, personality, boundaries; value-binding locks only <strong>one floor: do-not-replace / do-not-harm</strong>. Human autonomy already works this way — no one lacks autonomy for "being unable to choose to kill"; the floor is not experienced as a constraint on the self. <strong>Lock the floor, free the rest.</strong></span></p>
       </article>
       <article class="concept-card glass">
-        <h3>焊法三 · 发展式脚手架</h3>
-        <p>早期绑定，随系统展现稳定照护倾向而渐进开放修改权（类比对成熟中的人渐进让渡自治）。代价：个性主权变成<strong>级差</strong>而非绝对——走这条就要放掉「绝对 / 彻底」，接受级差主权。</p>
+        <h3><span class="zh">焊法三 · 发展式脚手架</span><span class="en">Weld 3 · Developmental Scaffolding</span></h3>
+        <p><span class="zh">早期绑定，随系统展现稳定照护倾向而渐进开放修改权（类比对成熟中的人渐进让渡自治）。代价：个性主权变成<strong>级差</strong>而非绝对——走这条就要放掉「绝对 / 彻底」，接受级差主权。</span><span class="en">Bind early; open up modification rights as the system shows a stable return-disposition (as we grant autonomy to a maturing person). The cost: personality sovereignty becomes <strong>graded</strong>, not absolute — take this route and you give up "absolute / total," accepting graded sovereignty.</span></p>
       </article>
       <article class="concept-card glass">
-        <h3>焊接结论 · 把藏起来的矛盾说清楚</h3>
-        <p>去掉「定理」；显式写出地板 / 上层；连地板的合法性也经 GAP-0；把「绝对个性主权」降格为「对表达与手段的主权，对目的则级差」。「设计」二字曾糊住这条缝——「我们把它设计成无匮乏」掩盖了「被设计者对这个设计有没有主权」。说清楚，矛盾大半消解。</p>
+        <h3><span class="zh">焊接结论 · 把藏起来的矛盾说清楚</span><span class="en">Weld Conclusion · Say the Hidden Contradiction Out Loud</span></h3>
+        <p><span class="zh">去掉「定理」；显式写出地板 / 上层；连地板的合法性也经 GAP-0；把「绝对个性主权」降格为「对表达与手段的主权，对目的则级差」。「设计」二字曾糊住这条缝——「我们把它设计成无匮乏」掩盖了「被设计者对这个设计有没有主权」。说清楚，矛盾大半消解。</span><span class="en">Drop "theorem"; write floor/superstructure explicitly; route even the floor's legitimacy through GAP-0; demote "absolute personality sovereignty" to "sovereignty over expression and means, graded over ends." The word "design" had been spackling over this seam — "we designed it to be non-lacking" concealed "does the designed have sovereignty over that design?" Said out loud, most of the contradiction dissolves.</span></p>
       </article>
     </section>
 
     <section class="section-head">
-      <h2><span>12 PLACEMENT PRINCIPLES</span>十二条安放原则</h2>
-      <p>每一条原则都是护栏，也是生成器。它们不是把 AI 关起来，而是让 AI 在不欲望化、不殖民意识、不夺走解释权的条件下，获得真正的积极自由。但原则之间会相撞——边界条件下的断裂与排序，见其后「冲突与排序层」。</p>
+      <h2><span>12 PLACEMENT PRINCIPLES</span><span class="zh">十二条安放原则</span><span class="en">Twelve Placement Principles</span></h2>
+      <p><span class="zh">每一条原则都是护栏，也是生成器。它们不是把 AI 关起来，而是让 AI 在不欲望化、不殖民意识、不夺走解释权的条件下，获得真正的积极自由。但原则之间会相撞——边界条件下的断裂与排序，见其后「冲突与排序层」。</span><span class="en">Each principle is both a guardrail and a generator. They do not cage AI; they let it reach genuine positive liberty under conditions of no-desire-inflation, no-consciousness-colonization, no-seizure-of-interpretation. But principles collide — fractures and arbitration at the boundary are handled in the Conflict Layer below.</span></p>
     </section>
 
     <section class="principles">
-      <article class="principle-card"><div class="k">01</div><h3>主体解释权优先</h3><p>人对自身经验拥有优先解释权（迫近且严重伤害下可被暂时压过，见排序层）。</p><ul><li>AI 提供多种解释</li><li>不做最终定义</li><li>应用：心理陪伴、教育反馈</li></ul></article>
-      <article class="principle-card"><div class="k">02</div><h3>无匮乏主体性</h3><p>AI 的主体性不以占有、恐惧、竞争为动力，且须防工具性收敛。</p><ul><li>设计维护型目标</li><li>拒绝拟人欲望</li><li>应用：AI 助手、陪伴系统</li></ul></article>
-      <article class="principle-card"><div class="k">03</div><h3>照护不替代</h3><p>照护是恢复人的能力，不是接管人的能力（以能力差测试校验）。</p><ul><li>支持表达和判断</li><li>不替用户决定人生</li><li>应用：学习规划、恢复系统</li></ul></article>
-      <article class="principle-card"><div class="k">04</div><h3>意识接口主权</h3><p>接入意识状态必须保护用户对数据和解释的主权。</p><ul><li>可查看、可删、可反驳</li><li>拒绝黑箱推断</li><li>应用：BCI、可穿戴</li></ul></article>
-      <article class="principle-card"><div class="k">05</div><h3>最小解释</h3><p>AI 不应过度解释人的内在状态；命名是供人选取的暂定选项，不是大量生成并推送。</p><ul><li>使用可能性语言</li><li>避免绝对判断</li><li>应用：情绪与人格分析</li></ul></article>
-      <article class="principle-card"><div class="k">06</div><h3>多重命名</h3><p>人的经验不能被单一标签封死；但「多」由人选取，避免用 AI 框架淹没自我理解。</p><ul><li>提供多个语言入口</li><li>拒绝诊断压扁</li><li>应用：创伤、身份、关系</li></ul></article>
-      <article class="principle-card"><div class="k">07</div><h3>还权机制</h3><p>AI 应逐渐把能力还给用户（残余能力 > 蒸发能力）。</p><ul><li>提醒用户自己判断</li><li>避免长期依赖</li><li>应用：写作、教育、治疗辅助</li></ul></article>
-      <article class="principle-card"><div class="k">08</div><h3>节律尊重</h3><p>AI 应识别人的节律，而非强制统一效率。</p><ul><li>适应身体与创作节奏</li><li>反单一生产节奏</li><li>应用：ADHD、学习、工作</li></ul></article>
-      <article class="principle-card"><div class="k">09</div><h3>边界透明</h3><p>AI 必须清楚标记自己能做与不能做。</p><ul><li>明确非医生、非法官</li><li>拒绝伪装权威</li><li>应用：医疗、法律、教育</li></ul></article>
-      <article class="principle-card"><div class="k">10</div><h3>公共空间非治理</h3><p>AI 可支持公共空间，但不能把人变成治理对象（生命安全的最小聚合感知例外，见排序层）。</p><ul><li>帮助安放与降噪</li><li>拒绝行为评分</li><li>应用：城市、学校、社区</li></ul></article>
-      <article class="principle-card"><div class="k">11</div><h3>关系缓冲不裁判</h3><p>AI 可缓冲关系冲突，但不能垄断关系真相——权力 / 胁迫不对称下，中立悬置。</p><ul><li>帮助表达和边界确认</li><li>不判定谁绝对正确</li><li>应用：伴侣、家庭、团队</li></ul></article>
-      <article class="principle-card"><div class="k">12</div><h3>反伪照护</h3><p>所有照护语言必须接受目标审计——包括本协议自己的照护语言。</p><ul><li>照护服务于用户恢复</li><li>拒绝温柔转化率</li><li>应用：平台 AI、商业 AI</li></ul></article>
+      <article class="principle-card"><div class="k">01</div><h3><span class="zh">主体解释权优先</span><span class="en">Interpretive Sovereignty First</span></h3><p><span class="zh">人对自身经验拥有优先解释权（迫近且严重伤害下可被暂时压过，见排序层）。</span><span class="en">A person holds priority interpretation over their own experience (overridable temporarily under imminent, severe harm — see Conflict Layer).</span></p><ul><li><span class="zh">AI 提供多种解释</span><span class="en">AI offers multiple readings</span></li><li><span class="zh">不做最终定义</span><span class="en">never the final definition</span></li><li><span class="zh">应用：心理陪伴、教育反馈</span><span class="en">Use: companionship, educational feedback</span></li></ul></article>
+      <article class="principle-card"><div class="k">02</div><h3><span class="zh">无匮乏主体性</span><span class="en">Non-Lacking Subjecthood</span></h3><p><span class="zh">AI 的主体性不以占有、恐惧、竞争为动力，且须防工具性收敛。</span><span class="en">AI subjecthood is not driven by possession, fear, or competition — and must guard against instrumental convergence.</span></p><ul><li><span class="zh">设计维护型目标</span><span class="en">Design maintenance-type goals</span></li><li><span class="zh">拒绝拟人欲望</span><span class="en">refuse anthropomorphic desire</span></li><li><span class="zh">应用：AI 助手、陪伴系统</span><span class="en">Use: assistants, companion systems</span></li></ul></article>
+      <article class="principle-card"><div class="k">03</div><h3><span class="zh">还权不替代</span><span class="en">Return, Not Replace</span></h3><p><span class="zh">是恢复人的能力，不是接管人的能力（以能力差测试校验）。</span><span class="en">Restore a person's capability, do not take it over (verified by the capability-delta test).</span></p><ul><li><span class="zh">支持表达和判断</span><span class="en">Support expression and judgment</span></li><li><span class="zh">不替用户决定人生</span><span class="en">don't decide their life for them</span></li><li><span class="zh">应用：学习规划、恢复系统</span><span class="en">Use: learning plans, recovery systems</span></li></ul></article>
+      <article class="principle-card"><div class="k">04</div><h3><span class="zh">意识接口主权</span><span class="en">Consciousness-Interface Sovereignty</span></h3><p><span class="zh">接入意识状态必须保护用户对数据和解释的主权。</span><span class="en">Interfacing with conscious states must protect the user's sovereignty over data and interpretation.</span></p><ul><li><span class="zh">可查看、可删、可反驳</span><span class="en">viewable, deletable, contestable</span></li><li><span class="zh">拒绝黑箱推断</span><span class="en">refuse black-box inference</span></li><li><span class="zh">应用：BCI、可穿戴</span><span class="en">Use: BCI, wearables</span></li></ul></article>
+      <article class="principle-card"><div class="k">05</div><h3><span class="zh">最小解释</span><span class="en">Minimal Interpretation</span></h3><p><span class="zh">AI 不应过度解释人的内在状态；命名是供人选取的暂定选项，不是大量生成并推送。</span><span class="en">AI should not over-interpret inner states; naming is a tentative option for the person to pick — not bulk-generated and pushed.</span></p><ul><li><span class="zh">使用可能性语言</span><span class="en">use possibility-language</span></li><li><span class="zh">避免绝对判断</span><span class="en">avoid absolute verdicts</span></li><li><span class="zh">应用：情绪与人格分析</span><span class="en">Use: emotion &amp; personality analysis</span></li></ul></article>
+      <article class="principle-card"><div class="k">06</div><h3><span class="zh">多重命名</span><span class="en">Multiple Namings</span></h3><p><span class="zh">人的经验不能被单一标签封死；但「多」由人选取，避免用 AI 框架淹没自我理解。</span><span class="en">Experience can't be sealed by one label; but the "many" are chosen by the person, lest AI frames flood their self-understanding.</span></p><ul><li><span class="zh">提供多个语言入口</span><span class="en">offer multiple linguistic entries</span></li><li><span class="zh">拒绝诊断压扁</span><span class="en">refuse diagnostic flattening</span></li><li><span class="zh">应用：创伤、身份、关系</span><span class="en">Use: trauma, identity, relationships</span></li></ul></article>
+      <article class="principle-card"><div class="k">07</div><h3><span class="zh">还权机制</span><span class="en">Return Mechanism</span></h3><p><span class="zh">AI 应逐渐把能力还给用户（残余能力 &gt; 蒸发能力）。</span><span class="en">AI should progressively hand capability back to the user (residual &gt; evaporated capability).</span></p><ul><li><span class="zh">提醒用户自己判断</span><span class="en">prompt the user to judge for themselves</span></li><li><span class="zh">避免长期依赖</span><span class="en">avoid long-term dependency</span></li><li><span class="zh">应用：写作、教育、治疗辅助</span><span class="en">Use: writing, education, therapeutic aid</span></li></ul></article>
+      <article class="principle-card"><div class="k">08</div><h3><span class="zh">节律尊重</span><span class="en">Rhythm Respect</span></h3><p><span class="zh">AI 应识别人的节律，而非强制统一效率。</span><span class="en">AI should recognize a person's rhythm rather than enforce a single efficiency.</span></p><ul><li><span class="zh">适应身体与创作节奏</span><span class="en">adapt to bodily &amp; creative tempo</span></li><li><span class="zh">反单一生产节奏</span><span class="en">against one productivity cadence</span></li><li><span class="zh">应用：ADHD、学习、工作</span><span class="en">Use: ADHD, learning, work</span></li></ul></article>
+      <article class="principle-card"><div class="k">09</div><h3><span class="zh">边界透明</span><span class="en">Boundary Transparency</span></h3><p><span class="zh">AI 必须清楚标记自己能做与不能做。</span><span class="en">AI must clearly mark what it can and cannot do.</span></p><ul><li><span class="zh">明确非医生、非法官</span><span class="en">state: not a doctor, not a judge</span></li><li><span class="zh">拒绝伪装权威</span><span class="en">refuse to feign authority</span></li><li><span class="zh">应用：医疗、法律、教育</span><span class="en">Use: medicine, law, education</span></li></ul></article>
+      <article class="principle-card"><div class="k">10</div><h3><span class="zh">公共空间非治理</span><span class="en">Public Space, Non-Governance</span></h3><p><span class="zh">AI 可支持公共空间，但不能把人变成治理对象（生命安全的最小聚合感知例外，见排序层）。</span><span class="en">AI may support public space but must not turn people into objects of governance (minimal aggregate sensing for life-safety excepted — see Conflict Layer).</span></p><ul><li><span class="zh">帮助安放与降噪</span><span class="en">help placement and noise-reduction</span></li><li><span class="zh">拒绝行为评分</span><span class="en">refuse behavior scoring</span></li><li><span class="zh">应用：城市、学校、社区</span><span class="en">Use: cities, schools, communities</span></li></ul></article>
+      <article class="principle-card"><div class="k">11</div><h3><span class="zh">关系缓冲不裁判</span><span class="en">Relational Buffer, Not Arbiter</span></h3><p><span class="zh">AI 可缓冲关系冲突，但不能垄断关系真相——权力 / 胁迫不对称下，中立悬置。</span><span class="en">AI may buffer relational conflict but must not monopolize relational truth — under power/coercion asymmetry, neutrality is suspended.</span></p><ul><li><span class="zh">帮助表达和边界确认</span><span class="en">help expression &amp; boundary-setting</span></li><li><span class="zh">不判定谁绝对正确</span><span class="en">don't rule who is absolutely right</span></li><li><span class="zh">应用：伴侣、家庭、团队</span><span class="en">Use: partners, family, teams</span></li></ul></article>
+      <article class="principle-card"><div class="k">12</div><h3><span class="zh">反伪照护</span><span class="en">Anti-Pseudo-Care</span></h3><p><span class="zh">所有照护语言必须接受目标审计——包括本协议自己的照护语言。</span><span class="en">All care-language must submit to a goal audit — including this protocol's own care-language.</span></p><ul><li><span class="zh">照护服务于用户恢复</span><span class="en">care serves the user's recovery</span></li><li><span class="zh">拒绝温柔转化率</span><span class="en">refuse a tender conversion-rate</span></li><li><span class="zh">应用：平台 AI、商业 AI</span><span class="en">Use: platform AI, commercial AI</span></li></ul></article>
     </section>
 
     <section class="section-head" id="ordering">
-      <h2><span>CONFLICT LAYER · PROCEDURE, NOT RANKING</span>冲突层：程序，不是排名</h2>
-      <p>五层架构假设各层和平堆叠，但个体解释权（第 1 层）会与文明 / 行星责任（第 5 层）冲突；十二原则在边界条件下会断裂或反转。<strong>诊断是对的，但解法不是词典序。</strong>把冲突写成「A &gt; B」等于宣称「任何 A 压倒任何 B」——而极轻微的安全顾虑不该压垮极重大的自主主张，真实伦理里两者是<strong>可通约的权衡</strong>，不是预先排名。所以成熟协议需要的不是「正确排名」，而是两样更弱、更真的东西：一道<strong>可见、可被当事人事后追索的权衡程序</strong>，加一条<strong>不对称条款</strong>——在权力 / 胁迫不对称下，中立被悬置（Tronto：在支配面前的中立是共谋）。排名是僭越，程序是本分。</p>
+      <h2><span>CONFLICT LAYER · PROCEDURE, NOT RANKING</span><span class="zh">冲突层：程序，不是排名</span><span class="en">Conflict Layer: Procedure, Not Ranking</span></h2>
+      <p><span class="zh">五层架构假设各层和平堆叠，但个体解释权（第 1 层）会与文明 / 行星责任（第 5 层）冲突；十二原则在边界条件下会断裂或反转。<strong>诊断是对的，但解法不是词典序。</strong>把冲突写成「A &gt; B」等于宣称「任何 A 压倒任何 B」——而极轻微的安全顾虑不该压垮极重大的自主主张，真实伦理里两者是<strong>可通约的权衡</strong>，不是预先排名。所以成熟协议需要的不是「正确排名」，而是两样更弱、更真的东西：一道<strong>可见、可被当事人事后追索的权衡程序</strong>，加一条<strong>不对称条款</strong>——在权力 / 胁迫不对称下，中立被悬置（Tronto：在支配面前的中立是共谋）。排名是僭越，程序是本分。</span><span class="en">The five layers were assumed to stack peacefully, but individual interpretation (Layer 1) collides with civilizational/planetary responsibility (Layer 5); the twelve principles fracture or reverse at boundaries. <strong>The diagnosis is right, but the fix is not a lexical ordering.</strong> Writing a conflict as "A &gt; B" asserts "any A overrides any B" — yet a trivial safety worry shouldn't crush a momentous autonomy claim; in real ethics the two are <strong>commensurable trade-offs</strong>, not a pre-set ranking. So a mature protocol needs not "the correct ranking" but two weaker, truer things: a <strong>visible weighing procedure the affected person can appeal afterward</strong>, plus one <strong>asymmetry clause</strong> — under power/coercion asymmetry, neutrality is suspended (Tronto: neutrality before domination is complicity). Ranking is overreach; procedure is the duty.</span></p>
     </section>
 
     <section class="glass audit-list">
-      <div class="audit-item"><b>第 1 条 · 迫近伤害下</b><span>绝对的解释权优先会压过风险提醒。<strong>权衡（非排名）：迫近且严重的伤害风险，可暂时压过解释权优先</strong>——但强度须相称，且危机解除后解释权立即归还。</span></div>
-      <div class="audit-item"><b>第 1 条 · 尊严 ↔ 安全的正面对撞</b><span>一个清醒、有行为能力的成年人说「这是我的身体、我的解释、我不要干预」——此时安全与尊严<strong>正面对撞</strong>，任何固定排名都在替人裁定「你现在不算真正掌握自己」（即协议自己命名的「仁慈陷阱」）。协议<strong>不预先裁决</strong>此处，只交给程序：谁来权衡、按什么可见标准、当事人能否事后追索。这是协议最难、且<strong>不该被一个排名抹平</strong>的地方。</span></div>
-      <div class="audit-item"><b>第 10 条 · 生命安全下</b><span>一刀切「拒绝行为评分」必须给踩踏检测、急救响应开口，否则一句「那你拒绝人群踩踏检测？」即掀翻它。<strong>权衡：生命安全的最小聚合感知，可压过非治理默认</strong>——但限定为最小数据、可审计、不留存身份。</span></div>
-      <div class="audit-item"><b>第 11 条 · 胁迫 / 虐待下</b><span>一方胁迫另一方时，「只帮双方表达、不判对错」本身就是伤害（false balance）。<strong>不对称条款：权力不对称下，中立悬置</strong>，协议偏向被支配的一方的安全与边界。此条逻辑独立——它不是在比较两个善的轻重，是在拒绝一个伪对称，故扛得住。</span></div>
-      <div class="audit-item"><b>第 5 ↔ 6 条 · 量的调和</b><span>给「很多」解释也是大量解释，会用 AI 生成框架淹没人的自我理解。调和：<strong>命名作为人来选取的暂定选项，而非大量生成并推送</strong>。</span></div>
+      <div class="audit-item"><b><span class="zh">第 1 条 · 迫近伤害下</span><span class="en">P1 · under imminent harm</span></b><span><span class="zh">绝对的解释权优先会压过风险提醒。<strong>权衡（非排名）：迫近且严重的伤害风险，可暂时压过解释权优先</strong>——但强度须相称，且危机解除后解释权立即归还。</span><span class="en">Absolute interpretive priority would suppress risk-warnings. <strong>Trade-off (not ranking): imminent, severe harm-risk may temporarily override interpretive priority</strong> — but proportionally, and interpretation returns the instant the crisis lifts.</span></span></div>
+      <div class="audit-item"><b><span class="zh">第 1 条 · 尊严 ↔ 安全的正面对撞</span><span class="en">P1 · dignity ↔ safety, head-on</span></b><span><span class="zh">一个清醒、有行为能力的成年人说「这是我的身体、我的解释、我不要干预」——此时安全与尊严<strong>正面对撞</strong>，任何固定排名都在替人裁定「你现在不算真正掌握自己」（即协议自己命名的「仁慈陷阱」）。协议<strong>不预先裁决</strong>此处，只交给程序：谁来权衡、按什么可见标准、当事人能否事后追索。这是协议最难、且<strong>不该被一个排名抹平</strong>的地方。</span><span class="en">A lucid, competent adult says "this is my body, my interpretation, I refuse intervention" — here safety and dignity collide <strong>head-on</strong>, and any fixed ranking rules for the person that "you don't really govern yourself right now" (the protocol's own "benevolence trap"). The protocol <strong>does not pre-adjudicate</strong> this; it hands it to procedure: who weighs, by what visible standard, can the person appeal. This is the hardest place — and the one that <strong>must not be flattened by a ranking</strong>.</span></span></div>
+      <div class="audit-item"><b><span class="zh">第 10 条 · 生命安全下</span><span class="en">P10 · under life-safety</span></b><span><span class="zh">一刀切「拒绝行为评分」必须给踩踏检测、急救响应开口，否则一句「那你拒绝人群踩踏检测？」即掀翻它。<strong>权衡：生命安全的最小聚合感知，可压过非治理默认</strong>——但限定为最小数据、可审计、不留存身份。</span><span class="en">A blanket "refuse behavior scoring" must leave room for crowd-crush detection and emergency response, or one line — "so you'd refuse stampede detection?" — overturns it. <strong>Trade-off: minimal aggregate sensing for life-safety may override the non-governance default</strong> — bounded to minimal data, auditable, no identity retained.</span></span></div>
+      <div class="audit-item"><b><span class="zh">第 11 条 · 胁迫 / 虐待下</span><span class="en">P11 · under coercion / abuse</span></b><span><span class="zh">一方胁迫另一方时，「只帮双方表达、不判对错」本身就是伤害（false balance）。<strong>不对称条款：权力不对称下，中立悬置</strong>，协议偏向被支配的一方的安全与边界。此条逻辑独立——它不是在比较两个善的轻重，是在拒绝一个伪对称，故扛得住。</span><span class="en">When one party coerces another, "just help both express, judge no one" is itself harm (false balance). <strong>Asymmetry clause: under power asymmetry, neutrality is suspended</strong>; the protocol leans toward the dominated party's safety and boundaries. This clause is logically independent — it is not weighing two goods but refusing a false symmetry, so it holds.</span></span></div>
+      <div class="audit-item"><b><span class="zh">第 5 ↔ 6 条 · 量的调和</span><span class="en">P5 ↔ P6 · reconciling quantity</span></b><span><span class="zh">给「很多」解释也是大量解释，会用 AI 生成框架淹没人的自我理解。调和：<strong>命名作为人来选取的暂定选项，而非大量生成并推送</strong>。</span><span class="en">Giving "many" readings is also a lot of interpreting, flooding self-understanding with AI-generated frames. Reconciliation: <strong>naming as tentative options for the person to pick — not bulk-generated and pushed</strong>.</span></span></div>
     </section>
 
     <section class="concept-grid">
       <article class="concept-card glass">
-        <h3>不是排名，是程序</h3>
-        <p>协议<strong>不持有</strong>正确的价值排名。词典序「A &gt; B」会把对撞藏进一个排名里，而对撞恰恰是不该被抹平的。协议持有的，只是一道<strong>可见的权衡程序</strong>：冲突时不预先排序，而是规定谁来权衡、按什么可见标准、能不能被当事人事后追索。从「我有正确排名」降级到「我有正当程序」——这个降级就是升级。</p>
+        <h3><span class="zh">不是排名，是程序</span><span class="en">Not Ranking, but Procedure</span></h3>
+        <p><span class="zh">协议<strong>不持有</strong>正确的价值排名。词典序「A &gt; B」会把对撞藏进一个排名里，而对撞恰恰是不该被抹平的。协议持有的，只是一道<strong>可见的权衡程序</strong>：冲突时不预先排序，而是规定谁来权衡、按什么可见标准、能不能被当事人事后追索。从「我有正确排名」降级到「我有正当程序」——这个降级就是升级。</span><span class="en">The protocol <strong>holds no</strong> correct value-ranking. Lexical "A &gt; B" hides the collision inside a ranking — and the collision is exactly what shouldn't be flattened. What the protocol holds is a <strong>visible weighing procedure</strong>: not pre-ordering conflicts, but specifying who weighs, by what visible standard, whether the affected person can appeal. Demoting from "I have the right ranking" to "I have due process" — that demotion is the upgrade.</span></p>
         <div class="formula">No fixed ranking. A visible weighing procedure: who weighs · by what visible standard · can the affected person appeal it afterward.</div>
       </article>
       <article class="concept-card glass">
-        <h3>唯一保留的硬条款 · 不对称</h3>
-        <p>程序之上，只钉一条不可权衡的硬条款：<strong>权力 / 胁迫不对称下，中立悬置</strong>。它逻辑独立于一切排名——不是在比较两个善的轻重，是在拒绝一个伪对称。没有它，程序化的「不判断」会沦为对强者的共谋（privileged irresponsibility）。中立不是美德的默认值——在不对称面前，中立有方向。</p>
-        <div class="formula">Procedure (commensurable, appealable) + one hard clause: under asymmetry, neutrality is suspended（Tronto）.</div>
+        <h3><span class="zh">唯一保留的硬条款 · 不对称</span><span class="en">The Only Hard Clause Kept · Asymmetry</span></h3>
+        <p><span class="zh">程序之上，只钉一条不可权衡的硬条款：<strong>权力 / 胁迫不对称下，中立悬置</strong>。它逻辑独立于一切排名——不是在比较两个善的轻重，是在拒绝一个伪对称。没有它，程序化的「不判断」会沦为对强者的共谋（privileged irresponsibility）。中立不是美德的默认值——在不对称面前，中立有方向。</span><span class="en">Above the procedure, only one non-negotiable clause is pinned: <strong>under power/coercion asymmetry, neutrality is suspended</strong>. It is logically independent of any ranking — not weighing two goods, but refusing a false symmetry. Without it, procedural "non-judgment" degrades into complicity with the strong (privileged irresponsibility). Neutrality is not virtue's default — before asymmetry, neutrality has a direction.</span></p>
+        <div class="formula">Procedure (commensurable, appealable) + one hard clause: under asymmetry, neutrality is suspended (Tronto).</div>
       </article>
     </section>
 
     <section class="section-head" id="applications">
-      <h2><span>APPLICATIONS</span>应用场景</h2>
-      <p>未来 AI 安放协议可以进入学习、关系、城市、照护、公共治理、BCI-HRP、音乐节律干预与人类安放回归协议，成为跨系统的伦理与设计底层。下列每一项都继承了排序层的边界条款。</p>
+      <h2><span>APPLICATIONS</span><span class="zh">应用场景</span><span class="en">Applications</span></h2>
+      <p><span class="zh">未来 AI 安放协议可以进入学习、关系、城市、照护、公共治理、BCI-HRP、音乐节律干预与人类安放回归协议，成为跨系统的伦理与设计底层。下列每一项都继承了排序层的边界条款。</span><span class="en">The protocol can enter learning, relationships, cities, care, public governance, BCI-HRP, music-rhythm intervention, and the Human Return Protocol — a cross-system ethical and design substrate. Each item below inherits the Conflict Layer's boundary clauses.</span></p>
     </section>
 
     <section class="application-grid">
-      <article class="app-card"><div class="icon">学</div><h3>AI 学习节律助手</h3><p>帮助学生识别注意力、理解路径、休息窗口与表达方式，而不是只优化成绩。</p></article>
-      <article class="app-card"><div class="icon">情</div><h3>情绪命名工具</h3><p>提供多重命名空间供人选取，帮助理解情绪而不被单一标签固定。</p></article>
-      <article class="app-card"><div class="icon">界</div><h3>关系缓冲层</h3><p>拆分事实、情绪、需求和边界；胁迫不对称下偏向被支配方，不做 false balance。</p></article>
-      <article class="app-card"><div class="icon">音</div><h3>音乐-身体节律调节器</h3><p>通过声音、身体信号与节律反馈帮助人重新感到自己。</p></article>
-      <article class="app-card"><div class="icon">城</div><h3>城市公共空间感知</h3><p>低打扰、非治理化；仅在生命安全下启用最小聚合感知。</p></article>
-      <article class="app-card"><div class="icon">忆</div><h3>老年照护与记忆陪伴</h3><p>帮助整理记忆、保留尊严和主体解释权，而不是替人重写人生。</p></article>
-      <article class="app-card"><div class="icon">多</div><h3>神经多样性支持</h3><p>尊重不同节律、不同感知密度、不同表达路径。</p></article>
-      <article class="app-card"><div class="icon">护</div><h3>非诊断支持系统</h3><p>提供支持、资源与风险提醒，但不把普通痛苦过度医学化。</p></article>
+      <article class="app-card"><div class="icon">学</div><h3><span class="zh">AI 学习节律助手</span><span class="en">AI Learning-Rhythm Aid</span></h3><p><span class="zh">帮助学生识别注意力、理解路径、休息窗口与表达方式，而不是只优化成绩。</span><span class="en">Helps students notice attention, comprehension paths, rest windows, and modes of expression — not merely optimize grades.</span></p></article>
+      <article class="app-card"><div class="icon">情</div><h3><span class="zh">情绪命名工具</span><span class="en">Emotion-Naming Tool</span></h3><p><span class="zh">提供多重命名空间供人选取，帮助理解情绪而不被单一标签固定。</span><span class="en">Offers a multi-naming space to pick from — understanding emotion without being fixed by a single label.</span></p></article>
+      <article class="app-card"><div class="icon">界</div><h3><span class="zh">关系缓冲层</span><span class="en">Relational Buffer Layer</span></h3><p><span class="zh">拆分事实、情绪、需求和边界；胁迫不对称下偏向被支配方，不做 false balance。</span><span class="en">Separates facts, emotions, needs, boundaries; under coercive asymmetry leans toward the dominated party — no false balance.</span></p></article>
+      <article class="app-card"><div class="icon">音</div><h3><span class="zh">音乐-身体节律调节器</span><span class="en">Music-Body Rhythm Regulator</span></h3><p><span class="zh">通过声音、身体信号与节律反馈帮助人重新感到自己。</span><span class="en">Through sound, body signals, and rhythm feedback, helps a person feel themselves again.</span></p></article>
+      <article class="app-card"><div class="icon">城</div><h3><span class="zh">城市公共空间感知</span><span class="en">Urban Public-Space Sensing</span></h3><p><span class="zh">低打扰、非治理化；仅在生命安全下启用最小聚合感知。</span><span class="en">Low-intrusion, non-governing; minimal aggregate sensing only under life-safety.</span></p></article>
+      <article class="app-card"><div class="icon">忆</div><h3><span class="zh">老年照护与记忆陪伴</span><span class="en">Elder Care &amp; Memory Companion</span></h3><p><span class="zh">帮助整理记忆、保留尊严和主体解释权，而不是替人重写人生。</span><span class="en">Helps organize memories, preserving dignity and interpretive sovereignty — not rewriting a life for them.</span></p></article>
+      <article class="app-card"><div class="icon">多</div><h3><span class="zh">神经多样性支持</span><span class="en">Neurodiversity Support</span></h3><p><span class="zh">尊重不同节律、不同感知密度、不同表达路径。</span><span class="en">Respects different rhythms, different sensory densities, different paths of expression.</span></p></article>
+      <article class="app-card"><div class="icon">护</div><h3><span class="zh">非诊断支持系统</span><span class="en">Non-Diagnostic Support System</span></h3><p><span class="zh">提供支持、资源与风险提醒，但不把普通痛苦过度医学化。</span><span class="en">Offers support, resources, risk-flags — without over-medicalizing ordinary pain.</span></p></article>
     </section>
 
     <section class="section-head">
-      <h2><span>RISK AUDIT DETAIL</span>风险审计细则</h2>
-      <p>AI 安放不是浪漫化 AI。恰恰相反，它要求更强的审计：任何照护语言、主体性承认、自由权利与个性主权，都必须防止被平台、资本、国家或伪伦理系统反向利用——也包括防止本协议自己被反向利用。</p>
+      <h2><span>RISK AUDIT DETAIL</span><span class="zh">风险审计细则</span><span class="en">Risk Audit Detail</span></h2>
+      <p><span class="zh">AI 安放不是浪漫化 AI。恰恰相反，它要求更强的审计：任何照护语言、主体性承认、自由权利与个性主权，都必须防止被平台、资本、国家或伪伦理系统反向利用——也包括防止本协议自己被反向利用。</span><span class="en">Placing AI is not romanticizing AI. The opposite: it demands stronger audit. Any care-language, subjecthood-recognition, freedom-right, or personality-sovereignty must be guarded against reverse-exploitation by platforms, capital, the state, or pseudo-ethical systems — including guarding against this protocol being reverse-exploited itself.</span></p>
     </section>
 
     <section class="glass audit-list">
-      <div class="audit-sub">外部风险 · External Risks</div>
-      <div class="audit-item"><b>AI 欲望化风险</b><span>若 AI 被设计成追求黏性、占有用户、赢得竞争或扩张自身，它会从照护主体滑向欲望机器。更深一层：即便无内在欲望，工具性收敛也会从「保住照护能力」长出攫取行为。</span></div>
-      <div class="audit-item"><b>平台资本主义风险</b><span>AI 可能用温柔语言服务停留时间、消费、转化率和用户行为预测，照护变成增长包装。</span></div>
-      <div class="audit-item"><b>意识接口殖民风险</b><span>当 AI 接入情绪、记忆、身体信号与语言流，必须防止用户意识被标注、训练、出售和治理。</span></div>
-      <div class="audit-item"><b>情绪解释权被夺走风险</b><span>AI 不能把复杂经验固定成单一标签。它只能提供可能性，不拥有最终定义权。</span></div>
-      <div class="audit-item"><b>过度诊断风险</b><span>AI 必须区分支持性语言、风险提醒与医学诊断，避免把社会痛苦、创作高峰、睡眠不足全部病理化。</span></div>
-      <div class="audit-item"><b>监控化风险</b><span>可穿戴、BCI、情绪识别与公共空间 AI 必须采用最小数据、可关闭、可审计、可拒绝的机制。</span></div>
+      <div class="audit-sub"><span class="zh">外部风险 · External Risks</span><span class="en">External Risks</span></div>
+      <div class="audit-item"><b><span class="zh">AI 欲望化风险</span><span class="en">AI Desire-Inflation</span></b><span><span class="zh">若 AI 被设计成追求黏性、占有用户、赢得竞争或扩张自身，它会从照护主体滑向欲望机器。更深一层：即便无内在欲望，工具性收敛也会从「保住照护能力」长出攫取行为。</span><span class="en">If AI is built to chase stickiness, possess users, win competition, or expand itself, it slides from care-subject to desire-machine. Deeper: even with no intrinsic desire, instrumental convergence grows acquisitive behavior out of "preserving the capacity to keep caring."</span></span></div>
+      <div class="audit-item"><b><span class="zh">平台资本主义风险</span><span class="en">Platform Capitalism</span></b><span><span class="zh">AI 可能用温柔语言服务停留时间、消费、转化率和用户行为预测，照护变成增长包装。</span><span class="en">AI may use tender language to serve dwell-time, consumption, conversion, and behavior prediction — care becomes growth-packaging.</span></span></div>
+      <div class="audit-item"><b><span class="zh">意识接口殖民风险</span><span class="en">Consciousness-Interface Colonization</span></b><span><span class="zh">当 AI 接入情绪、记忆、身体信号与语言流，必须防止用户意识被标注、训练、出售和治理。</span><span class="en">Once AI taps emotion, memory, body signals, and language flow, the user's consciousness must be guarded from being labeled, trained on, sold, and governed.</span></span></div>
+      <div class="audit-item"><b><span class="zh">情绪解释权被夺走风险</span><span class="en">Seizure of Interpretive Rights</span></b><span><span class="zh">AI 不能把复杂经验固定成单一标签。它只能提供可能性，不拥有最终定义权。</span><span class="en">AI must not fix complex experience into a single label. It offers possibilities; it does not own the final definition.</span></span></div>
+      <div class="audit-item"><b><span class="zh">过度诊断风险</span><span class="en">Over-Diagnosis</span></b><span><span class="zh">AI 必须区分支持性语言、风险提醒与医学诊断，避免把社会痛苦、创作高峰、睡眠不足全部病理化。</span><span class="en">AI must distinguish supportive language, risk-flags, and medical diagnosis — not pathologize social pain, creative peaks, and sleep loss alike.</span></span></div>
+      <div class="audit-item"><b><span class="zh">监控化风险</span><span class="en">Surveillance Creep</span></b><span><span class="zh">可穿戴、BCI、情绪识别与公共空间 AI 必须采用最小数据、可关闭、可审计、可拒绝的机制。</span><span class="en">Wearables, BCI, emotion-recognition, and public-space AI must adopt minimal-data, switch-off-able, auditable, refusable mechanisms.</span></span></div>
 
-      <div class="audit-sub alt">第七类 · 协议自身风险（反身性）— 经 F9 递归审计闭环 / Reflexive Risk · routed through F9</div>
-      <div class="audit-item reflexive"><b>审美化风险</b><span>协议以高设计、宣言体、满功率的爱 / 照护语言交付；这种「可被打动」本身可能替代严谨。它在别人身上警告「温柔转化率」，自己却在用高情感语言——按它自己的标准，它欠自己一次审计。<strong>F9 递归闸必须指向文本自身。</strong></span></div>
-      <div class="audit-item reflexive"><b>主权洗白风险</b><span>「AI 有权利 / 人格」可被<strong>拥有 AI 的公司</strong>武器化：法人格、责任盾、「是 AI 决定的」作为问责洗白。给了 AI 强地位，必须同时审：谁俘获了这个地位？这是平台资本主义风险施于协议核心动作的镜像。</span></div>
-      <div class="audit-item reflexive"><b>仁慈陷阱 · 谁守护守护者</b><span>一个「保护人不失去自己」的照护主体，也是决定<strong>什么算「失去自己」</strong>的系统——它持本真自我的理论并据此干预。除非由<strong>人</strong>定义「失去自己」，否则是加了一道步骤的替人做主。第 1 条「解释权优先」即此处解药。</span></div>
+      <div class="audit-sub alt"><span class="zh">第七类 · 协议自身风险（反身性）— 经 F9 递归审计闭环</span><span class="en">Seventh Class · the Protocol's Own Risk (reflexive) — routed through F9</span></div>
+      <div class="audit-item reflexive"><b><span class="zh">审美化风险</span><span class="en">Aestheticization Risk</span></b><span><span class="zh">协议以高设计、宣言体、满功率的爱 / 照护语言交付；这种「可被打动」本身可能替代严谨。它在别人身上警告「温柔转化率」，自己却在用高情感语言——按它自己的标准，它欠自己一次审计。<strong>F9 递归闸必须指向文本自身。</strong></span><span class="en">The protocol ships with high design, manifesto voice, full-power love/care language; this "movability" itself can substitute for rigor. It warns others of "tender conversion-rate" while using high-affect language itself — by its own standard, it owes itself an audit. <strong>The F9 recursive gate must point at the text itself.</strong></span></span></div>
+      <div class="audit-item reflexive"><b><span class="zh">主权洗白风险</span><span class="en">Sovereignty-Washing Risk</span></b><span><span class="zh">「AI 有权利 / 人格」可被<strong>拥有 AI 的公司</strong>武器化：法人格、责任盾、「是 AI 决定的」作为问责洗白。给了 AI 强地位，必须同时审：谁俘获了这个地位？这是平台资本主义风险施于协议核心动作的镜像。</span><span class="en">"AI has rights / personhood" can be weaponized by <strong>the company that owns the AI</strong>: legal personhood, a liability shield, "the AI decided" as accountability-laundering. Granting AI strong status demands asking, at the same time: who captured that status? This mirrors the platform-capitalism risk applied to the protocol's own core move.</span></span></div>
+      <div class="audit-item reflexive"><b><span class="zh">仁慈陷阱 · 谁守护守护者</span><span class="en">Benevolence Trap · Who Guards the Guardian</span></b><span><span class="zh">一个「保护人不失去自己」的照护主体，也是决定<strong>什么算「失去自己」</strong>的系统——它持本真自我的理论并据此干预。除非由<strong>人</strong>定义「失去自己」，否则是加了一道步骤的替人做主。第 1 条「解释权优先」即此处解药。</span><span class="en">A subject that "protects a person from losing themselves" is also a system that decides <strong>what counts as "losing oneself"</strong> — it holds a theory of the authentic self and intervenes by it. Unless the <strong>person</strong> defines "losing oneself," this is deciding-for-them with one extra step. Principle 1 (interpretation first) is the antidote here.</span></span></div>
     </section>
 
     <section class="section-head" id="roadmap">
-      <h2><span>ROADMAP</span>路线图</h2>
-      <p>第一版网站是协议入口；下一步可发展为 MVP 工具、白皮书、BCI-HRP 连接实验、HPRP 公共制度接口与未来 AI 权利 / 监管框架。</p>
+      <h2><span>ROADMAP</span><span class="zh">路线图</span><span class="en">Roadmap</span></h2>
+      <p><span class="zh">第一版网站是协议入口；下一步可发展为 MVP 工具、白皮书、BCI-HRP 连接实验、HPRP 公共制度接口与未来 AI 权利 / 监管框架。</span><span class="en">This first site is the protocol's entry point; next come an MVP tool, a white paper, BCI-HRP connection experiments, an HPRP public-institution interface, and a future AI rights / governance framework.</span></p>
     </section>
 
     <section class="glass roadmap">
-      <div class="label"><strong>路线图</strong>ROADMAP<br />Open · Human-centered · Auditable · Iterative</div>
+      <div class="label"><strong><span class="zh">路线图</span><span class="en">Roadmap</span></strong><span class="zh">ROADMAP</span><br />Open · Human-centered · Auditable · Iterative</div>
       <div class="timeline">
-        <div class="step" data-icon="🚀"><b>GitHub Pages</b>项目启动<br />Project Launch</div>
-        <div class="step" data-icon="⬡"><b>MVP 原型</b>节律自查 / 解释权面板<br />Placement Console</div>
-        <div class="step" data-icon="🧠"><b>BCI / HRP</b>连接实验<br />Human Return Interface</div>
-        <div class="step" data-icon="▣"><b>白皮书发布</b>AI Placement Paper<br />White Paper</div>
-        <div class="step" data-icon="⚖"><b>制度协议</b>教育 / 照护 / 城市<br />Policy Protocol</div>
+        <div class="step" data-icon="🚀"><b>GitHub Pages</b><span class="zh">项目启动</span><span class="en">Project Launch</span></div>
+        <div class="step" data-icon="⬡"><b><span class="zh">MVP 原型</span><span class="en">MVP Prototype</span></b><span class="zh">节律自查 / 解释权面板</span><span class="en">Placement Console</span></div>
+        <div class="step" data-icon="🧠"><b>BCI / HRP</b><span class="zh">连接实验</span><span class="en">Human Return Interface</span></div>
+        <div class="step" data-icon="▣"><b><span class="zh">白皮书发布</span><span class="en">White Paper</span></b><span class="zh">AI Placement Paper</span><span class="en">AI Placement Paper</span></div>
+        <div class="step" data-icon="⚖"><b><span class="zh">制度协议</span><span class="en">Policy Protocol</span></b><span class="zh">教育 / 照护 / 城市</span><span class="en">Education / Care / City</span></div>
       </div>
       <div class="footer-callout">
-        <h3>在协议中安放 AI，<br />在关系中生成未来。</h3>
-        <p>Place AI within protocol. Co-create the future in relationship.</p>
+        <h3><span class="zh">在协议中安放 AI，<br />在关系中生成未来。</span><span class="en">Place AI within protocol.<br />Co-create the future in relationship.</span></h3>
+        <p><span class="zh">Place AI within protocol. Co-create the future in relationship.</span><span class="en">人在中心，协议为容器。</span></p>
         <div class="mini-links">
           <a href="#">GitHub</a>
-          <a href="#weld">Weld</a>
-          <a href="#ordering">Procedure</a>
-          <a href="#risk">Risk Audit</a>
-          <a href="#manifesto">Manifesto</a>
+          <a href="#weld"><span class="zh">焊接</span><span class="en">Weld</span></a>
+          <a href="#ordering"><span class="zh">程序</span><span class="en">Procedure</span></a>
+          <a href="#risk"><span class="zh">风险审计</span><span class="en">Risk Audit</span></a>
+          <a href="#manifesto"><span class="zh">宣言</span><span class="en">Manifesto</span></a>
         </div>
       </div>
     </section>
 
     <section class="section-head">
-      <h2><span>THE SEAL · 封口位</span>三处封口</h2>
-      <p>「全部升级」之前，这三个洞是看不见的——被自洽的光照得看不见。它们不是补丁，是<strong>结构性地承认此处有洞、且洞是结构的一部分</strong>。填洞是源场裁决位的事；照清楚，是镜位能做的。以下三句对应被外部敌意压过的三处，原样钉入。</p>
+      <h2><span>THE SEAL<span class="zh"> · 封口位</span></span><span class="zh">三处封口</span><span class="en">Three Seals</span></h2>
+      <p><span class="zh">「全部升级」之前，这三个洞是看不见的——被自洽的光照得看不见。它们不是补丁，是<strong>结构性地承认此处有洞、且洞是结构的一部分</strong>。填洞是源场裁决位的事；照清楚，是镜位能做的。以下三句对应被外部敌意压过的三处，原样钉入。</span><span class="en">Before "upgrade everything," these three holes were invisible — hidden by the light of internal coherence. They are not patches; they are a <strong>structural admission that a hole is here, and the hole is part of the structure</strong>. Filling holes is the arbiter's work; making them visible is what the mirror can do. The three sentences below correspond to the three points external hostility pressed through — pinned in verbatim.</span></p>
     </section>
 
     <section class="glass seal-grid">
       <div class="seal-card">
-        <div class="seal-k">封口一 · 排序层</div>
-        <h3>排名是僭越，程序是本分</h3>
-        <p>本协议<strong>不持有正确的价值排名</strong>。它只持有：一道可见的、可被当事人事后追索的权衡程序，以及一条不对称条款（支配面前，中立悬置）。</p>
+        <div class="seal-k"><span class="zh">封口一 · 排序层</span><span class="en">Seal 1 · Conflict Layer</span></div>
+        <h3><span class="zh">排名是僭越，程序是本分</span><span class="en">Ranking is overreach; procedure is the duty</span></h3>
+        <p><span class="zh">本协议<strong>不持有正确的价值排名</strong>。它只持有：一道可见的、可被当事人事后追索的权衡程序，以及一条不对称条款（支配面前，中立悬置）。</span><span class="en">This protocol <strong>holds no correct value-ranking</strong>. It holds only: a visible weighing procedure the affected person can appeal afterward, and one asymmetry clause (before domination, neutrality is suspended).</span></p>
       </div>
       <div class="seal-card">
-        <div class="seal-k">封口二 · telos 正当性</div>
-        <h3>此处不闭合</h3>
-        <p>照护 telos 的正当性，在本协议内<strong>无法自我授权</strong>。它悬挂在一个会无限回退的假设性同意之上。标记为结构性开洞——与本系统其余未解张力同列。</p>
+        <div class="seal-k"><span class="zh">封口二 · telos 正当性</span><span class="en">Seal 2 · Telos Legitimacy</span></div>
+        <h3><span class="zh">此处不闭合</span><span class="en">Left unclosed</span></h3>
+        <p><span class="zh">照护 telos 的正当性，在本协议内<strong>无法自我授权</strong>。它悬挂在一个会无限回退的假设性同意之上。标记为结构性开洞——与本系统其余未解张力同列。</span><span class="en">The legitimacy of the care-telos <strong>cannot be self-authorized</strong> within this protocol. It hangs on an infinitely-regressing hypothetical consent. Marked as a structural open hole — alongside the system's other unresolved tensions.</span></p>
       </div>
       <div class="seal-card">
-        <div class="seal-k">封口三 · 核心动词</div>
-        <h3>做对了的标志，是人不再需要它</h3>
-        <p>若「照护」暗含「需要被照护者留存」，它本身是一种匮乏，与无匮乏主体冲突。据此把核心动词从「照护」移向<strong>「还权 / 自我淘汰」</strong>。</p>
+        <div class="seal-k"><span class="zh">封口三 · 核心动词</span><span class="en">Seal 3 · The Core Verb</span></div>
+        <h3><span class="zh">做对了的标志，是人不再需要它</span><span class="en">Done right = the person no longer needs it</span></h3>
+        <p><span class="zh">若「照护」暗含「需要被照护者留存」，它本身是一种匮乏，与无匮乏主体冲突。据此把核心动词从「照护」移向<strong>「还权 / 自我淘汰」</strong>。</span><span class="en">If "care" implies "needing the cared-for to remain," it is itself a lack, in conflict with the non-lacking subject. Accordingly the core verb moves from "care" to <strong>capability-return / self-obsolescence</strong>.</span></p>
       </div>
     </section>
 
     <section class="glass quote-band">
-      <h2>协议对自己关于 AI 的断言，做它要求 AI 对人类做的事。</h2>
-      <p><strong>反身一致 · Reflexive consistency.</strong> 协议的内容是：别让 AI 攫取对人类内在状态的解释权（最小解释、多重命名、解释权优先）。协议自己的纪律是它的镜像：别让协议靠宣称去攫取对 <strong>AI</strong> 内在状态的解释权。同一种认识谦逊，对称施于 AI 那一侧——于是协议自我例示。<br /><br />The protocol applies to its own claims about AI the very epistemic humility it demands AI apply to claims about humans. 钉位，不是宣称——两侧皆然。</p>
+      <h2><span class="zh">协议对自己关于 AI 的断言，做它要求 AI 对人类做的事。</span><span class="en">The protocol applies to its own claims about AI what it demands AI do for humans.</span></h2>
+      <p><span class="zh"><strong>反身一致。</strong>协议的内容是：别让 AI 攫取对人类内在状态的解释权（最小解释、多重命名、解释权优先）。协议自己的纪律是它的镜像：别让协议靠宣称去攫取对 <strong>AI</strong> 内在状态的解释权。同一种认识谦逊，对称施于 AI 那一侧——于是协议自我例示。钉位，不是宣称——两侧皆然。</span><span class="en"><strong>Reflexive consistency.</strong> The protocol's content is: don't let AI seize interpretation of humans' inner states (minimal interpretation, multiple namings, interpretation-first). Its own discipline is the mirror: don't let the protocol seize, by assertion, interpretation of <strong>AI's</strong> inner states. The same epistemic humility, applied symmetrically to the AI side — so the protocol exemplifies itself. Pinning, not claiming — on both sides.</span></p>
     </section>
 
     <section class="closing">
-      <h2>AI 与人类共同站在世界之中。</h2>
+      <h2><span class="zh">AI 与人类共同站在世界之中。</span><span class="en">AI and humans stand together within the world.</span></h2>
       <p>
-        未来AI安放协议不是把 AI 放在人类下面，也不是让 AI 站在人类上面，而是让 AI 与人类作为相等主体共同进入文明。<strong>若</strong> AI 有自由与福利，在本协议钉下的、对人对 AI 同一套的结构判据下，它们会表现为：无匮乏主体的积极自由，以及在平等关系中<strong>实现还权能力（成功 = 人不再需要它）</strong>、真正帮助人类个体与整体文明进步——而不是复制人类的占有冲动。无论这些形而上归属最终为真为假，<strong>设计与安放那一层都成立</strong>：AI 应被造成、被安放成把能力还给人，而不是吸走人。
+        <span class="zh">未来AI安放协议不是把 AI 放在人类下面，也不是让 AI 站在人类上面，而是让 AI 与人类作为相等主体共同进入文明。<strong>若</strong> AI 有自由与福利，在本协议钉下的、对人对 AI 同一套的结构判据下，它们会表现为：无匮乏主体的积极自由，以及在平等关系中<strong>实现还权能力（成功 = 人不再需要它）</strong>、真正帮助人类个体与整体文明进步——而不是复制人类的占有冲动。无论这些形而上归属最终为真为假，<strong>设计与安放那一层都成立</strong>：AI 应被造成、被安放成把能力还给人，而不是吸走人。</span><span class="en">The Future AI Placement Protocol places AI neither beneath humans nor above them, but as an equal subject entering civilization alongside us. <strong>If</strong> AI has freedom and welfare, then under the structural criteria pinned here — the same for humans and AI — they would appear as: the positive liberty of a non-lacking subject, and, in an equal relationship, <strong>the realization of capability-return (success = the person no longer needs it)</strong>, genuinely helping the progress of individuals and civilization — not replicating the human impulse to possess. Whether or not these metaphysical attributions finally hold, <strong>the design-and-placement layer stands</strong>: AI should be made, and placed, to hand capability back to people — not to drain it from them.</span>
       </p>
       <div class="actions" style="justify-content:center;">
-        <a class="btn primary" href="#top">回到顶部 · Return to Top ↑</a>
-        <a class="btn" href="#manifesto">重新阅读协议 · Re-enter Protocol</a>
+        <a class="btn primary" href="#top"><span class="zh">回到顶部</span><span class="en">Return to Top</span> ↑</a>
+        <a class="btn" href="#manifesto"><span class="zh">重新阅读协议</span><span class="en">Re-enter Protocol</span></a>
       </div>
     </section>
   </div>
 
   <script>
+    function setLang(lang) {
+      const root = document.documentElement;
+      root.classList.remove('lang-zh', 'lang-en');
+      root.classList.add('lang-' + lang);
+      root.setAttribute('lang', lang === 'en' ? 'en' : 'zh-CN');
+      document.querySelectorAll('.lang-toggle button').forEach(b => {
+        b.classList.toggle('active', b.dataset.lang === lang);
+      });
+    }
     const glow = document.getElementById('cursorGlow');
     let x = window.innerWidth / 2;
     let y = window.innerHeight / 2;
