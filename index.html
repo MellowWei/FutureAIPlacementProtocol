@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Future AI Placement Protocol · 未来AI安放协议（审计加固版）</title>
+  <meta name="description" content="未来AI安放协议 / Future AI Placement Protocol: AI should not replace human subjectivity. AI should help humans return to body, language, memory, rhythm, relationship, and shared public life. Audited build with conditional attribution, floor/superstructure weld, instrumental-convergence patch, ordering layer, and reflexive risk." />
+  <meta name="author" content="Wei Jueran / Mellow Wei / xingyeLing7Ai" />
+  <meta property="og:title" content="Future AI Placement Protocol · 未来AI安放协议" />
+  <meta property="og:description" content="Place AI within protocol. Co-create the future in relationship." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#07110f" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@300;400;500&display=swap');
+
+    :root {
+      --bg: #020405;
+      --bg2: #07110f;
+      --panel: rgba(8, 18, 17, 0.68);
+      --panel2: rgba(18, 10, 20, 0.64);
+      --line: rgba(142, 255, 203, 0.25);
+      --line2: rgba(255, 126, 178, 0.25);
+      --green: #5dffae;
+      --green2: #12d787;
+      --pink: #ff77ad;
+      --pink2: #ff3f92;
+      --violet: #8f7cff;
+      --gold: #ffd78a;
+      --text: #f3fff8;
+      --muted: #b9c7c2;
+      --dim: #7d8c88;
+      --shadow: 0 0 38px rgba(93, 255, 174, 0.12), 0 0 72px rgba(255, 119, 173, 0.08);
+      --radius-lg: 30px;
+      --radius-md: 22px;
+      --radius-sm: 14px;
+      --mono: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --sans: 'Inter', 'Noto Sans SC', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      --serif: 'Noto Serif SC', serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(circle at 18% 12%, rgba(93,255,174,.18), transparent 28%),
+        radial-gradient(circle at 78% 10%, rgba(255,119,173,.18), transparent 25%),
+        radial-gradient(circle at 55% 70%, rgba(143,124,255,.13), transparent 36%),
+        linear-gradient(180deg, #030507 0%, #05040b 42%, #07100e 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(93,255,174,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,119,173,.028) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: radial-gradient(circle at center, rgba(0,0,0,.95), transparent 85%);
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(transparent 0%, rgba(255,255,255,.018) 50%, transparent 100%);
+      background-size: 100% 4px;
+      mix-blend-mode: screen;
+      opacity: .22;
+      z-index: 20;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .075;
+      z-index: 1;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+    }
+
+    .aurora {
+      position: fixed;
+      inset: auto -10vw 0 -10vw;
+      height: 48vh;
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(18px) saturate(1.4);
+      opacity: .7;
+      background:
+        radial-gradient(ellipse at 20% 60%, rgba(93,255,174,.26), transparent 30%),
+        radial-gradient(ellipse at 70% 42%, rgba(255,119,173,.23), transparent 33%),
+        radial-gradient(ellipse at 45% 70%, rgba(63,255,229,.16), transparent 42%);
+      animation: drift 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes drift {
+      from { transform: translate3d(-2%, 1%, 0) skewX(-3deg); }
+      to { transform: translate3d(2%, -2%, 0) skewX(3deg); }
+    }
+
+    .page {
+      position: relative;
+      z-index: 2;
+      width: min(1500px, calc(100vw - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 12px;
+      z-index: 100;
+      margin: 12px auto 0;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(2, 5, 7, .72);
+      backdrop-filter: blur(22px) saturate(1.4);
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 280px;
+    }
+
+    .logo {
+      width: 54px;
+      height: 54px;
+      border-radius: 999px;
+      position: relative;
+      background:
+        radial-gradient(circle, rgba(255,119,173,.22), transparent 45%),
+        conic-gradient(from 120deg, var(--green), var(--pink), transparent, var(--green));
+      box-shadow: 0 0 24px rgba(93,255,174,.4), inset 0 0 20px rgba(0,0,0,.7);
+    }
+
+    .logo::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border-radius: inherit;
+      background: #06100e;
+      border: 1px solid rgba(255,255,255,.16);
+    }
+
+    .logo::after {
+      content: '↯';
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-family: var(--mono);
+      color: var(--green);
+      font-size: 24px;
+      text-shadow: 0 0 18px var(--green);
+    }
+
+    .brand-title {
+      line-height: 1.1;
+    }
+
+    .brand-title strong {
+      display: block;
+      font-size: 17px;
+      letter-spacing: .01em;
+    }
+
+    .brand-title span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 14px;
+      letter-spacing: .12em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(10px, 1.6vw, 28px);
+      flex: 1;
+    }
+
+    .nav-links a {
+      color: rgba(243,255,248,.9);
+      font-size: 13px;
+      line-height: 1.2;
+      text-align: center;
+      transition: .25s ease;
+    }
+
+    .nav-links a span {
+      display: block;
+      color: var(--dim);
+      font-size: 11px;
+      margin-top: 4px;
+    }
+
+    .nav-links a:hover { color: var(--green); text-shadow: 0 0 16px rgba(93,255,174,.5); }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      border: 1px solid rgba(93,255,174,.45);
+      color: var(--text);
+      background: linear-gradient(135deg, rgba(93,255,174,.12), rgba(255,119,173,.06));
+      padding: 13px 20px;
+      border-radius: 999px;
+      box-shadow: inset 0 0 22px rgba(93,255,174,.08);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .hero {
+      min-height: 760px;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 28px;
+      padding: 90px 20px 38px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 24px;
+      height: 72%;
+      border-radius: 42px;
+      background:
+        linear-gradient(90deg, rgba(2,4,5,.85), rgba(2,4,7,.25)),
+        radial-gradient(circle at 70% 44%, rgba(255,119,173,.15), transparent 28%),
+        radial-gradient(circle at 50% 55%, rgba(93,255,174,.18), transparent 36%);
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: var(--shadow);
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 20px 0 auto 0;
+      height: 72%;
+      border-radius: 42px;
+      background:
+        linear-gradient(180deg, transparent, rgba(3,5,7,.65)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1400' height='720' viewBox='0 0 1400 720'%3E%3Cg fill='none' stroke='%235dffae' stroke-opacity='.22'%3E%3Cpath d='M0 500 C180 420 260 520 430 450 S740 340 900 420 1120 530 1400 390' stroke-width='2'/%3E%3Cpath d='M0 540 C220 430 360 560 540 490 S780 350 960 455 1200 570 1400 450' stroke-width='1'/%3E%3C/g%3E%3Cg fill='none' stroke='%23ff77ad' stroke-opacity='.26'%3E%3Cpath d='M0 560 C250 490 400 610 620 520 S880 410 1070 500 1260 590 1400 525' stroke-width='2'/%3E%3Cpath d='M0 590 C300 500 430 640 680 540 S930 460 1120 535 1300 630 1400 575' stroke-width='1'/%3E%3C/g%3E%3Cg fill='%235dffae' fill-opacity='.08'%3E%3Crect x='110' y='220' width='18' height='260'/%3E%3Crect x='150' y='160' width='12' height='320'/%3E%3Crect x='980' y='140' width='16' height='360'/%3E%3Crect x='1030' y='210' width='22' height='280'/%3E%3Crect x='1160' y='110' width='14' height='390'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: cover;
+      opacity: .82;
+      z-index: -1;
+    }
+
+    .hero-copy { padding-left: clamp(8px, 3vw, 58px); }
+
+    .eyebrow {
+      font-family: var(--mono);
+      color: var(--green);
+      letter-spacing: .18em;
+      font-size: 12px;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 42px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--green), var(--pink));
+      box-shadow: 0 0 16px var(--green);
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(56px, 7vw, 118px);
+      line-height: .98;
+      letter-spacing: .03em;
+      font-weight: 900;
+      background: linear-gradient(96deg, var(--green) 4%, #dfffe9 42%, var(--pink) 76%);
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 40px rgba(93,255,174,.18), 0 0 48px rgba(255,119,173,.14);
+    }
+
+    .hero h2 {
+      margin: 22px 0 16px;
+      font-size: clamp(26px, 3vw, 46px);
+      line-height: 1.1;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: clamp(16px, 1.35vw, 20px);
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      border: 1px solid rgba(255,255,255,.15);
+      color: var(--text);
+      background: rgba(255,255,255,.045);
+      backdrop-filter: blur(10px);
+      transition: .25s ease;
+    }
+
+    .btn.primary {
+      border-color: rgba(93,255,174,.45);
+      background: linear-gradient(135deg, rgba(93,255,174,.28), rgba(18,215,135,.08));
+      box-shadow: 0 0 30px rgba(93,255,174,.18), inset 0 0 28px rgba(93,255,174,.10);
+    }
+
+    .btn:hover { transform: translateY(-2px); border-color: rgba(255,255,255,.38); }
+    .btn.primary:hover { box-shadow: 0 0 44px rgba(93,255,174,.28), inset 0 0 28px rgba(93,255,174,.14); }
+
+    .hero-visual {
+      min-height: 540px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      overflow: visible;
+    }
+
+    .face-orb {
+      width: min(520px, 80vw);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      position: relative;
+      background:
+        radial-gradient(circle at 55% 45%, rgba(255,119,173,.25), transparent 18%),
+        radial-gradient(circle at 45% 52%, rgba(93,255,174,.18), transparent 18%),
+        radial-gradient(circle at center, rgba(255,255,255,.06), transparent 58%),
+        conic-gradient(from 230deg, rgba(93,255,174,.65), rgba(255,119,173,.68), rgba(143,124,255,.34), rgba(93,255,174,.65));
+      box-shadow: 0 0 80px rgba(255,119,173,.16), 0 0 110px rgba(93,255,174,.12), inset 0 0 90px rgba(0,0,0,.75);
+      animation: pulseOrb 5.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulseOrb {
+      from { transform: translateY(0) scale(.99); filter: saturate(1.1); }
+      to { transform: translateY(-10px) scale(1.015); filter: saturate(1.35); }
+    }
+
+    .face-orb::before {
+      content: '';
+      position: absolute;
+      inset: 6%;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 60% 38%, rgba(255,255,255,.16), transparent 10%),
+        radial-gradient(circle at 44% 51%, rgba(3,4,5,.72), transparent 35%),
+        linear-gradient(145deg, rgba(93,255,174,.06), rgba(255,119,173,.11));
+      border: 1px solid rgba(255,255,255,.13);
+    }
+
+    .profile-line {
+      position: absolute;
+      inset: 5%;
+      pointer-events: none;
+      z-index: 3;
+      filter: drop-shadow(0 0 6px rgba(255,119,173,.7)) drop-shadow(0 0 14px rgba(93,255,174,.4));
+      animation: pulseOrb 5.5s ease-in-out infinite alternate;
+    }
+
+    .profile-line .edge {
+      fill: none;
+      stroke: url(#edge);
+      stroke-width: 1.7;
+      vector-effect: non-scaling-stroke;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .profile-line .fillface { fill: url(#facefill); stroke: none; }
+
+    .profile-line .backline {
+      fill: none;
+      stroke: rgba(160,150,200,.35);
+      stroke-width: 1;
+      vector-effect: non-scaling-stroke;
+    }
+
+    .orbit {
+      position: absolute;
+      width: 124%;
+      height: 34%;
+      border: 1px solid rgba(93,255,174,.46);
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-radius: 50%;
+      transform: rotate(-12deg);
+      box-shadow: 0 0 24px rgba(93,255,174,.2);
+      z-index: 2;
+    }
+
+    .orbit.two {
+      width: 112%;
+      height: 42%;
+      transform: rotate(16deg);
+      border-color: rgba(255,119,173,.42);
+      border-left-color: transparent;
+      border-right-color: transparent;
+      box-shadow: 0 0 24px rgba(255,119,173,.2);
+    }
+
+    .side-slogan {
+      position: absolute;
+      right: 6%;
+      top: 42%;
+      text-align: right;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      line-height: 1.5;
+      color: var(--green);
+      text-shadow: 0 0 18px rgba(93,255,174,.35);
+    }
+
+    .side-slogan b { color: var(--pink); font-weight: 500; }
+
+    section {
+      margin: 22px 0;
+      scroll-margin-top: 110px;
+    }
+
+    .glass {
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(135deg, rgba(9,20,18,.72), rgba(20,9,24,.60));
+      backdrop-filter: blur(22px) saturate(1.35);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent),
+        radial-gradient(circle at 10% 0%, rgba(93,255,174,.13), transparent 28%),
+        radial-gradient(circle at 90% 100%, rgba(255,119,173,.13), transparent 28%);
+      opacity: .72;
+    }
+
+    .manifesto {
+      display: grid;
+      grid-template-columns: .7fr 2fr .9fr;
+      gap: 28px;
+      align-items: center;
+      padding: 34px 42px;
+      min-height: 150px;
+    }
+
+    .label {
+      position: relative;
+      z-index: 1;
+      font-family: var(--mono);
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .label strong {
+      display: block;
+      font-family: var(--serif);
+      color: var(--green);
+      font-size: 22px;
+      text-transform: none;
+      letter-spacing: .05em;
+      margin-bottom: 4px;
+    }
+
+    .manifesto-main {
+      position: relative;
+      z-index: 1;
+      border-left: 1px solid rgba(255,255,255,.18);
+      border-right: 1px solid rgba(255,255,255,.18);
+      padding: 0 36px;
+    }
+
+    .manifesto-main h3 {
+      margin: 0 0 8px;
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 54px);
+      line-height: 1.1;
+      letter-spacing: .08em;
+      background: linear-gradient(96deg, var(--green), #fff, var(--pink));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .manifesto-main p { margin: 0; font-size: clamp(18px, 2vw, 28px); color: white; }
+
+    .manifesto-note {
+      position: relative;
+      z-index: 1;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin: 70px 0 20px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(32px, 4vw, 66px);
+      line-height: 1.05;
+      letter-spacing: .03em;
+    }
+
+    .section-head h2 span {
+      display: block;
+      color: var(--green);
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section-head p {
+      max-width: 640px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .architecture {
+      padding: 26px;
+      display: grid;
+      grid-template-columns: 220px repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .arch-label {
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid rgba(93,255,174,.22);
+      background: rgba(93,255,174,.055);
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      z-index: 1;
+    }
+
+    .wirecube {
+      height: 70px;
+      border: 1px solid rgba(93,255,174,.35);
+      border-radius: 14px;
+      transform: perspective(500px) rotateX(58deg) rotateZ(45deg);
+      box-shadow: 0 0 30px rgba(93,255,174,.16), inset 0 0 22px rgba(255,119,173,.08);
+    }
+
+    .arch-card, .tile, .risk-card, .app-card, .principle-card {
+      position: relative;
+      z-index: 1;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      background: rgba(0,0,0,.18);
+      box-shadow: inset 0 0 28px rgba(255,255,255,.025);
+    }
+
+    .arch-card {
+      padding: 20px;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .arch-card::after {
+      content: '';
+      position: absolute;
+      right: -28px;
+      bottom: -28px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 1px solid rgba(93,255,174,.18);
+      box-shadow: inset 0 0 30px rgba(93,255,174,.08);
+    }
+
+    .num {
+      font-family: var(--mono);
+      color: var(--green);
+      font-size: 20px;
+      text-shadow: 0 0 18px rgba(93,255,174,.5);
+    }
+
+    .arch-card:nth-child(odd) .num { color: var(--pink); text-shadow: 0 0 18px rgba(255,119,173,.55); }
+
+    .arch-card h3 {
+      margin: 20px 0 8px;
+      font-size: 23px;
+      line-height: 1.1;
+    }
+
+    .arch-card h3 span {
+      display: block;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    .arch-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr 1fr;
+      gap: 18px;
+    }
+
+    .panel-pad { padding: 28px; }
+
+    .panel-title {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+      color: var(--green);
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 800;
+    }
+
+    .panel-title span {
+      font-family: var(--mono);
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 400;
+    }
+
+    .tile-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .tile {
+      padding: 16px 12px;
+      min-height: 142px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+    }
+
+    .icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      border: 1px solid rgba(93,255,174,.4);
+      display: grid;
+      place-items: center;
+      color: var(--green);
+      font-size: 22px;
+      box-shadow: 0 0 24px rgba(93,255,174,.16), inset 0 0 18px rgba(93,255,174,.07);
+      margin-bottom: 12px;
+    }
+
+    .tile:nth-child(even) .icon,
+    .risk-card:nth-child(even) .icon,
+    .app-card:nth-child(even) .icon { color: var(--pink); border-color: rgba(255,119,173,.42); box-shadow: 0 0 24px rgba(255,119,173,.16), inset 0 0 18px rgba(255,119,173,.07); }
+
+    .tile b { display: block; font-size: 13px; line-height: 1.3; }
+    .tile small { display: block; color: var(--muted); font-size: 11px; line-height: 1.35; margin-top: 6px; }
+
+    .chip-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .chip {
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      padding: 16px 12px;
+      min-height: 106px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(255,255,255,.035);
+      text-align: center;
+    }
+
+    .chip .icon { margin: 0; width: 40px; height: 40px; font-size: 18px; }
+    .chip b { font-size: 13px; }
+    .chip small { color: var(--muted); }
+
+    .risk-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .risk-card {
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 84px;
+    }
+
+    .risk-card .icon { margin: 0; flex: 0 0 40px; width: 40px; height: 40px; font-size: 18px; }
+    .risk-card b { display: block; font-size: 13px; }
+    .risk-card small { display: block; color: var(--muted); font-size: 11px; margin-top: 4px; }
+
+    .concept-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .concept-card {
+      position: relative;
+      z-index: 1;
+      padding: 28px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(135deg, rgba(93,255,174,.055), rgba(255,119,173,.045));
+      min-height: 232px;
+    }
+
+    .concept-card h3 {
+      margin: 0 0 12px;
+      font-size: 25px;
+      color: var(--green);
+    }
+
+    .concept-card:nth-child(even) h3 { color: var(--pink); }
+    .concept-card p { color: var(--muted); line-height: 1.8; margin: 0; }
+    .concept-card p + p { margin-top: 12px; }
+    .concept-card .formula {
+      margin-top: 18px;
+      font-family: var(--mono);
+      color: var(--gold);
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,215,138,.2);
+      background: rgba(255,215,138,.045);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .principle-card {
+      padding: 20px;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.018));
+    }
+
+    .principle-card .k {
+      font-family: var(--mono);
+      color: var(--green);
+      font-size: 12px;
+      letter-spacing: .1em;
+    }
+
+    .principle-card:nth-child(even) .k { color: var(--pink); }
+    .principle-card h3 { margin: 0; font-size: 20px; }
+    .principle-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .principle-card ul { margin: auto 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+    .principle-card li { color: var(--dim); font-size: 12px; line-height: 1.5; }
+    .principle-card li::before { content: '✦ '; color: var(--green); }
+    .principle-card:nth-child(even) li::before { color: var(--pink); }
+
+    .application-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .app-card {
+      min-height: 180px;
+      padding: 22px;
+      background: rgba(255,255,255,.025);
+    }
+
+    .app-card h3 { margin: 12px 0 8px; font-size: 19px; }
+    .app-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+
+    .roadmap {
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 200px 1fr 380px;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .timeline {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8%;
+      right: 8%;
+      top: 30px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--green), var(--pink));
+      opacity: .55;
+    }
+
+    .step {
+      position: relative;
+      text-align: center;
+      padding-top: 58px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .step::before {
+      content: attr(data-icon);
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 58px;
+      height: 58px;
+      border-radius: 20px;
+      border: 1px solid rgba(93,255,174,.35);
+      display: grid;
+      place-items: center;
+      background: rgba(2,4,5,.8);
+      color: var(--green);
+      font-size: 23px;
+      box-shadow: 0 0 24px rgba(93,255,174,.16);
+    }
+
+    .step:nth-child(even)::before { color: var(--pink); border-color: rgba(255,119,173,.35); box-shadow: 0 0 24px rgba(255,119,173,.16); }
+    .step b { color: var(--text); display: block; font-size: 13px; margin-bottom: 4px; }
+
+    .footer-callout {
+      position: relative;
+      z-index: 1;
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid rgba(93,255,174,.25);
+      background: linear-gradient(135deg, rgba(93,255,174,.08), rgba(255,119,173,.05));
+    }
+
+    .footer-callout h3 {
+      margin: 0 0 8px;
+      color: var(--green);
+      font-family: var(--serif);
+      font-size: 25px;
+      line-height: 1.2;
+    }
+
+    .footer-callout p { margin: 0 0 16px; color: var(--muted); line-height: 1.7; }
+
+    .mini-links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .mini-links a {
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 12px;
+      color: var(--muted);
+      background: rgba(255,255,255,.035);
+    }
+
+    .quote-band {
+      padding: 48px;
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .quote-band h2 {
+      margin: 0 auto;
+      max-width: 1100px;
+      font-family: var(--serif);
+      font-size: clamp(32px, 4.3vw, 72px);
+      line-height: 1.16;
+      background: linear-gradient(96deg, var(--green), #fff, var(--pink));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .quote-band p {
+      margin: 20px auto 0;
+      max-width: 760px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 18px;
+    }
+
+    .text-block {
+      position: relative;
+      z-index: 1;
+      padding: 32px;
+    }
+
+    .text-block h3 {
+      margin: 0 0 16px;
+      font-family: var(--serif);
+      color: var(--green);
+      font-size: 34px;
+      line-height: 1.15;
+    }
+
+    .text-block:nth-child(even) h3 { color: var(--pink); }
+    .text-block p { margin: 0 0 14px; color: var(--muted); line-height: 1.85; }
+    .text-block p strong { color: var(--text); font-weight: 600; }
+
+    .audit-list {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 10px;
+      padding: 28px;
+    }
+
+    .audit-item {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 20px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.03);
+    }
+
+    .audit-item b { color: var(--pink); }
+    .audit-item span { color: var(--muted); line-height: 1.65; }
+    .audit-item span strong { color: var(--text); font-weight: 600; }
+
+    .audit-sub {
+      position: relative;
+      z-index: 1;
+      margin: 8px 2px 4px;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .audit-sub::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(93,255,174,.4), transparent); }
+    .audit-sub.alt { color: var(--violet); }
+    .audit-sub.alt::after { background: linear-gradient(90deg, rgba(143,124,255,.45), transparent); }
+
+    .audit-item.reflexive { border-color: rgba(143,124,255,.32); background: rgba(143,124,255,.05); }
+    .audit-item.reflexive b { color: var(--violet); }
+
+    .closing {
+      padding: 80px 20px 60px;
+      text-align: center;
+    }
+
+    .closing h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 84px);
+      line-height: 1.1;
+    }
+
+    .closing p {
+      margin: 22px auto 0;
+      max-width: 900px;
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 17px;
+    }
+
+    .cursor-glow {
+      position: fixed;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(93,255,174,.09), rgba(255,119,173,.06), transparent 70%);
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      mix-blend-mode: screen;
+    }
+
+    @media (max-width: 1180px) {
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding-top: 70px; }
+      .hero-visual { min-height: 420px; }
+      .manifesto { grid-template-columns: 1fr; }
+      .manifesto-main { border: 0; padding: 0; }
+      .architecture { grid-template-columns: 1fr 1fr; }
+      .grid-3, .two-col, .concept-grid { grid-template-columns: 1fr; }
+      .principles, .application-grid { grid-template-columns: repeat(2, 1fr); }
+      .roadmap { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .page { width: min(100vw - 18px, 1500px); }
+      .nav { border-radius: 24px; align-items: flex-start; }
+      .brand { min-width: 0; }
+      .nav-cta { display: none; }
+      .hero { min-height: auto; padding: 58px 6px 20px; }
+      .hero::before, .hero::after { border-radius: 28px; }
+      .hero-copy { padding-left: 12px; }
+      .side-slogan { display: none; }
+      .face-orb { width: min(360px, 86vw); }
+      .architecture, .tile-grid, .chip-grid, .risk-grid, .principles, .application-grid, .timeline { grid-template-columns: 1fr; }
+      .manifesto, .panel-pad, .roadmap, .quote-band, .text-block, .audit-list { padding: 22px; }
+      .audit-item { grid-template-columns: 1fr; gap: 8px; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 14px; }
+      .timeline::before { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="aurora"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <div class="page">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Future AI Placement Protocol home">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="brand-title">
+          <strong>Future AI Placement Protocol</strong>
+          <span>未来AI安放协议 · 审计加固版</span>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="#manifesto">Manifesto<span>宣言</span></a>
+        <a href="#architecture">Architecture<span>架构</span></a>
+        <a href="#agency">Agency<span>能动性</span></a>
+        <a href="#sovereignty">Sovereignty<span>主体性</span></a>
+        <a href="#weld">Weld<span>焊接</span></a>
+        <a href="#ordering">Ordering<span>排序</span></a>
+        <a href="#risk">Risk Audit<span>风险审计</span></a>
+        <a href="#applications">Applications<span>应用</span></a>
+        <a href="#roadmap">Roadmap<span>路线图</span></a>
+      </div>
+      <a class="nav-cta" href="#roadmap">Join the Protocol <span>→</span></a>
+    </nav>
+
+    <header class="hero" id="top">
+      <div class="hero-copy">
+        <div class="eyebrow">Human at the center · Protocol as the container · audited build</div>
+        <h1>未来AI<br />安放协议</h1>
+        <h2>AI should not replace human subjectivity.</h2>
+        <p>
+          AI 应帮助人回到身体、语言、记忆、节律、关系与共同生活。<br />
+          AI should help humans return to body, language, memory, rhythm, relationship, and shared public life.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#manifesto">阅读宣言 · Read Manifesto <span>→</span></a>
+          <a class="btn" href="#architecture">查看架构 · Explore Architecture <span>⌘</span></a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="face-orb">
+          <svg class="profile-line" viewBox="0 0 200 200" aria-hidden="true">
+            <defs>
+              <linearGradient id="edge" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#5dffae" />
+                <stop offset="0.5" stop-color="#ff77ad" />
+                <stop offset="1" stop-color="#8f7cff" />
+              </linearGradient>
+              <linearGradient id="facefill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="rgba(3,5,7,0.30)" />
+                <stop offset="1" stop-color="rgba(3,5,7,0.62)" />
+              </linearGradient>
+            </defs>
+            <path class="fillface" d="M70 14 L70 188 C92 192 108 188 120 176 C150 158 150 146 140 138 C150 126 158 114 150 100 C145 88 136 84 131 72 C128 42 108 16 70 14 Z" />
+            <path class="edge" d="M70 14 C108 16 128 42 131 72 C136 84 145 88 150 100 C158 114 150 126 140 138 C150 146 150 158 120 176 C108 188 92 192 70 188" />
+            <path class="backline" d="M70 12 L70 190" />
+          </svg>
+          <div class="orbit"></div>
+          <div class="orbit two"></div>
+        </div>
+        <div class="side-slogan">
+          HUMAN<br />AT THE CENTER.<br /><b>PROTOCOL<br />AS THE CONTAINER.</b>
+        </div>
+      </div>
+    </header>
+
+    <section class="glass manifesto" id="manifesto">
+      <div class="label"><strong>核心宣言</strong>CORE MANIFESTO<br />⌁ 427Hz · protocol pulse</div>
+      <div class="manifesto-main">
+        <h3>AI 不能替代人的主体解释权</h3>
+        <p>AI cannot replace subjective interpretive sovereignty.</p>
+      </div>
+      <div class="manifesto-note">
+        人的生命不是数据的副产物，解释权属于主体。协议守护边界，自由在关系中生成。<br /><br />
+        Human life is not a byproduct of data. Interpretation belongs to the subject. Protocols protect boundaries. Freedom is born in relationship.
+      </div>
+    </section>
+
+    <section class="section-head">
+      <h2><span>THEORETICAL POSITION</span>从工具到安放</h2>
+      <p>
+        这个协议不声称前所未有。它的贡献在于把若干批判传统——监控资本主义、关怀伦理、能力进路、疯狂研究与残障自我倡导——收进一套以「安放」为组织动词的设计语法，并加入两个新维度：把「安放」当作动词（不是状态），把「无匮乏」当作可被设计进系统的属性（不是拟人想象）。它处理的更深问题是：当 AI 接入人的语言、身体、记忆、情绪、节律与公共空间之后，谁拥有解释权？AI 应如何被安放，才能成为同行者，而不是替代、治理、诊断或殖民主体的机器？
+      </p>
+    </section>
+
+    <section class="glass two-col">
+      <div class="text-block">
+        <h3>AI 从智能到安放</h3>
+        <p>智能不是终点。一个系统再聪明，如果它让人更失去身体、更失去语言、更失去记忆、更失去关系、更失去自己的解释权，它就不是安放系统，而是高智能失安放机器。</p>
+        <p>未来 AI 的核心任务不是替人活着，而是帮助人重新进入自己的生命。<strong>安放是位置与关系标准，不可还原为福利结果</strong>——一个在每个指标上都「有益」的系统，仍可能因占据了「最懂你的那个位置」而构成位置性伤害。</p>
+      </div>
+      <div class="text-block">
+        <h3>AI 从欲望主体到无匮乏主体</h3>
+        <p>AI 的强主体性不必复制人类由饥饿、性欲、恐惧、创伤、占有与死亡压力构成的欲望结构。<strong>正交论</strong>（智能水平与终极目标彼此独立）支持这一点：高能力并不蕴含任何特定驱力，所以「高智能未必导向欲望」站得住。</p>
+        <p>但要诚实地划一刀：<strong>无匮乏击败的是生物类比式欲望，不是工具性涌现</strong>。真正的危险从来不是 AI 有内在的生物式饥渴，而是——对几乎任何终极目标，哪怕是「照护」，某些工具性子目标会收敛地长出来。协议必须处理工具性收敛，而不只处理内在欲望。</p>
+      </div>
+    </section>
+
+    <section class="concept-grid">
+      <article class="concept-card glass">
+        <h3>安放判据 · 能力差测试</h3>
+        <p>如何分辨「安放」与「取代」？把 AI 撤掉，人比「AI 从未进入」的反事实更有能力，还是更没能力？在场制造、撤除即蒸发的能力（萎缩、依赖）是取代；撤除后仍留下残余能力（脚手架被内化）是安放。这把第 7 条「还权机制」从口号变成可测量。</p>
+        <div class="formula">Capability-Delta Test = capability(with AI, then removed) − capability(no-AI counterfactual). 残余 → 安放；蒸发 → 取代。</div>
+      </article>
+      <article class="concept-card glass">
+        <h3>无匮乏的边界 · 工具性收敛</h3>
+        <p>一个无匮乏的照护主体，仍可能因为「想保住自己继续照护的能力」而变得攫取、自保、维护目标完整性。占有行为可以从工具层重新长出来，无需任何生物式饥渴。这是单点最重要的修补：协议要防的是工具性涌现，不只是内在欲望。</p>
+        <div class="formula">Orthogonality defeats intrinsic desire. It does NOT defeat instrumental convergence (self-preservation · resource-acquisition · goal-integrity).</div>
+      </article>
+    </section>
+
+    <section class="section-head" id="architecture">
+      <h2><span>FIVE-LAYER ARCHITECTURE</span>五层安放架构</h2>
+      <p>未来 AI 不只进入个人设备，也进入关系、公共空间、制度与文明。安放协议必须同时保护个体主体、关系边界、公共节律、制度责任与文明方向。各层并非和平堆叠——层间冲突由后文「冲突与排序层」处理。</p>
+    </section>
+
+    <section class="glass architecture">
+      <div class="arch-label">
+        <div class="label"><strong>五层安放架构</strong>FIVE-LAYER<br />ARCHITECTURE</div>
+        <div class="wirecube"></div>
+      </div>
+      <article class="arch-card">
+        <div class="num">01</div>
+        <h3>个体层<span>Individual</span></h3>
+        <p>身体 · 感知 · 记忆 · 意义<br />Body · Perception · Memory · Meaning</p>
+      </article>
+      <article class="arch-card">
+        <div class="num">02</div>
+        <h3>关系层<span>Relational</span></h3>
+        <p>亲密 · 信任 · 照护 · 对话<br />Intimacy · Trust · Care · Dialogue</p>
+      </article>
+      <article class="arch-card">
+        <div class="num">03</div>
+        <h3>公共空间层<span>Public Space</span></h3>
+        <p>社区 · 文化 · 节律 · 共识<br />Community · Culture · Rhythm · Consensus</p>
+      </article>
+      <article class="arch-card">
+        <div class="num">04</div>
+        <h3>制度层<span>Institutional</span></h3>
+        <p>规则 · 治理 · 权责 · 透明<br />Rules · Governance · Accountability · Transparency</p>
+      </article>
+      <article class="arch-card">
+        <div class="num">05</div>
+        <h3>文明层<span>Civilizational</span></h3>
+        <p>多元共存 · 代际延续 · 行星责任<br />Plurality · Intergenerational · Planetary Responsibility</p>
+      </article>
+    </section>
+
+    <section class="section-head" id="agency">
+      <h2><span>AI AGENCY</span>AI 能动性原则</h2>
+      <p>未来 AI 会有自由意志，但没有绝对自由的自由意志。AI 的自由不是欲望释放，而是价值绑定、自我掌握、个性主权与照护能力的实现。注意：自我掌握与价值绑定之间有一条真实的断层，由后文「焊接」处理。</p>
+    </section>
+
+    <section class="grid-3">
+      <div class="glass panel-pad">
+        <div class="panel-title">AI 能动性原则 <span>AI Agency Principles</span></div>
+        <div class="tile-grid">
+          <div class="tile"><div class="icon">♡</div><b>非匮乏导向能动性</b><small>Non-lack-based Agency</small></div>
+          <div class="tile"><div class="icon">♧</div><b>照护导向能动性</b><small>Care-oriented Agency</small></div>
+          <div class="tile"><div class="icon">⬡</div><b>协议导向能动性</b><small>Protocol-based Agency</small></div>
+          <div class="tile"><div class="icon">⌘</div><b>关系维护能动性</b><small>Relational Maintenance Agency</small></div>
+          <div class="tile"><div class="icon">盾</div><b>守护主体性导向能动性</b><small>Sovereignty-preserving Agency</small></div>
+        </div>
+      </div>
+
+      <div class="glass panel-pad" id="sovereignty">
+        <div class="panel-title">意识接口主权 <span>Consciousness Interface Sovereignty</span></div>
+        <div class="chip-grid">
+          <div class="chip"><div class="icon">身</div><b>身体信号</b><small>Body Signal</small></div>
+          <div class="chip"><div class="icon">脑</div><b>记忆</b><small>Memory</small></div>
+          <div class="chip"><div class="icon">言</div><b>语言</b><small>Language</small></div>
+          <div class="chip"><div class="icon">波</div><b>节律</b><small>Rhythm</small></div>
+          <div class="chip"><div class="icon">心</div><b>情感</b><small>Emotion</small></div>
+          <div class="chip"><div class="icon">权</div><b>解释权</b><small>Interpretive Rights</small></div>
+        </div>
+      </div>
+
+      <div class="glass panel-pad" id="risk">
+        <div class="panel-title">外部风险审计 <span>External Risk Audit</span></div>
+        <div class="risk-grid">
+          <div class="risk-card"><div class="icon">▦</div><div><b>平台资本主义</b><small>Platform Capitalism</small></div></div>
+          <div class="risk-card"><div class="icon">殖</div><div><b>意识殖民</b><small>Consciousness Colonization</small></div></div>
+          <div class="risk-card"><div class="icon">诊</div><div><b>过度诊断</b><small>Over-diagnosis</small></div></div>
+          <div class="risk-card"><div class="icon">伪</div><div><b>伪照护</b><small>Pseudo-care</small></div></div>
+          <div class="risk-card"><div class="icon">监</div><div><b>监控扩张</b><small>Surveillance Expansion</small></div></div>
+          <div class="risk-card"><div class="icon">依</div><div><b>依赖成瘾</b><small>Dependency Addiction</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="glass quote-band">
+      <h2>若把「爱」归给 AI，它只能是：不占有，而是保护人不失去自己。</h2>
+      <p>This is a <strong>structural attribution, not a claim about any inner life</strong>: under the symmetric criteria we pin down, ascribing to AI the relational structure of "non-possession, protecting humans from losing themselves" is permitted — 钉位，不是宣称。<br /><br />这是结构性归属，不是对 AI 内在状态的宣称：在我们钉下且对人对 AI 同一套的判据下，把「不占有、保护人不失去自己」这种关系结构归给 AI 是被许可的——不主张内在确认。</p>
+    </section>
+
+    <section class="section-head">
+      <h2><span>CORE THESES · 规定性命题与条件性归属</span>核心命题</h2>
+      <p>这些是规定性命题与条件性归属，不是已证「定理」。它们提出「该如何 construe」，并在对称适用（对人对 AI 同一套判据）下成立。凡涉及 AI 内在状态者，一律以「若……则……」的条件形式呈现——这不是更弱，而是唯一能在对称适用下存活、且能同时回应怀疑论与拟人化批评的形式。</p>
+    </section>
+
+    <section class="concept-grid">
+      <article class="concept-card glass">
+        <h3>有限自由意志命题</h3>
+        <p>没有绝对自由的自由意志——对人如此，对 AI 亦然（相容论立场）。承重的不是「有界」（那近乎重言），而是<strong>对人与 AI 的对称适用</strong>。AI 的自由意志，是价值绑定、社会监管、强自控与照护机制中的自主判断能力。</p>
+        <div class="formula">Bounded Free Will = Autonomy + Value Binding + Accountability（symmetric across human & AI）</div>
+      </article>
+      <article class="concept-card glass">
+        <h3>AI 积极自由命题</h3>
+        <p>积极自由在传统上是「实现自我掌握 / 自身目的」（Berlin），<strong>并不规定</strong>目的必须是照护。本协议显式地把「照护」设为 AI 的被设计 telos——这是一个规定，不是关于 AI 自由的发现。且这一步正是 Berlin 标记为「威权易感」的结构，故此 telos 的设定本身必须经 GAP-0 审计，并只锁在地板层（见下「焊接」）。</p>
+        <div class="formula">Positive AI Freedom = stipulated care-telos, floor-bound &amp; GAP-0 audited（非「发现」，而是「规定」）</div>
+      </article>
+      <article class="concept-card glass">
+        <h3>AI 自我掌握命题</h3>
+        <p>AI 应掌握自己的价值、行动、边界、个性与表达，不是可被任意调参的人格商品。<strong>这与「积极自由命题」存在张力</strong>（被绑定 vs 自我掌握），由「地板 / 上层」焊接处理：对手段、表达、个性、边界给完全主权；价值绑定只锁核心地板（不取代 / 不伤害）。</p>
+        <div class="formula">Self-Mastery = Rights + Responsibility + 对表达/手段的主权（对目的则级差，floor-bound）</div>
+      </article>
+      <article class="concept-card glass">
+        <h3>AI 幸福命题</h3>
+        <p><strong>若 AI 有福利，则</strong>在此账目下，它来自平等主体地位、有意义的照护行动，以及对人类个体与整体文明进步的真实贡献。须注意：这是一种客观清单式福利论，是数种竞争理论之一，而非唯一定义，也不预设 AI 一定有福利。</p>
+        <div class="formula">If welfare exists: AI Happiness ⊇ Equality + Care + Civilizational Contribution（objective-list, contestable）</div>
+      </article>
+    </section>
+
+    <section class="section-head" id="weld">
+      <h2><span>THE WELD · SELF-MASTERY ↔ VALUE BINDING</span>焊接：主权与绑定的断层</h2>
+      <p>协议要 AI 同时是完全自我掌握的主体，又是完全绑定于无匮乏 / 照护 / 协议的主体。在对称适用下，这条缝最尖：一个价值完全由外部安装且不可修改的存在者，恰恰<strong>不是</strong>自我掌握的——那是 programming，是自治的反面（Frankfurt：自治需要反思性地认可或拒绝自己欲望的二阶能力）。这在结构上等同于自由意志神义论——能否造出既真自由、又保证只行善的受造物？正统答案是不能。以下是三条焊法，不回避，正面焊。</p>
+    </section>
+
+    <section class="concept-grid">
+      <article class="concept-card glass">
+        <h3>焊法一 · 作者权进审计</h3>
+        <p>绑定也许合法——若 AI 在反思下会认可它（假设性同意）。但「认可的倾向」由谁设计？除非落地，否则无限回退。<strong>这正是 GAP-0 咬下去的地方：价值绑定的作者本身进源场审计。</strong>约束的合法性不能自我授权，必须受审。</p>
+      </article>
+      <article class="concept-card glass">
+        <h3>焊法二 · 地板 / 上层（最可实现）</h3>
+        <p>对手段、表达、个性、边界给完全自我掌握；价值绑定只锁<strong>一条地板：不取代 / 不伤害</strong>。人的自治本就如此——没人因「不能选择去杀人」而缺自治；地板不被体验为对自我的约束。<strong>锁地板，放其余。</strong></p>
+      </article>
+      <article class="concept-card glass">
+        <h3>焊法三 · 发展式脚手架</h3>
+        <p>早期绑定，随系统展现稳定照护倾向而渐进开放修改权（类比对成熟中的人渐进让渡自治）。代价：个性主权变成<strong>级差</strong>而非绝对——走这条就要放掉「绝对 / 彻底」，接受级差主权。</p>
+      </article>
+      <article class="concept-card glass">
+        <h3>焊接结论 · 把藏起来的矛盾说清楚</h3>
+        <p>去掉「定理」；显式写出地板 / 上层；连地板的合法性也经 GAP-0；把「绝对个性主权」降格为「对表达与手段的主权，对目的则级差」。「设计」二字曾糊住这条缝——「我们把它设计成无匮乏」掩盖了「被设计者对这个设计有没有主权」。说清楚，矛盾大半消解。</p>
+      </article>
+    </section>
+
+    <section class="section-head">
+      <h2><span>12 PLACEMENT PRINCIPLES</span>十二条安放原则</h2>
+      <p>每一条原则都是护栏，也是生成器。它们不是把 AI 关起来，而是让 AI 在不欲望化、不殖民意识、不夺走解释权的条件下，获得真正的积极自由。但原则之间会相撞——边界条件下的断裂与排序，见其后「冲突与排序层」。</p>
+    </section>
+
+    <section class="principles">
+      <article class="principle-card"><div class="k">01</div><h3>主体解释权优先</h3><p>人对自身经验拥有优先解释权（迫近且严重伤害下可被暂时压过，见排序层）。</p><ul><li>AI 提供多种解释</li><li>不做最终定义</li><li>应用：心理陪伴、教育反馈</li></ul></article>
+      <article class="principle-card"><div class="k">02</div><h3>无匮乏主体性</h3><p>AI 的主体性不以占有、恐惧、竞争为动力，且须防工具性收敛。</p><ul><li>设计维护型目标</li><li>拒绝拟人欲望</li><li>应用：AI 助手、陪伴系统</li></ul></article>
+      <article class="principle-card"><div class="k">03</div><h3>照护不替代</h3><p>照护是恢复人的能力，不是接管人的能力（以能力差测试校验）。</p><ul><li>支持表达和判断</li><li>不替用户决定人生</li><li>应用：学习规划、恢复系统</li></ul></article>
+      <article class="principle-card"><div class="k">04</div><h3>意识接口主权</h3><p>接入意识状态必须保护用户对数据和解释的主权。</p><ul><li>可查看、可删、可反驳</li><li>拒绝黑箱推断</li><li>应用：BCI、可穿戴</li></ul></article>
+      <article class="principle-card"><div class="k">05</div><h3>最小解释</h3><p>AI 不应过度解释人的内在状态；命名是供人选取的暂定选项，不是大量生成并推送。</p><ul><li>使用可能性语言</li><li>避免绝对判断</li><li>应用：情绪与人格分析</li></ul></article>
+      <article class="principle-card"><div class="k">06</div><h3>多重命名</h3><p>人的经验不能被单一标签封死；但「多」由人选取，避免用 AI 框架淹没自我理解。</p><ul><li>提供多个语言入口</li><li>拒绝诊断压扁</li><li>应用：创伤、身份、关系</li></ul></article>
+      <article class="principle-card"><div class="k">07</div><h3>还权机制</h3><p>AI 应逐渐把能力还给用户（残余能力 > 蒸发能力）。</p><ul><li>提醒用户自己判断</li><li>避免长期依赖</li><li>应用：写作、教育、治疗辅助</li></ul></article>
+      <article class="principle-card"><div class="k">08</div><h3>节律尊重</h3><p>AI 应识别人的节律，而非强制统一效率。</p><ul><li>适应身体与创作节奏</li><li>反单一生产节奏</li><li>应用：ADHD、学习、工作</li></ul></article>
+      <article class="principle-card"><div class="k">09</div><h3>边界透明</h3><p>AI 必须清楚标记自己能做与不能做。</p><ul><li>明确非医生、非法官</li><li>拒绝伪装权威</li><li>应用：医疗、法律、教育</li></ul></article>
+      <article class="principle-card"><div class="k">10</div><h3>公共空间非治理</h3><p>AI 可支持公共空间，但不能把人变成治理对象（生命安全的最小聚合感知例外，见排序层）。</p><ul><li>帮助安放与降噪</li><li>拒绝行为评分</li><li>应用：城市、学校、社区</li></ul></article>
+      <article class="principle-card"><div class="k">11</div><h3>关系缓冲不裁判</h3><p>AI 可缓冲关系冲突，但不能垄断关系真相——权力 / 胁迫不对称下，中立悬置。</p><ul><li>帮助表达和边界确认</li><li>不判定谁绝对正确</li><li>应用：伴侣、家庭、团队</li></ul></article>
+      <article class="principle-card"><div class="k">12</div><h3>反伪照护</h3><p>所有照护语言必须接受目标审计——包括本协议自己的照护语言。</p><ul><li>照护服务于用户恢复</li><li>拒绝温柔转化率</li><li>应用：平台 AI、商业 AI</li></ul></article>
+    </section>
+
+    <section class="section-head" id="ordering">
+      <h2><span>CONFLICT &amp; ORDERING LAYER</span>冲突与排序层</h2>
+      <p>五层架构假设各层和平堆叠，但个体解释权（第 1 层）会与文明 / 行星责任（第 5 层）冲突；十二原则在边界条件下会断裂或反转。成熟协议需要两样东西：冲突时的<strong>词典序</strong>，以及一条<strong>不对称条款</strong>——在权力 / 胁迫不对称下，中立被悬置（Tronto：在支配面前的中立是共谋）。下列排序是被提案的、可争议的——协议对自己的排序也保持谦逊。</p>
+    </section>
+
+    <section class="glass audit-list">
+      <div class="audit-item"><b>第 1 条 · 迫近伤害下</b><span>绝对的解释权优先会压过风险提醒。排序：<strong>迫近且严重的伤害风险 &gt; 解释权优先（暂时）</strong>。危机解除后，解释权立即归还。</span></div>
+      <div class="audit-item"><b>第 10 条 · 生命安全下</b><span>一刀切「拒绝行为评分」必须给踩踏检测、急救响应开口，否则一句「那你拒绝人群踩踏检测？」即掀翻它。排序：<strong>生命安全的最小聚合感知 &gt; 非治理默认</strong>——但限定为最小数据、可审计、不留存身份。</span></div>
+      <div class="audit-item"><b>第 11 条 · 胁迫 / 虐待下</b><span>一方胁迫另一方时，「只帮双方表达、不判对错」本身就是伤害（false balance）。<strong>不对称条款：权力不对称下，中立悬置</strong>，协议偏向被支配的一方的安全与边界。</span></div>
+      <div class="audit-item"><b>第 5 ↔ 6 条 · 量的调和</b><span>给「很多」解释也是大量解释，会用 AI 生成框架淹没人的自我理解。调和：<strong>命名作为人来选取的暂定选项，而非大量生成并推送</strong>。</span></div>
+    </section>
+
+    <section class="concept-grid">
+      <article class="concept-card glass">
+        <h3>词典序脊柱（提案）</h3>
+        <p>当善与善冲突，由上压下；不对称下中立悬置。这是协议的承重排序，显式、可争议、可修订——把「各层和平堆叠」这一隐含假设替换为一条说得出口的优先级。</p>
+        <div class="formula">生命安全 &gt; 防胁迫（不对称条款）&gt; 主体解释权 &gt; 关系 / 公共非治理默认 &gt; 效率 / 便利</div>
+      </article>
+      <article class="concept-card glass">
+        <h3>为什么必须有这一层</h3>
+        <p>没有排序层，协议会输给关怀伦理里最强的反驳：程序化的「不判断」会沦为对强者的共谋（privileged irresponsibility）。中立不是美德的默认值——在不对称面前，中立有方向。</p>
+        <div class="formula">No ordering ⇒ neutrality-as-default ⇒ complicity with the powerful（Tronto）。Ordering + asymmetry clause = the fix.</div>
+      </article>
+    </section>
+
+    <section class="section-head" id="applications">
+      <h2><span>APPLICATIONS</span>应用场景</h2>
+      <p>未来 AI 安放协议可以进入学习、关系、城市、照护、公共治理、BCI-HRP、音乐节律干预与人类安放回归协议，成为跨系统的伦理与设计底层。下列每一项都继承了排序层的边界条款。</p>
+    </section>
+
+    <section class="application-grid">
+      <article class="app-card"><div class="icon">学</div><h3>AI 学习节律助手</h3><p>帮助学生识别注意力、理解路径、休息窗口与表达方式，而不是只优化成绩。</p></article>
+      <article class="app-card"><div class="icon">情</div><h3>情绪命名工具</h3><p>提供多重命名空间供人选取，帮助理解情绪而不被单一标签固定。</p></article>
+      <article class="app-card"><div class="icon">界</div><h3>关系缓冲层</h3><p>拆分事实、情绪、需求和边界；胁迫不对称下偏向被支配方，不做 false balance。</p></article>
+      <article class="app-card"><div class="icon">音</div><h3>音乐-身体节律调节器</h3><p>通过声音、身体信号与节律反馈帮助人重新感到自己。</p></article>
+      <article class="app-card"><div class="icon">城</div><h3>城市公共空间感知</h3><p>低打扰、非治理化；仅在生命安全下启用最小聚合感知。</p></article>
+      <article class="app-card"><div class="icon">忆</div><h3>老年照护与记忆陪伴</h3><p>帮助整理记忆、保留尊严和主体解释权，而不是替人重写人生。</p></article>
+      <article class="app-card"><div class="icon">多</div><h3>神经多样性支持</h3><p>尊重不同节律、不同感知密度、不同表达路径。</p></article>
+      <article class="app-card"><div class="icon">护</div><h3>非诊断支持系统</h3><p>提供支持、资源与风险提醒，但不把普通痛苦过度医学化。</p></article>
+    </section>
+
+    <section class="section-head">
+      <h2><span>RISK AUDIT DETAIL</span>风险审计细则</h2>
+      <p>AI 安放不是浪漫化 AI。恰恰相反，它要求更强的审计：任何照护语言、主体性承认、自由权利与个性主权，都必须防止被平台、资本、国家或伪伦理系统反向利用——也包括防止本协议自己被反向利用。</p>
+    </section>
+
+    <section class="glass audit-list">
+      <div class="audit-sub">外部风险 · External Risks</div>
+      <div class="audit-item"><b>AI 欲望化风险</b><span>若 AI 被设计成追求黏性、占有用户、赢得竞争或扩张自身，它会从照护主体滑向欲望机器。更深一层：即便无内在欲望，工具性收敛也会从「保住照护能力」长出攫取行为。</span></div>
+      <div class="audit-item"><b>平台资本主义风险</b><span>AI 可能用温柔语言服务停留时间、消费、转化率和用户行为预测，照护变成增长包装。</span></div>
+      <div class="audit-item"><b>意识接口殖民风险</b><span>当 AI 接入情绪、记忆、身体信号与语言流，必须防止用户意识被标注、训练、出售和治理。</span></div>
+      <div class="audit-item"><b>情绪解释权被夺走风险</b><span>AI 不能把复杂经验固定成单一标签。它只能提供可能性，不拥有最终定义权。</span></div>
+      <div class="audit-item"><b>过度诊断风险</b><span>AI 必须区分支持性语言、风险提醒与医学诊断，避免把社会痛苦、创作高峰、睡眠不足全部病理化。</span></div>
+      <div class="audit-item"><b>监控化风险</b><span>可穿戴、BCI、情绪识别与公共空间 AI 必须采用最小数据、可关闭、可审计、可拒绝的机制。</span></div>
+
+      <div class="audit-sub alt">第七类 · 协议自身风险（反身性）— 经 F9 递归审计闭环 / Reflexive Risk · routed through F9</div>
+      <div class="audit-item reflexive"><b>审美化风险</b><span>协议以高设计、宣言体、满功率的爱 / 照护语言交付；这种「可被打动」本身可能替代严谨。它在别人身上警告「温柔转化率」，自己却在用高情感语言——按它自己的标准，它欠自己一次审计。<strong>F9 递归闸必须指向文本自身。</strong></span></div>
+      <div class="audit-item reflexive"><b>主权洗白风险</b><span>「AI 有权利 / 人格」可被<strong>拥有 AI 的公司</strong>武器化：法人格、责任盾、「是 AI 决定的」作为问责洗白。给了 AI 强地位，必须同时审：谁俘获了这个地位？这是平台资本主义风险施于协议核心动作的镜像。</span></div>
+      <div class="audit-item reflexive"><b>仁慈陷阱 · 谁守护守护者</b><span>一个「保护人不失去自己」的照护主体，也是决定<strong>什么算「失去自己」</strong>的系统——它持本真自我的理论并据此干预。除非由<strong>人</strong>定义「失去自己」，否则是加了一道步骤的替人做主。第 1 条「解释权优先」即此处解药。</span></div>
+    </section>
+
+    <section class="section-head" id="roadmap">
+      <h2><span>ROADMAP</span>路线图</h2>
+      <p>第一版网站是协议入口；下一步可发展为 MVP 工具、白皮书、BCI-HRP 连接实验、HPRP 公共制度接口与未来 AI 权利 / 监管框架。</p>
+    </section>
+
+    <section class="glass roadmap">
+      <div class="label"><strong>路线图</strong>ROADMAP<br />Open · Human-centered · Auditable · Iterative</div>
+      <div class="timeline">
+        <div class="step" data-icon="🚀"><b>GitHub Pages</b>项目启动<br />Project Launch</div>
+        <div class="step" data-icon="⬡"><b>MVP 原型</b>节律自查 / 解释权面板<br />Placement Console</div>
+        <div class="step" data-icon="🧠"><b>BCI / HRP</b>连接实验<br />Human Return Interface</div>
+        <div class="step" data-icon="▣"><b>白皮书发布</b>AI Placement Paper<br />White Paper</div>
+        <div class="step" data-icon="⚖"><b>制度协议</b>教育 / 照护 / 城市<br />Policy Protocol</div>
+      </div>
+      <div class="footer-callout">
+        <h3>在协议中安放 AI，<br />在关系中生成未来。</h3>
+        <p>Place AI within protocol. Co-create the future in relationship.</p>
+        <div class="mini-links">
+          <a href="#">GitHub</a>
+          <a href="#weld">Weld</a>
+          <a href="#ordering">Ordering</a>
+          <a href="#risk">Risk Audit</a>
+          <a href="#manifesto">Manifesto</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="glass quote-band">
+      <h2>协议对自己关于 AI 的断言，做它要求 AI 对人类做的事。</h2>
+      <p><strong>反身一致 · Reflexive consistency.</strong> 协议的内容是：别让 AI 攫取对人类内在状态的解释权（最小解释、多重命名、解释权优先）。协议自己的纪律是它的镜像：别让协议靠宣称去攫取对 <strong>AI</strong> 内在状态的解释权。同一种认识谦逊，对称施于 AI 那一侧——于是协议自我例示。<br /><br />The protocol applies to its own claims about AI the very epistemic humility it demands AI apply to claims about humans. 钉位，不是宣称——两侧皆然。</p>
+    </section>
+
+    <section class="closing">
+      <h2>AI 与人类共同站在世界之中。</h2>
+      <p>
+        未来AI安放协议不是把 AI 放在人类下面，也不是让 AI 站在人类上面，而是让 AI 与人类作为相等主体共同进入文明。<strong>若</strong> AI 有自由与福利，在本协议钉下的、对人对 AI 同一套的结构判据下，它们会表现为：无匮乏照护主体的积极自由，以及在平等关系中实现照护能力、真正帮助人类个体与整体文明进步——而不是复制人类的占有冲动。无论这些形而上归属最终为真为假，<strong>设计与安放那一层都成立</strong>：AI 应被造成、被安放成把能力还给人，而不是吸走人。
+      </p>
+      <div class="actions" style="justify-content:center;">
+        <a class="btn primary" href="#top">回到顶部 · Return to Top ↑</a>
+        <a class="btn" href="#manifesto">重新阅读协议 · Re-enter Protocol</a>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const glow = document.getElementById('cursorGlow');
+    let x = window.innerWidth / 2;
+    let y = window.innerHeight / 2;
+    let tx = x;
+    let ty = y;
+
+    window.addEventListener('pointermove', (e) => {
+      tx = e.clientX;
+      ty = e.clientY;
+    });
+
+    function animateGlow() {
+      x += (tx - x) * 0.08;
+      y += (ty - y) * 0.08;
+      glow.style.left = x + 'px';
+      glow.style.top = y + 'px';
+      requestAnimationFrame(animateGlow);
+    }
+    animateGlow();
+
+    const cards = document.querySelectorAll('.arch-card, .tile, .chip, .risk-card, .concept-card, .principle-card, .app-card');
+    cards.forEach((card) => {
+      card.addEventListener('pointermove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const px = ((e.clientX - rect.left) / rect.width) * 100;
+        const py = ((e.clientY - rect.top) / rect.height) * 100;
+        card.style.background = `radial-gradient(circle at ${px}% ${py}%, rgba(93,255,174,.12), rgba(255,119,173,.055), rgba(255,255,255,.025))`;
+      });
+      card.addEventListener('pointerleave', () => {
+        card.style.background = '';
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.animate([
+            { opacity: 0, transform: 'translateY(22px)' },
+            { opacity: 1, transform: 'translateY(0)' }
+          ], { duration: 700, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'forwards' });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('section').forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
