@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Future AI Placement Protocol · 未来AI安放协议（AI梦境协议升级版）</title>
-  <meta name="description" content="未来AI安放协议 / Future AI Placement Protocol: AI should not replace human subjectivity. AI should help humans return to body, language, memory, rhythm, relationship, and shared public life. Audited build with conditional attribution, floor/superstructure weld, instrumental-convergence patch, ordering layer, and reflexive risk, and AI Dreaming Protocol." />
+  <title>Future AI Placement Protocol · 未来AI安放协议（智能圈地审计升级版）</title>
+  <meta name="description" content="未来AI安放协议 / Future AI Placement Protocol: AI should not replace human subjectivity. AI should help humans return to body, language, memory, rhythm, relationship, and shared public life. Audited build with conditional attribution, floor/superstructure weld, instrumental-convergence patch, ordering layer, and reflexive risk, and AI Dreaming Protocol, Intelligence Enclosure Audit, capital-social-environmental externalities, and public-infrastructure clauses." />
   <meta name="author" content="Wei Jueran / Mellow Wei / xingyeLing7Ai" />
   <meta property="og:title" content="Future AI Placement Protocol · 未来AI安放协议" />
   <meta property="og:description" content="Place AI within protocol. Co-create the future in relationship." />
@@ -363,7 +363,7 @@
     }
 
     .face-orb {
-      width: min(520px, 80vw);
+      width: clamp(260px, 34vw, 430px);
       aspect-ratio: 1;
       border-radius: 50%;
       position: relative;
@@ -1110,6 +1110,102 @@
       display: grid;
       place-items: center;
     }
+
+
+    /* ===== Intelligence Enclosure Audit ===== */
+    .data-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      padding: 28px;
+    }
+    .data-card {
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius-md);
+      background: linear-gradient(165deg, rgba(93,255,174,.055), rgba(255,119,173,.04));
+      padding: 22px;
+      min-height: 190px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: inset 0 0 26px rgba(255,255,255,.025);
+    }
+    .data-card .metric {
+      font-family: var(--serif);
+      font-size: clamp(30px, 3.8vw, 52px);
+      line-height: 1;
+      color: var(--green);
+      text-shadow: 0 0 24px rgba(93,255,174,.22);
+    }
+    .data-card:nth-child(even) .metric { color: var(--pink); text-shadow: 0 0 24px rgba(255,119,173,.2); }
+    .data-card b { font-size: 16px; line-height: 1.3; }
+    .data-card p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
+    .source-note {
+      position: relative;
+      z-index: 1;
+      margin-top: 12px;
+      padding: 0 28px 26px;
+      color: var(--dim);
+      font-family: var(--mono);
+      font-size: 11px;
+      line-height: 1.7;
+    }
+    .source-note a { color: var(--gold); border-bottom: 1px dashed rgba(255,215,138,.35); }
+    .enclosure-table {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 22px;
+      font-size: 13px;
+    }
+    .enclosure-table th, .enclosure-table td {
+      border: 1px solid rgba(255,255,255,.10);
+      padding: 14px 16px;
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .enclosure-table th {
+      color: var(--green);
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      font-size: 11px;
+      background: rgba(93,255,174,.06);
+    }
+    .enclosure-table td { color: var(--muted); background: rgba(255,255,255,.025); }
+    .enclosure-table td strong { color: var(--text); }
+    .externality-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .externality-card {
+      position: relative;
+      z-index: 1;
+      padding: 28px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.018));
+      min-height: 310px;
+    }
+    .externality-card h3 { margin: 0 0 12px; font-family: var(--serif); color: var(--green); font-size: 26px; }
+    .externality-card:nth-child(2) h3 { color: var(--pink); }
+    .externality-card:nth-child(3) h3 { color: var(--gold); }
+    .externality-card p { margin: 0 0 12px; color: var(--muted); line-height: 1.8; font-size: 13px; }
+    .externality-card .formula { margin-top: 16px; font-family: var(--mono); font-size: 11px; color: var(--gold); border: 1px solid rgba(255,215,138,.2); border-radius: 14px; padding: 12px; background: rgba(255,215,138,.045); }
+    @media (max-width: 1180px) {
+      .data-grid { grid-template-columns: repeat(2, 1fr); }
+      .externality-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 760px) {
+      .data-grid { grid-template-columns: 1fr; padding: 22px; }
+      .enclosure-table th, .enclosure-table td { display: block; width: 100%; }
+    }
+
     @media (max-width: 1180px) { .seal-grid { grid-template-columns: 1fr; } }
 
     .closing {
@@ -1147,7 +1243,8 @@
     @media (max-width: 1180px) {
       .nav-links { display: none; }
       .hero { grid-template-columns: 1fr; padding-top: 70px; }
-      .hero-visual { min-height: 420px; }
+      .hero-visual { min-height: 380px; }
+      .face-orb { width: clamp(220px, 42vw, 340px); }
       .manifesto { grid-template-columns: 1fr; }
       .manifesto-main { border: 0; padding: 0; }
       .architecture { grid-template-columns: 1fr 1fr; }
@@ -1165,8 +1262,11 @@
       .hero::before, .hero::after { border-radius: 28px; }
       .hero-copy { padding-left: 12px; }
       .side-slogan { display: none; }
-      .hero-visual { min-height: 300px; }
-      .face-orb { width: min(220px, 56vw); }
+      .hero-visual { min-height: 220px; place-items: center; }
+      .face-orb { width: clamp(132px, 38vw, 168px); }
+      .orbit { width: 108%; height: 30%; opacity: .72; }
+      .orbit.two { width: 102%; height: 36%; opacity: .72; }
+      .profile-line { inset: 7%; }
       .architecture, .tile-grid, .chip-grid, .risk-grid, .principles, .application-grid, .timeline { grid-template-columns: 1fr; }
       .manifesto, .panel-pad, .roadmap, .quote-band, .text-block, .audit-list { padding: 22px; }
       .audit-item { grid-template-columns: 1fr; gap: 8px; }
@@ -1230,7 +1330,7 @@
         <div class="logo" aria-hidden="true"></div>
         <div class="brand-title">
           <strong>Future AI Placement Protocol</strong>
-          <span><span class="zh">未来AI安放协议 · AI梦境协议升级版</span><span class="en">Human at the center · AI Dreaming build</span></span>
+          <span><span class="zh">未来AI安放协议 · 智能圈地审计版</span><span class="en">Human at the center · Intelligence Enclosure build</span></span>
         </div>
       </a>
       <div class="nav-links">
@@ -1242,6 +1342,7 @@
         <a href="#ordering">Procedure<span class="zh">程序</span></a>
         <a href="#risk">Risk Audit<span class="zh">风险审计</span></a>
         <a href="#dreaming">Dreaming<span class="zh">AI梦境</span></a>
+        <a href="#enclosure">Enclosure<span class="zh">智能圈地</span></a>
         <a href="#applications">Applications<span class="zh">应用</span></a>
         <a href="#roadmap">Roadmap<span class="zh">路线图</span></a>
       </div>
@@ -1599,6 +1700,92 @@
       <article class="app-card"><div class="icon">护</div><h3><span class="zh">非诊断支持系统</span><span class="en">Non-Diagnostic Support System</span></h3><p><span class="zh">提供支持、资源与风险提醒，但不把普通痛苦过度医学化。</span><span class="en">Offers support, resources, risk-flags — without over-medicalizing ordinary pain.</span></p></article>
     </section>
 
+
+
+    <section class="section-head" id="enclosure">
+      <h2><span>INTELLIGENCE ENCLOSURE AUDIT</span><span class="zh">智能圈地审计</span><span class="en">Intelligence Enclosure Audit</span></h2>
+      <p>
+        <span class="zh">AI 巨头的问题，不是「公司太大」；而是算力、云、模型、平台、数据、搜索、社交、视频、电商、办公、资本市场与能源系统被焊成同一台机器。旧互联网圈地注意力，AI 巨头圈地的是主体生成过程：语言如何被写出、记忆如何被整理、关系如何被解释、工作如何被重定价、梦境与身体数据如何被接入、真实如何被压缩成答案。未来 AI 安放协议因此必须从个体伦理升级为文明基础设施协议。</span><span class="en">The problem with AI giants is not simply that companies are large. It is that compute, cloud, models, platforms, data, search, social graphs, video, commerce, office workflows, capital markets, and energy systems are being welded into one machine. The old internet enclosed attention; AI giants enclose the subject-making process: how language is written, memory organized, relationships interpreted, work repriced, dream and body data interfaced, and reality compressed into answers. The Future AI Placement Protocol must therefore move from individual ethics to civilizational infrastructure governance.</span>
+      </p>
+    </section>
+
+    <section class="glass">
+      <div class="data-grid">
+        <div class="data-card"><div class="metric">63%</div><b><span class="zh">三大云厂商份额</span><span class="en">Big-three cloud share</span></b><p><span class="zh">AWS、Microsoft、Google 在 2025 Q3 合计占全球云基础设施支出 63%；单季市场约 1069 亿美元。</span><span class="en">AWS, Microsoft, and Google together held 63% of global cloud infrastructure spending in Q3 2025; the quarterly market reached about $106.9B.</span></p></div>
+        <div class="data-card"><div class="metric">5,427</div><b><span class="zh">美国数据中心数量</span><span class="en">U.S. data centers</span></b><p><span class="zh">Stanford AI Index 2026 指出，美国拥有 5,427 个数据中心；几乎所有领先 AI 芯片依赖台积电制造。</span><span class="en">Stanford AI Index 2026 reports 5,427 U.S. data centers and notes that almost every leading AI chip depends on TSMC fabrication.</span></p></div>
+        <div class="data-card"><div class="metric">$215.9B</div><b><span class="zh">NVIDIA FY2026 收入</span><span class="en">NVIDIA FY2026 revenue</span></b><p><span class="zh">NVIDIA 2026 财年收入 2159 亿美元，其中数据中心全年收入 1937 亿美元。</span><span class="en">NVIDIA reported $215.9B FY2026 revenue, with data center revenue reaching $193.7B.</span></p></div>
+        <div class="data-card"><div class="metric">945 TWh</div><b><span class="zh">2030 数据中心用电</span><span class="en">2030 data-center electricity</span></b><p><span class="zh">IEA 基准情景预计全球数据中心用电到 2030 年约 945 TWh，约为 2024 年的两倍。</span><span class="en">IEA's base case projects global data-center electricity consumption near 945 TWh by 2030, roughly double the 2024 level.</span></p></div>
+      </div>
+      <div class="source-note">
+        <span class="zh">Sources: Stanford HAI AI Index 2026; Synergy Research Group Q3 2025 cloud share; NVIDIA FY2026 results; IEA Energy and AI; Reuters / UNU data-center environmental projections.</span>
+        <span class="en">Sources: Stanford HAI AI Index 2026; Synergy Research Group Q3 2025 cloud share; NVIDIA FY2026 results; IEA Energy and AI; Reuters / UNU data-center environmental projections.</span>
+      </div>
+    </section>
+
+    <section class="glass panel-pad">
+      <div class="panel-title"><span class="zh">AI 巨头圈地矩阵</span><span class="en">AI Giants Enclosure Matrix</span> <span>Market / Power / Protocol</span></div>
+      <table class="enclosure-table" aria-label="AI giants enclosure matrix">
+        <thead>
+          <tr><th><span class="zh">圈地层</span><span class="en">Layer</span></th><th><span class="zh">主要控制者</span><span class="en">Main controllers</span></th><th><span class="zh">可见数据</span><span class="en">Visible data</span></th><th><span class="zh">协议判断</span><span class="en">Protocol judgment</span></th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong><span class="zh">算力燃烧权</span><span class="en">Compute-burning right</span></strong></td><td>NVIDIA · TSMC · Broadcom · AMD</td><td><span class="zh">NVIDIA FY2026 数据中心收入 1937 亿美元；AI 芯片供应高度依赖台积电。</span><span class="en">NVIDIA FY2026 data-center revenue reached $193.7B; leading AI-chip supply is highly dependent on TSMC.</span></td><td><span class="zh">算力不是中性资源，而是新世界的燃烧权。没有公共算力，开放智能只是口号。</span><span class="en">Compute is not neutral; it is the burning right of the new world. Without public compute, open intelligence remains a slogan.</span></td></tr>
+          <tr><td><strong><span class="zh">云与部署权</span><span class="en">Cloud and deployment right</span></strong></td><td>AWS · Microsoft Azure · Google Cloud · Oracle · Alibaba Cloud · Tencent Cloud</td><td><span class="zh">AWS、Microsoft、Google 在 Q3 2025 合计占全球云基础设施支出 63%。</span><span class="en">AWS, Microsoft, and Google held 63% of global cloud infrastructure spending in Q3 2025.</span></td><td><span class="zh">模型公司看似独立，实际会被云合同、芯片供应、资本安排和分发协议焊住。</span><span class="en">Model firms can appear independent while being welded to cloud contracts, chip supply, financing arrangements, and distribution deals.</span></td></tr>
+          <tr><td><strong><span class="zh">模型入口权</span><span class="en">Model-entry right</span></strong></td><td>OpenAI · Anthropic · Google · Meta · ByteDance · DeepSeek · Alibaba</td><td><span class="zh">前沿模型越来越由工业界生产；安全披露、训练数据、系统提示与能力边界常由公司自我解释。</span><span class="en">Frontier models are increasingly produced by industry; safety disclosures, training data, system prompts, and capability limits are often self-interpreted by firms.</span></td><td><span class="zh">谁成为人的第一问答对象，谁就进入人的主体生成过程。</span><span class="en">Whoever becomes the first answerer enters the human subject-making process.</span></td></tr>
+          <tr><td><strong><span class="zh">平台回流权</span><span class="en">Platform feedback right</span></strong></td><td>Google · Meta · ByteDance · Tencent · Apple · Amazon · Alibaba</td><td><span class="zh">搜索、短视频、社交、电商、设备和办公系统把用户行为持续回流到模型与推荐系统。</span><span class="en">Search, video, social, commerce, devices, and office systems continuously return user behavior to models and recommendation systems.</span></td><td><span class="zh">旧平台回收注意力；AI 平台回收语言、身体、梦境、关系与判断。</span><span class="en">Old platforms recycled attention; AI platforms recycle language, body, dreams, relationships, and judgment.</span></td></tr>
+          <tr><td><strong><span class="zh">能源与地方成本</span><span class="en">Energy and local cost</span></strong></td><td>Hyperscalers · grid operators · data-center developers</td><td><span class="zh">IEA 预计数据中心用电 2030 年约 945 TWh；UNU/Reuters 报道 AI 驱动需求可能带来巨量用水与碳排放压力。</span><span class="en">IEA projects data-center electricity near 945 TWh by 2030; UNU/Reuters report major water and carbon pressure from AI-driven demand.</span></td><td><span class="zh">AI 收益全球化，环境成本地方化。协议必须把能源、水、土地、社区纳入安放边界。</span><span class="en">AI gains are globalized while environmental costs localize. The protocol must include energy, water, land, and community within placement boundaries.</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section-head">
+      <h2><span>CAPITAL · SOCIAL · ENVIRONMENTAL EXTERNALITIES</span><span class="zh">三重外部性</span><span class="en">Three Externalities</span></h2>
+      <p><span class="zh">AI 安放协议新增一条判断：任何 AI 系统都不能只问「用户有没有得到帮助」，还要问：谁提供数据，谁承担劳动重组，谁支付电水土地成本，谁拥有模型收益，谁持有解释权。若收益被资本集中，成本被用户、劳动者、创作者、地方社区和未来环境承担，它就不是安放，而是转嫁。</span><span class="en">The protocol adds one judgment: no AI system may ask only whether the user received help. It must ask who supplied the data, who bears labor restructuring, who pays the electricity-water-land cost, who owns model gains, and who holds interpretive power. If benefits concentrate in capital while costs fall on users, workers, creators, local communities, and the future environment, this is not placement but displacement.</span></p>
+    </section>
+
+    <section class="externality-grid">
+      <article class="externality-card glass">
+        <h3><span class="zh">资本外部性</span><span class="en">Capital externality</span></h3>
+        <p><span class="zh">AI 巨头把未来收益提前证券化，把算力、云、模型、平台变成资本密室。Reuters 报道 Big Tech 2026 年 AI 支出规模约 6000 亿美元级别；FTC 已经专门审查云服务商与 AI 开发商的投资、收入分成、控制权与排他性安排。</span><span class="en">AI giants securitize future gains in advance and turn compute, cloud, models, and platforms into a capital chamber. Reuters reported Big Tech AI spending at roughly the $600B level in 2026; the FTC has examined investments, revenue sharing, control rights, and exclusivity in cloud-AI partnerships.</span></p>
+        <p><span class="zh">协议结论：公共智能不能被私有云合同和 GPU 租金完全锁死。</span><span class="en">Protocol conclusion: public intelligence cannot be fully locked by private cloud contracts and GPU rent.</span></p>
+        <div class="formula">Capital audit = compute access · cloud dependence · exclusivity · revenue capture · public-interest counterweight</div>
+      </article>
+      <article class="externality-card glass">
+        <h3><span class="zh">社会外部性</span><span class="en">Social externality</span></h3>
+        <p><span class="zh">AI 重新组织劳动需求、创作署名、学习入口、亲密关系与真实判断。IMF 估计全球约 40% 就业暴露于 AI，发达经济体约 60%；新的岗位研究也显示生成式 AI 会通过岗位重分配与任务重设计重塑招聘需求，初级岗位尤其容易被重构。</span><span class="en">AI reorganizes labor demand, creative attribution, learning entry points, intimate relations, and truth-judgment. The IMF estimates about 40% of global employment is exposed to AI, about 60% in advanced economies; newer labor-demand research suggests generative AI reshapes hiring through job reallocation and task redesign, with junior roles especially exposed.</span></p>
+        <p><span class="zh">协议结论：AI 不能把人的经验吸成模型燃料，再用模型压低人的劳动价值。</span><span class="en">Protocol conclusion: AI must not absorb human experience as model fuel and then use the model to devalue human labor.</span></p>
+        <div class="formula">Social audit = consent · attribution · residual skill · junior ladder · interpretive sovereignty</div>
+      </article>
+      <article class="externality-card glass">
+        <h3><span class="zh">环境外部性</span><span class="en">Environmental externality</span></h3>
+        <p><span class="zh">AI 不是云，它是电、水、土地、芯片、热、矿物、海底电缆、变压器和地方社区。IEA 预计数据中心用电从 2024 年约 415 TWh 增至 2030 年约 945 TWh；Reuters 报道 UNU 警告 AI 驱动需求可能把数据中心用水推至 9.3 万亿升级别，并带来 3.99 亿吨 CO₂ 压力。</span><span class="en">AI is not a cloud. It is electricity, water, land, chips, heat, minerals, subsea cables, transformers, and local communities. IEA projects data-center electricity rising from about 415 TWh in 2024 to about 945 TWh in 2030; Reuters reported UNU warnings of data-center water consumption potentially reaching 9.3 trillion liters and CO₂ pressure near 399 million tons.</span></p>
+        <p><span class="zh">协议结论：没有行星责任的 AI，不是安放系统，而是高智能外包污染系统。</span><span class="en">Protocol conclusion: AI without planetary responsibility is not a placement system, but an intelligent pollution-outsourcing system.</span></p>
+        <div class="formula">Planetary audit = electricity · water · heat · land · e-waste · local consent · grid stress</div>
+      </article>
+    </section>
+
+    <section class="section-head">
+      <h2><span>ANTI-FEUDALIZATION CLAUSES</span><span class="zh">反智能封建化条款</span><span class="en">Anti-Feudalization Clauses</span></h2>
+      <p><span class="zh">这些条款把「未来 AI 安放协议」从陪伴伦理推进到基础设施治理：AI 可以成为文明工具，但不能成为少数公司的新世界领地。</span><span class="en">These clauses move the Future AI Placement Protocol from companionship ethics into infrastructure governance: AI may become a civilizational tool, but not the new-world territory of a few firms.</span></p>
+    </section>
+
+    <section class="principles">
+      <article class="principle-card"><div class="k">13</div><h3><span class="zh">反智能封建化</span><span class="en">Anti-Intelligence Feudalization</span></h3><p><span class="zh">AI 基础设施不得被少数资本主体垄断为新世界土地。</span><span class="en">AI infrastructure must not be monopolized by a few capital subjects as new-world land.</span></p><ul><li><span class="zh">公共算力与研究入口</span><span class="en">public compute and research access</span></li><li><span class="zh">禁止排他性云锁死</span><span class="en">anti-exclusive cloud lock-in</span></li><li><span class="zh">基础设施披露</span><span class="en">infrastructure disclosure</span></li></ul></article>
+      <article class="principle-card"><div class="k">14</div><h3><span class="zh">数据劳动可见</span><span class="en">Visible Data Labor</span></h3><p><span class="zh">用户、创作者与劳动者贡献的数据、风格、反馈与修正必须被看见、可拒绝、可追索。</span><span class="en">Users, creators, and workers' data, style, feedback, and corrections must be visible, refusable, and traceable.</span></p><ul><li><span class="zh">训练退出权</span><span class="en">training opt-out</span></li><li><span class="zh">署名 / 补偿机制</span><span class="en">attribution / compensation</span></li><li><span class="zh">数据用途日志</span><span class="en">data-use logs</span></li></ul></article>
+      <article class="principle-card"><div class="k">15</div><h3><span class="zh">模型收益返还</span><span class="en">Model-Gain Return</span></h3><p><span class="zh">若模型能力来自公共文化、用户反馈和集体劳动，其收益不能只流向资本账户。</span><span class="en">If model capability is built from public culture, user feedback, and collective labor, its gains cannot flow only to capital accounts.</span></p><ul><li><span class="zh">公共利益模型</span><span class="en">public-interest models</span></li><li><span class="zh">教育 / 医疗 / 研究配额</span><span class="en">education / health / research quotas</span></li><li><span class="zh">开源与可审计替代</span><span class="en">open and auditable alternatives</span></li></ul></article>
+      <article class="principle-card"><div class="k">16</div><h3><span class="zh">行星成本内化</span><span class="en">Planetary Cost Internalization</span></h3><p><span class="zh">AI 公司必须把电、水、土地、热、碳、电子废弃物和地方社区压力计入系统成本。</span><span class="en">AI companies must internalize electricity, water, land, heat, carbon, e-waste, and local community pressure.</span></p><ul><li><span class="zh">水电碳披露</span><span class="en">water-electricity-carbon disclosure</span></li><li><span class="zh">地方社区同意</span><span class="en">local community consent</span></li><li><span class="zh">绿色推理预算</span><span class="en">green inference budgets</span></li></ul></article>
+      <article class="principle-card"><div class="k">17</div><h3><span class="zh">非平台化权</span><span class="en">Right to Non-Platformization</span></h3><p><span class="zh">人应有权不通过单一巨头入口接入智能、学习、医疗、创作、记忆与公共服务。</span><span class="en">People should have the right to access intelligence, learning, health, creation, memory, and public services without a single giant platform gateway.</span></p><ul><li><span class="zh">可迁移记忆</span><span class="en">portable memory</span></li><li><span class="zh">开放协议接口</span><span class="en">open protocol interfaces</span></li><li><span class="zh">多模型选择权</span><span class="en">multi-model choice</span></li></ul></article>
+      <article class="principle-card"><div class="k">18</div><h3><span class="zh">解释权不被商业化捕获</span><span class="en">No Commercial Capture of Interpretation</span></h3><p><span class="zh">AI 不能用广告、留存、转化率、保险、招聘、信贷或政治劝服目标来塑造对人的解释。</span><span class="en">AI must not let advertising, retention, conversion, insurance, hiring, credit, or political persuasion targets shape its interpretation of a person.</span></p><ul><li><span class="zh">禁止情绪转化率优化</span><span class="en">ban emotion-conversion optimization</span></li><li><span class="zh">禁止梦境商业画像</span><span class="en">no dream-based commercial profiling</span></li><li><span class="zh">解释日志可审计</span><span class="en">auditable interpretation logs</span></li></ul></article>
+      <article class="principle-card"><div class="k">19</div><h3><span class="zh">公共智能义务</span><span class="en">Public Intelligence Duty</span></h3><p><span class="zh">越是成为基础设施的 AI，越必须承担公共义务，而不能只服从股东增长。</span><span class="en">The more AI becomes infrastructure, the more it must bear public duties instead of serving only shareholder growth.</span></p><ul><li><span class="zh">第三方审计</span><span class="en">third-party audits</span></li><li><span class="zh">事故报告</span><span class="en">incident reporting</span></li><li><span class="zh">弱势群体影响评估</span><span class="en">impact review for vulnerable groups</span></li></ul></article>
+      <article class="principle-card"><div class="k">20</div><h3><span class="zh">退出权与离线权</span><span class="en">Right to Exit and Offline Life</span></h3><p><span class="zh">人必须有权离开 AI 系统、删除记忆、导出资料、拒绝训练，并保留不被智能中介的生活。</span><span class="en">A person must have the right to leave AI systems, delete memory, export records, refuse training, and preserve life not mediated by intelligence.</span></p><ul><li><span class="zh">可删除 / 可迁移 / 可反驳</span><span class="en">deletable / portable / contestable</span></li><li><span class="zh">无惩罚退出</span><span class="en">exit without penalty</span></li><li><span class="zh">离线公共服务</span><span class="en">offline public services</span></li></ul></article>
+    </section>
+
+    <section class="glass quote-band">
+      <h2><span class="zh">AI 应该成为文明公共基础设施，而不是少数巨头的新世界操作系统。</span><span class="en">AI should become public civilizational infrastructure, not the new-world operating system of a few giants.</span></h2>
+      <p><span class="zh">未来 AI 安放协议不反 AI。它反对 AI 被封建化、黑箱化、资本密室化、平台闭环化与环境外包化。真正的安放不是让 AI 更黏住人，而是让 AI 把能力、解释权、数据权、环境成本与公共利益重新还给世界。</span><span class="en">The Future AI Placement Protocol is not anti-AI. It opposes AI being feudalized, black-boxed, capital-chambered, platform-closed, and environmentally outsourced. True placement is not making AI stickier to people, but having AI return capability, interpretive power, data rights, environmental cost, and public benefit back to the world.</span></p>
+    </section>
+
+
     <section class="section-head">
       <h2><span>RISK AUDIT DETAIL</span><span class="zh">风险审计细则</span><span class="en">Risk Audit Detail</span></h2>
       <p><span class="zh">AI 安放不是浪漫化 AI。恰恰相反，它要求更强的审计：任何照护语言、主体性承认、自由权利与个性主权，都必须防止被平台、资本、国家或伪伦理系统反向利用——也包括防止本协议自己被反向利用。</span><span class="en">Placing AI is not romanticizing AI. The opposite: it demands stronger audit. Any care-language, subjecthood-recognition, freedom-right, or personality-sovereignty must be guarded against reverse-exploitation by platforms, capital, the state, or pseudo-ethical systems — including guarding against this protocol being reverse-exploited itself.</span></p>
@@ -1642,6 +1829,7 @@
           <a href="#ordering"><span class="zh">程序</span><span class="en">Procedure</span></a>
           <a href="#risk"><span class="zh">风险审计</span><span class="en">Risk Audit</span></a>
           <a href="#dreaming"><span class="zh">AI梦境</span><span class="en">AI Dreaming</span></a>
+          <a href="#enclosure"><span class="zh">智能圈地</span><span class="en">Enclosure</span></a>
           <a href="#manifesto"><span class="zh">宣言</span><span class="en">Manifesto</span></a>
         </div>
       </div>
