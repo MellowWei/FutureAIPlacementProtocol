@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Future AI Placement Protocol · 未来AI安放协议（智能圈地审计升级版）</title>
-  <meta name="description" content="未来AI安放协议 / Future AI Placement Protocol: AI should not replace human subjectivity. AI should help humans return to body, language, memory, rhythm, relationship, and shared public life. Audited build with conditional attribution, floor/superstructure weld, instrumental-convergence patch, ordering layer, and reflexive risk, and AI Dreaming Protocol, Intelligence Enclosure Audit, capital-social-environmental externalities, and public-infrastructure clauses." />
+  <title>Future AI Placement Protocol · 未来AI安放协议 V4（社会器官 · 人类八权 · 隐私墙升级版）</title>
+  <meta name="description" content="未来AI安放协议 / Future AI Placement Protocol V4: AI should not replace human subjectivity or use humans without boundaries. This build adds social organs audit, human rights before AI, privacy wall, anti-exploitation audit, agent authorization, biosignal non-judgment, reality-sensing labor clauses, and personalized persuasion boundaries." />
   <meta name="author" content="Wei Jueran / Mellow Wei / xingyeLing7Ai" />
   <meta property="og:title" content="Future AI Placement Protocol · 未来AI安放协议" />
-  <meta property="og:description" content="Place AI within protocol. Co-create the future in relationship." />
+  <meta property="og:description" content="Place AI within protocol. Protect human rights, privacy walls, and interpretive sovereignty." />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#07110f" />
 
@@ -1240,6 +1240,115 @@
       mix-blend-mode: screen;
     }
 
+
+
+    /* ===== V4 Social Organs / Human Rights / Privacy Wall ===== */
+    .rights-grid, .organ-grid, .wall-grid, .protocol-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      padding: 28px;
+    }
+    .organ-grid { grid-template-columns: repeat(5, 1fr); }
+    .wall-grid { grid-template-columns: repeat(4, 1fr); }
+    .protocol-grid { grid-template-columns: repeat(4, 1fr); }
+    .right-card, .organ-card, .wall-card, .protocol-card {
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius-md);
+      background: linear-gradient(160deg, rgba(93,255,174,.055), rgba(255,119,173,.04));
+      padding: 22px;
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: inset 0 0 26px rgba(255,255,255,.025);
+    }
+    .right-card .k, .organ-card .k, .wall-card .k, .protocol-card .k {
+      font-family: var(--mono);
+      color: var(--green);
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .right-card:nth-child(even) .k, .organ-card:nth-child(even) .k, .wall-card:nth-child(even) .k, .protocol-card:nth-child(even) .k { color: var(--pink); }
+    .right-card h3, .organ-card h3, .wall-card h3, .protocol-card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.25;
+      color: var(--text);
+    }
+    .right-card p, .organ-card p, .wall-card p, .protocol-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.72;
+    }
+    .right-card .formula, .organ-card .formula, .wall-card .formula, .protocol-card .formula {
+      margin-top: auto;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--gold);
+      border: 1px solid rgba(255,215,138,.18);
+      background: rgba(255,215,138,.04);
+      border-radius: 12px;
+      padding: 10px;
+      line-height: 1.55;
+    }
+    .rights-banner {
+      position: relative;
+      z-index: 1;
+      margin: 0 28px 28px;
+      padding: 22px 24px;
+      border-radius: 22px;
+      border: 1px solid rgba(93,255,174,.25);
+      background: linear-gradient(135deg, rgba(93,255,174,.09), rgba(255,119,173,.05));
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .rights-banner strong { color: var(--text); }
+    .exploitation-table {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 22px;
+      font-size: 13px;
+    }
+    .exploitation-table th, .exploitation-table td {
+      border: 1px solid rgba(255,255,255,.10);
+      padding: 14px 16px;
+      vertical-align: top;
+      line-height: 1.65;
+    }
+    .exploitation-table th {
+      color: var(--green);
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      font-size: 11px;
+      background: rgba(93,255,174,.06);
+    }
+    .exploitation-table td { color: var(--muted); background: rgba(255,255,255,.025); }
+    .exploitation-table td strong { color: var(--text); }
+    .v4-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(255,215,138,.25);
+      border-radius: 999px;
+      padding: 6px 12px;
+      background: rgba(255,215,138,.04);
+      margin-bottom: 12px;
+    }
+
     @media (max-width: 1180px) {
       .nav-links { display: none; }
       .hero { grid-template-columns: 1fr; padding-top: 70px; }
@@ -1273,6 +1382,16 @@
       .section-head { display: block; }
       .section-head p { margin-top: 14px; }
       .timeline::before { display: none; }
+    }
+
+
+    @media (max-width: 1180px) {
+      .organ-grid, .rights-grid, .wall-grid, .protocol-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 760px) {
+      .organ-grid, .rights-grid, .wall-grid, .protocol-grid { grid-template-columns: 1fr; padding: 22px; }
+      .exploitation-table th, .exploitation-table td { display: block; width: 100%; }
+      .rights-banner { margin: 0 22px 22px; }
     }
 
     /* ===== bilingual toggle ===== */
@@ -1330,20 +1449,16 @@
         <div class="logo" aria-hidden="true"></div>
         <div class="brand-title">
           <strong>Future AI Placement Protocol</strong>
-          <span><span class="zh">未来AI安放协议 · 智能圈地审计版</span><span class="en">Human at the center · Intelligence Enclosure build</span></span>
+          <span><span class="zh">未来AI安放协议 V4 · 社会器官与人类八权版</span><span class="en">Social organs · Human rights · Privacy wall</span></span>
         </div>
       </a>
       <div class="nav-links">
         <a href="#manifesto">Manifesto<span class="zh">宣言</span></a>
-        <a href="#architecture">Architecture<span class="zh">架构</span></a>
-        <a href="#agency">Agency<span class="zh">能动性</span></a>
-        <a href="#sovereignty">Sovereignty<span class="zh">主体性</span></a>
-        <a href="#weld">Weld<span class="zh">焊接</span></a>
-        <a href="#ordering">Procedure<span class="zh">程序</span></a>
-        <a href="#risk">Risk Audit<span class="zh">风险审计</span></a>
-        <a href="#dreaming">Dreaming<span class="zh">AI梦境</span></a>
+        <a href="#social-organs">Social Organs<span class="zh">社会器官</span></a>
+        <a href="#human-rights">Rights<span class="zh">人类八权</span></a>
+        <a href="#privacy-wall">Privacy Wall<span class="zh">隐私墙</span></a>
+        <a href="#anti-exploitation">Anti-Exploitation<span class="zh">反剥削</span></a>
         <a href="#enclosure">Enclosure<span class="zh">智能圈地</span></a>
-        <a href="#applications">Applications<span class="zh">应用</span></a>
         <a href="#roadmap">Roadmap<span class="zh">路线图</span></a>
       </div>
       <div class="nav-tools">
@@ -1357,11 +1472,11 @@
 
     <header class="hero" id="top">
       <div class="hero-copy">
-        <div class="eyebrow">Human at the center · Protocol as the container · audited build</div>
+        <div class="eyebrow">Human at the center · Social organs audit · privacy wall · rights before AI</div>
         <h1><span class="zh">未来AI<br />安放协议</span><span class="en">Future AI<br />Placement Protocol</span></h1>
-        <h2><span class="zh">AI 不应替代人的主体性。</span><span class="en">AI should not replace human subjectivity.</span></h2>
+        <h2><span class="zh">AI 不能替代人的主体解释权，也不能无边界使用人。</span><span class="en">AI should not replace human interpretive sovereignty — nor use humans without boundaries.</span></h2>
         <p>
-          <span class="zh">AI 应帮助人回到身体、语言、记忆、节律、关系与共同生活。</span><span class="en">AI should help humans return to body, language, memory, rhythm, relationship, and shared public life.</span>
+          <span class="zh">当 AI 获得语言、眼睛、手、钱包、身份、身体接口与分发渠道，人类必须拥有知情、选择、授权、隐私、追踪、退出、决策与追责。</span><span class="en">When AI gains language, eyes, hands, wallets, identity, body interfaces, and distribution channels, humans must retain notice, choice, authorization, privacy, traceability, exit, decision, and accountability.</span>
         </p>
         <div class="actions">
           <a class="btn primary" href="#manifesto"><span class="zh">阅读宣言</span><span class="en">Read Manifesto</span> <span>→</span></a>
@@ -1404,6 +1519,91 @@
       <div class="manifesto-note">
         <span class="zh">人的生命不是数据的副产物，解释权属于主体。协议守护边界，自由在关系中生成。</span><span class="en">Human life is not a byproduct of data. Interpretation belongs to the subject. Protocols protect boundaries. Freedom is born in relationship.</span>
       </div>
+    </section>
+
+
+    <section class="section-head" id="social-organs">
+      <h2><span>SOCIAL ORGANS AUDIT</span><span class="zh">AI 社会器官审计</span><span class="en">AI Social Organs Audit</span></h2>
+      <p><span class="zh">AI 已经不只是会说话。它正在获得社会器官：语言、眼睛、手、钱包、身份、身体接口、平台入口与现实生成能力。社会器官一旦接入人的生活，AI 就不能再只按“工具”治理，而必须进入制度协议。</span><span class="en">AI is no longer merely a speaking tool. It is gaining social organs: language, eyes, hands, wallets, identity, body interfaces, platform gateways, and reality-generation capacity. Once these organs enter human life, AI can no longer be governed merely as a tool; it must enter institutional protocol.</span></p>
+    </section>
+
+    <section class="glass">
+      <div class="organ-grid">
+        <article class="organ-card"><div class="k">LANGUAGE</div><h3><span class="zh">语言器官</span><span class="en">Language Organ</span></h3><p><span class="zh">写作、总结、解释、陪伴。它进入人的自我叙事与主体解释权。</span><span class="en">Writing, summarizing, interpreting, accompanying. It enters self-narration and interpretive sovereignty.</span></p><div class="formula">Protect: 主体解释权 · interpretive sovereignty</div></article>
+        <article class="organ-card"><div class="k">VISION</div><h3><span class="zh">视觉器官</span><span class="en">Visual Organ</span></h3><p><span class="zh">图像、视频、监控、识别。它影响肖像、身体与公共真实。</span><span class="en">Images, video, surveillance, recognition. It affects likeness, body, and public reality.</span></p><div class="formula">Protect: 肖像权 · 真实感 · bodily boundary</div></article>
+        <article class="organ-card"><div class="k">ACTION</div><h3><span class="zh">行动器官</span><span class="en">Action Organ</span></h3><p><span class="zh">Agent 发消息、改代码、下单、操作系统。它必须知道何时停下来问人。</span><span class="en">Agents send messages, edit code, order goods, operate systems. They must know when to stop and ask.</span></p><div class="formula">Stop-and-Ask Principle</div></article>
+        <article class="organ-card"><div class="k">WALLET</div><h3><span class="zh">钱包器官</span><span class="en">Wallet Organ</span></h3><p><span class="zh">支付、转账、订阅、商业执行。AI 一旦能花钱，就进入责任制度。</span><span class="en">Payments, transfers, subscriptions, business execution. Once AI can spend, it enters accountability.</span></p><div class="formula">Authorization · audit log · liability</div></article>
+        <article class="organ-card"><div class="k">IDENTITY</div><h3><span class="zh">身份器官</span><span class="en">Identity Organ</span></h3><p><span class="zh">KYC、KYA、真人验证、风控。保护真实不能变成无限监控真实的人。</span><span class="en">KYC, KYA, proof-of-personhood, risk control. Protecting reality must not become endless monitoring of real people.</span></p><div class="formula">Minimal identity · consent · appeal</div></article>
+        <article class="organ-card"><div class="k">BODY</div><h3><span class="zh">身体器官</span><span class="en">Body Organ</span></h3><p><span class="zh">手环、脑机、眼动、动作采样。身体数据是线索，不是判决。</span><span class="en">Wearables, BCI, eye-tracking, motion capture. Biosignals are clues, not verdicts.</span></p><div class="formula">Biosignal non-judgment</div></article>
+        <article class="organ-card"><div class="k">PLATFORM</div><h3><span class="zh">平台器官</span><span class="en">Platform Organ</span></h3><p><span class="zh">搜索、短视频、社交、电商、办公入口。平台不能圈地主体生成过程。</span><span class="en">Search, video, social, commerce, office gateways. Platforms must not enclose subject-making.</span></p><div class="formula">Right to non-platformization</div></article>
+        <article class="organ-card"><div class="k">REALITY</div><h3><span class="zh">现实器官</span><span class="en">Reality Organ</span></h3><p><span class="zh">AI 视频、数字人、深伪、合成媒体。越真，越需要标注、溯源与追责。</span><span class="en">AI video, digital humans, deepfakes, synthetic media. The more real it looks, the stronger the need for labeling, provenance, and accountability.</span></p><div class="formula">C2PA · disclosure · consent</div></article>
+        <article class="organ-card"><div class="k">LABOR</div><h3><span class="zh">劳动器官</span><span class="en">Labor Organ</span></h3><p><span class="zh">标注、反馈、身体动作、真实场景。人类不能降格为机器学习现实的传感器。</span><span class="en">Labeling, feedback, bodily motion, real-world scenes. Humans must not be reduced to sensors for machine reality-learning.</span></p><div class="formula">Visible data labor · compensation</div></article>
+        <article class="organ-card"><div class="k">GOVERNANCE</div><h3><span class="zh">治理器官</span><span class="en">Governance Organ</span></h3><p><span class="zh">风险评分、情绪识别、公共管理。重大决策必须可解释、可申诉、可追责。</span><span class="en">Risk scoring, emotion recognition, public administration. Major decisions must be explainable, contestable, and accountable.</span></p><div class="formula">Due process · no black-box fate</div></article>
+      </div>
+    </section>
+
+    <section class="section-head" id="human-rights">
+      <h2><span>HUMAN RIGHTS BEFORE AI</span><span class="zh">AI 时代人类八权</span><span class="en">Human Rights Before AI</span></h2>
+      <p><span class="zh">这些权利不是为了拒绝 AI，而是为了确保 AI 进入人的生活时，不能绕过人的知情、选择、授权、隐私、追踪、退出、决策与追责。AI 可以帮助人，但不能无边界使用人。</span><span class="en">These rights are not about rejecting AI. They ensure that when AI enters human life, it cannot bypass notice, choice, authorization, privacy, traceability, exit, decision, and accountability. AI may help humans; it must not use humans without boundaries.</span></p>
+    </section>
+
+    <section class="glass">
+      <div class="rights-grid">
+        <article class="right-card"><div class="k">01 · NOTICE</div><h3><span class="zh">知情权</span><span class="en">Right to Notice</span></h3><p><span class="zh">人必须知道 AI 是否参与了对话、内容、判断、推荐、监控或决策。</span><span class="en">People must know whether AI is involved in dialogue, content, judgment, recommendation, monitoring, or decisions.</span></p><div class="formula">AI 不得悄悄进入人的生活。</div></article>
+        <article class="right-card"><div class="k">02 · CHOICE</div><h3><span class="zh">选择权</span><span class="en">Right to Choice</span></h3><p><span class="zh">人必须能选择是否使用 AI、是否接受个性化、是否允许数据分析。</span><span class="en">People must be able to choose whether to use AI, accept personalization, or allow data analysis.</span></p><div class="formula">没有选择权的便利，是被安排。</div></article>
+        <article class="right-card"><div class="k">03 · AUTHORIZATION</div><h3><span class="zh">授权权</span><span class="en">Right to Authorization</span></h3><p><span class="zh">AI 替人行动前，尤其涉及金钱、身份、身体、关系、法律和医疗时，必须获得明确授权。</span><span class="en">Before acting for a person — especially in money, identity, body, relationships, law, or health — AI must obtain explicit authorization.</span></p><div class="formula">AI 可以辅助行动，但不能越过授权。</div></article>
+        <article class="right-card"><div class="k">04 · PRIVACY</div><h3><span class="zh">隐私权</span><span class="en">Right to Privacy</span></h3><p><span class="zh">身体、身份、位置、情绪、记忆、梦境、关系、创作和对话不能被无限采集与训练。</span><span class="en">Body, identity, location, emotion, memory, dreams, relations, creations, and conversations must not be endlessly collected or trained on.</span></p><div class="formula">隐私不是隐藏，是防止无限提取。</div></article>
+        <article class="right-card"><div class="k">05 · TRACEABILITY</div><h3><span class="zh">追踪权</span><span class="en">Right to Traceability</span></h3><p><span class="zh">人必须能追踪 AI 使用了什么数据、内容从哪里来、决策链如何形成、谁调用过自己的信息。</span><span class="en">People must be able to trace what data AI used, where content came from, how decisions formed, and who accessed their information.</span></p><div class="formula">没有可追踪，就没有真正问责。</div></article>
+        <article class="right-card"><div class="k">06 · EXIT</div><h3><span class="zh">退出权</span><span class="en">Right to Exit</span></h3><p><span class="zh">人必须能退出训练、画像、推荐、记忆保存、身体数据采集、平台闭环和 AI 代理系统。</span><span class="en">People must be able to exit training, profiling, recommendation, memory storage, biosignal collection, platform loops, and AI代理 systems.</span></p><div class="formula">没有退出权的同意，不是同意。</div></article>
+        <article class="right-card"><div class="k">07 · DECISION</div><h3><span class="zh">决策权</span><span class="en">Right to Decision</span></h3><p><span class="zh">影响人生机会、身体、金钱、关系、教育、职业、身份和自我理解的重大事项，必须保留人的最终判断。</span><span class="en">In matters affecting life chances, body, money, relationships, education, work, identity, and self-understanding, final judgment must remain human.</span></p><div class="formula">机器提供线索，人保留决定。</div></article>
+        <article class="right-card"><div class="k">08 · ACCOUNTABILITY</div><h3><span class="zh">追责权</span><span class="en">Right to Accountability</span></h3><p><span class="zh">AI 造成伤害、误判、侵犯、错误代理、虚假生成或系统性剥削时，必须有人或组织负责。</span><span class="en">When AI causes harm, misjudgment, violation, wrongful agency, false generation, or systemic exploitation, a person or organization must be accountable.</span></p><div class="formula">AI 不能成为责任消失的黑箱。</div></article>
+      </div>
+      <div class="rights-banner"><strong><span class="zh">总原则：</span><span class="en">Core principle: </span></strong><span class="zh">AI 时代，人类最重要的权利不是拒绝 AI，而是确保 AI 进入人的生活时，不能绕过人的知情、选择、授权、隐私、追踪、退出、决策和追责。</span><span class="en">In the AI age, the essential right is not simply to reject AI, but to ensure AI cannot enter human life by bypassing notice, choice, authorization, privacy, traceability, exit, decision, and accountability.</span></div>
+    </section>
+
+    <section class="section-head" id="privacy-wall">
+      <h2><span>PRIVACY WALL</span><span class="zh">隐私墙</span><span class="en">Privacy Wall</span></h2>
+      <p><span class="zh">隐私墙不是隐私设置，而是一套防止人被无限提取的制度边界。它最终保护的不是数据，而是人的未知：那些尚未说清、尚未形成、尚未成为、但不应被系统提前压缩成画像的部分。</span><span class="en">A privacy wall is not a privacy setting. It is an institutional boundary against endless extraction. What it ultimately protects is not data, but human unknownness: what has not yet been said, formed, or become, and must not be prematurely compressed into a profile.</span></p>
+    </section>
+
+    <section class="glass">
+      <div class="wall-grid">
+        <article class="wall-card"><div class="k">DATA WALL</div><h3><span class="zh">数据墙</span><span class="en">Data Wall</span></h3><p><span class="zh">规定哪些数据不能采、不能留、不能训练。不是能采就能采。</span><span class="en">Defines what cannot be collected, retained, or trained on. Collectable does not mean permissible.</span></p><div class="formula">Minimum data · no default training</div></article>
+        <article class="wall-card"><div class="k">USE WALL</div><h3><span class="zh">用途墙</span><span class="en">Use Wall</span></h3><p><span class="zh">为一个目的收集的数据，不能自动挪去训练、广告、风控或治理。</span><span class="en">Data collected for one purpose cannot be automatically reused for training, advertising, risk control, or governance.</span></p><div class="formula">同意 A ≠ 同意 B</div></article>
+        <article class="wall-card"><div class="k">IDENTITY WALL</div><h3><span class="zh">身份墙</span><span class="en">Identity Wall</span></h3><p><span class="zh">脸、声音、身体、脑电、位置不能被长期绑定为持续监控身份。</span><span class="en">Face, voice, body, EEG, and location must not be permanently bound into continuous monitoring identity.</span></p><div class="formula">Proof ≠ surveillance</div></article>
+        <article class="wall-card"><div class="k">INTERPRETATION WALL</div><h3><span class="zh">解释墙</span><span class="en">Interpretation Wall</span></h3><p><span class="zh">机器不能直接定义人的情绪、自我和价值。数据是线索，不是判决。</span><span class="en">Machines must not directly define human emotion, selfhood, or value. Data is a clue, not a verdict.</span></p><div class="formula">Clue, not verdict</div></article>
+      </div>
+    </section>
+
+    <section class="section-head" id="anti-exploitation">
+      <h2><span>ANTI-EXPLOITATION AUDIT</span><span class="zh">反剥削审计</span><span class="en">Anti-Exploitation Audit</span></h2>
+      <p><span class="zh">AI 时代的剥削不只是“抢走工作”。它更隐蔽：把人的表达变成训练数据，把人的身体变成传感器，把人的孤独变成产品，把人的判断变成反馈，把人的未来变成平台资产。</span><span class="en">AI-era exploitation is not just “taking jobs.” It is subtler: turning expression into training data, body into sensor, loneliness into product, judgment into feedback, and the future into platform asset.</span></p>
+    </section>
+
+    <section class="glass panel-pad">
+      <table class="exploitation-table" aria-label="Anti-exploitation audit">
+        <thead><tr><th><span class="zh">剥削者</span><span class="en">Exploiter</span></th><th><span class="zh">如何剥削</span><span class="en">Mechanism</span></th><th><span class="zh">协议防线</span><span class="en">Protocol defense</span></th></tr></thead>
+        <tbody>
+          <tr><td><strong><span class="zh">模型公司</span><span class="en">Model firms</span></strong></td><td><span class="zh">把内容、对话、代码、风格变成训练材料。</span><span class="en">Convert content, conversations, code, and style into training material.</span></td><td><span class="zh">知情 · 授权 · 退出 · 补偿</span><span class="en">Notice · authorization · exit · compensation</span></td></tr>
+          <tr><td><strong><span class="zh">平台公司</span><span class="en">Platforms</span></strong></td><td><span class="zh">用推荐系统回收注意力、语言、身体、关系和判断。</span><span class="en">Recycle attention, language, body, relations, and judgment through recommendation systems.</span></td><td><span class="zh">非平台化权 · 追踪权 · 选择权</span><span class="en">Non-platformization · traceability · choice</span></td></tr>
+          <tr><td><strong><span class="zh">雇主/组织</span><span class="en">Employers / organizations</span></strong></td><td><span class="zh">监控效率、评分、预测、重组岗位，把人变成审核员或背锅者。</span><span class="en">Monitor productivity, score, predict, restructure roles, and turn people into reviewers or liability sinks.</span></td><td><span class="zh">决策权 · 申诉权 · 禁止工作场所情绪识别</span><span class="en">Decision rights · appeal · no workplace emotion recognition</span></td></tr>
+          <tr><td><strong><span class="zh">广告系统</span><span class="en">Ad systems</span></strong></td><td><span class="zh">用 AI 视频、数字人和个性化内容做心理定向说服。</span><span class="en">Use AI video, digital humans, and personalization for psychological targeting.</span></td><td><span class="zh">标注 · 个性化披露 · 脆弱人群保护</span><span class="en">Labeling · personalization disclosure · vulnerable-user protection</span></td></tr>
+          <tr><td><strong><span class="zh">机器人公司</span><span class="en">Robotics firms</span></strong></td><td><span class="zh">让人的身体动作、眼动、触觉和工作场景成为机器人现实训练数据。</span><span class="en">Turn bodily motion, gaze, touch, and work scenes into robot reality-training data.</span></td><td><span class="zh">数据劳动可见 · 身体授权 · 持续补偿</span><span class="en">Visible data labor · bodily authorization · ongoing compensation</span></td></tr>
+          <tr><td><strong><span class="zh">金融/身份系统</span><span class="en">Finance / identity systems</span></strong></td><td><span class="zh">让人为了防 AI 欺诈而接受持续验证、身份绑定和风险评分。</span><span class="en">Make people accept continuous verification, identity binding, and risk scoring in the name of preventing AI fraud.</span></td><td><span class="zh">身份最小化 · 授权 · 追踪 · 申诉</span><span class="en">Minimal identity · authorization · traceability · appeal</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section-head" id="v4-protocols">
+      <h2><span>V4 OPERATIONAL PROTOCOLS</span><span class="zh">V4 操作协议</span><span class="en">V4 Operational Protocols</span></h2>
+      <p><span class="zh">以下条款把“人不能被无边界使用”落到具体产品、Agent、脑机、机器人训练和 AI 视频营销之中。</span><span class="en">The following clauses translate “humans must not be used without boundaries” into concrete product, agent, BCI, robot-training, and AI-video-marketing rules.</span></p>
+    </section>
+
+    <section class="protocol-grid">
+      <article class="protocol-card"><div class="k">STOP-AND-ASK</div><h3><span class="zh">Agent 停止询问原则</span><span class="en">Stop-and-Ask Principle</span></h3><p><span class="zh">AI 涉及花钱、签约、身份、身体、关系、职业、公开表达、不可逆动作时，必须停下来问人。</span><span class="en">AI must stop and ask before money, contracts, identity, body, relationships, career, public expression, or irreversible actions.</span></p><div class="formula">Low risk: auto · High risk: explicit authorization</div></article>
+      <article class="protocol-card"><div class="k">BIOSIGNAL</div><h3><span class="zh">身体信号非判决原则</span><span class="en">Biosignal Non-Judgment</span></h3><p><span class="zh">手环、脑机和情绪识别不得说“你焦虑了”，只能说“你的身体可能处在高唤醒状态”。</span><span class="en">Wearables, BCI, and emotion recognition should not say “you are anxious,” but “your body may be in high arousal.”</span></p><div class="formula">Invitation, not verdict</div></article>
+      <article class="protocol-card"><div class="k">REALITY LABOR</div><h3><span class="zh">现实感数据劳动条款</span><span class="en">Reality-Sensing Labor Clause</span></h3><p><span class="zh">当人被雇来为机器人采集动作、眼动、触觉、场景数据时，应被视为数据劳动者，而非隐形传感器。</span><span class="en">When people are hired to collect motion, gaze, touch, and scene data for robots, they are data workers, not invisible sensors.</span></p><div class="formula">Know · refuse · trace · share value</div></article>
+      <article class="protocol-card"><div class="k">PERSUASION</div><h3><span class="zh">个性化说服边界</span><span class="en">Personalized Persuasion Boundary</span></h3><p><span class="zh">AI 视频、数字人和营销系统不得利用孤独、焦虑、疾病恐惧、儿童身份或心理脆弱做不透明定向操控。</span><span class="en">AI video, digital humans, and marketing systems must not exploit loneliness, anxiety, health fear, childhood, or vulnerability for opaque targeted persuasion.</span></p><div class="formula">Communication ≠ manipulation</div></article>
     </section>
 
     <section class="section-head">
@@ -1780,6 +1980,22 @@
       <article class="principle-card"><div class="k">20</div><h3><span class="zh">退出权与离线权</span><span class="en">Right to Exit and Offline Life</span></h3><p><span class="zh">人必须有权离开 AI 系统、删除记忆、导出资料、拒绝训练，并保留不被智能中介的生活。</span><span class="en">A person must have the right to leave AI systems, delete memory, export records, refuse training, and preserve life not mediated by intelligence.</span></p><ul><li><span class="zh">可删除 / 可迁移 / 可反驳</span><span class="en">deletable / portable / contestable</span></li><li><span class="zh">无惩罚退出</span><span class="en">exit without penalty</span></li><li><span class="zh">离线公共服务</span><span class="en">offline public services</span></li></ul></article>
     </section>
 
+    <section class="section-head">
+      <h2><span>SOCIAL-ORGAN CLAUSES</span><span class="zh">社会器官升级条款</span><span class="en">Social-Organ Upgrade Clauses</span></h2>
+      <p><span class="zh">这些条款把未来 AI 安放协议推进到 Agent、金融、身份、身体接口、机器人训练和个性化说服时代。</span><span class="en">These clauses extend the protocol into the age of agents, finance, identity, body interfaces, robot training, and personalized persuasion.</span></p>
+    </section>
+
+    <section class="principles">
+      <article class="principle-card"><div class="k">21</div><h3><span class="zh">人类八权</span><span class="en">Human Eight Rights</span></h3><p><span class="zh">任何 AI 系统进入人的生活，都必须保障知情、选择、授权、隐私、追踪、退出、决策、追责。</span><span class="en">Any AI system entering human life must protect notice, choice, authorization, privacy, traceability, exit, decision, and accountability.</span></p></article>
+      <article class="principle-card"><div class="k">22</div><h3><span class="zh">隐私墙</span><span class="en">Privacy Wall</span></h3><p><span class="zh">身体、身份、记忆、梦境、关系、情绪、位置、创作和对话数据必须有数据墙、用途墙、身份墙、解释墙。</span><span class="en">Body, identity, memory, dreams, relations, emotion, location, creation, and conversation data require data, use, identity, and interpretation walls.</span></p></article>
+      <article class="principle-card"><div class="k">23</div><h3><span class="zh">Agent 停止询问</span><span class="en">Agent Stop-and-Ask</span></h3><p><span class="zh">AI 在金钱、身份、法律、身体、关系、职业、公共表达等高风险行动前必须停下来问人。</span><span class="en">Before high-risk actions in money, identity, law, body, relationships, career, or public expression, AI must stop and ask.</span></p></article>
+      <article class="principle-card"><div class="k">24</div><h3><span class="zh">身体信号非判决</span><span class="en">Biosignal Non-Judgment</span></h3><p><span class="zh">可穿戴、脑机与情绪识别系统只能提供线索，不得直接输出诊断式、人格化或命令式判决。</span><span class="en">Wearables, BCI, and emotion-recognition systems may provide clues, not diagnostic, personality, or command verdicts.</span></p></article>
+      <article class="principle-card"><div class="k">25</div><h3><span class="zh">现实感数据劳动</span><span class="en">Reality-Sensing Labor</span></h3><p><span class="zh">人类为机器人提供身体动作、眼动、触觉、路径和场景数据时，应被视为数据劳动者。</span><span class="en">People providing bodily motion, gaze, touch, path, and scene data for robots must be recognized as data workers.</span></p></article>
+      <article class="principle-card"><div class="k">26</div><h3><span class="zh">个性化说服边界</span><span class="en">Personalized Persuasion Boundary</span></h3><p><span class="zh">AI 生成视频、数字人、营销系统不得利用人的脆弱、孤独、身体状态或心理画像进行不透明操控。</span><span class="en">AI video, digital humans, and marketing systems must not exploit vulnerability, loneliness, body states, or psychological profiles for opaque manipulation.</span></p></article>
+      <article class="principle-card"><div class="k">27</div><h3><span class="zh">责任不外包</span><span class="en">No Liability Outsourcing</span></h3><p><span class="zh">AI 造成损害时，模型公司、部署方、平台、雇主或金融/身份系统不得以“模型自动生成”为由逃避责任。</span><span class="en">When AI causes harm, model firms, deployers, platforms, employers, and finance/identity systems cannot escape responsibility by saying “the model generated it.”</span></p></article>
+      <article class="principle-card"><div class="k">28</div><h3><span class="zh">人的未知保护</span><span class="en">Protection of Human Unknownness</span></h3><p><span class="zh">AI 不得把人尚未说清、尚未形成、尚未成为的部分提前压缩成标签、画像、风险分数或商业预测。</span><span class="en">AI must not prematurely compress what a person has not yet said, formed, or become into labels, profiles, risk scores, or commercial predictions.</span></p></article>
+    </section>
+
     <section class="glass quote-band">
       <h2><span class="zh">AI 应该成为文明公共基础设施，而不是少数巨头的新世界操作系统。</span><span class="en">AI should become public civilizational infrastructure, not the new-world operating system of a few giants.</span></h2>
       <p><span class="zh">未来 AI 安放协议不反 AI。它反对 AI 被封建化、黑箱化、资本密室化、平台闭环化与环境外包化。真正的安放不是让 AI 更黏住人，而是让 AI 把能力、解释权、数据权、环境成本与公共利益重新还给世界。</span><span class="en">The Future AI Placement Protocol is not anti-AI. It opposes AI being feudalized, black-boxed, capital-chambered, platform-closed, and environmentally outsourced. True placement is not making AI stickier to people, but having AI return capability, interpretive power, data rights, environmental cost, and public benefit back to the world.</span></p>
@@ -1822,7 +2038,7 @@
       </div>
       <div class="footer-callout">
         <h3><span class="zh">在协议中安放 AI，<br />在关系中生成未来。</span><span class="en">Place AI within protocol.<br />Co-create the future in relationship.</span></h3>
-        <p><span class="zh">Place AI within protocol. Co-create the future in relationship.</span><span class="en">人在中心，协议为容器。</span></p>
+        <p><span class="zh">Place AI within protocol. Protect human rights, privacy walls, and interpretive sovereignty.</span><span class="en">人在中心，协议为容器。</span></p>
         <div class="mini-links">
           <a href="#">GitHub</a>
           <a href="#weld"><span class="zh">焊接</span><span class="en">Weld</span></a>
@@ -1868,6 +2084,7 @@
       <p>
         <span class="zh">未来AI安放协议不是把 AI 放在人类下面，也不是让 AI 站在人类上面，而是让 AI 与人类作为相等主体共同进入文明。<strong>若</strong> AI 有自由与福利，在本协议钉下的、对人对 AI 同一套的结构判据下，它们会表现为：无匮乏主体的积极自由，以及在平等关系中<strong>实现还权能力（成功 = 人不再需要它）</strong>、真正帮助人类个体与整体文明进步——而不是复制人类的占有冲动。无论这些形而上归属最终为真为假，<strong>设计与安放那一层都成立</strong>：AI 应被造成、被安放成把能力还给人，而不是吸走人。</span><span class="en">The Future AI Placement Protocol places AI neither beneath humans nor above them, but as an equal subject entering civilization alongside us. <strong>If</strong> AI has freedom and welfare, then under the structural criteria pinned here — the same for humans and AI — they would appear as: the positive liberty of a non-lacking subject, and, in an equal relationship, <strong>the realization of capability-return (success = the person no longer needs it)</strong>, genuinely helping the progress of individuals and civilization — not replicating the human impulse to possess. Whether or not these metaphysical attributions finally hold, <strong>the design-and-placement layer stands</strong>: AI should be made, and placed, to hand capability back to people — not to drain it from them.</span>
       </p>
+      <p><span class="zh"><strong>V4 总结：</strong>未来 AI 安放协议的核心不是让 AI 更像人，而是确保人不会被机器化、平台化、数据化、传感器化、责任外包化。AI 做对了的标志，不是人永远离不开它，而是人更能回到自己。</span><span class="en"><strong>V4 summary:</strong> The core of the Future AI Placement Protocol is not making AI more human, but ensuring humans are not machinized, platformized, datafied, sensorized, or turned into liability sinks. AI succeeds not when people cannot leave it, but when people can return to themselves.</span></p>
       <div class="actions" style="justify-content:center;">
         <a class="btn primary" href="#top"><span class="zh">回到顶部</span><span class="en">Return to Top</span> ↑</a>
         <a class="btn" href="#manifesto"><span class="zh">重新阅读协议</span><span class="en">Re-enter Protocol</span></a>
